@@ -1,31 +1,31 @@
-<p>
-    # Q-A-online
-</p>
-<p>
-    by SJTU软工小组&nbsp;
-</p>
-<p>
-    Version &nbsp; python 2.7 django 1.10&nbsp;
-</p>
-<p>
-    &nbsp;可使用admin（密码已告知邮箱）登录管理后台
-</p>
-<p>
-    &nbsp;本地版本(需要按照提示安装PIL库)：python manage.py runserver ,127.0.0.0：8000查看
-</p>
-<p>
-    &nbsp;线上版本：
-</p>
-<p>
-    &nbsp; &nbsp; &nbsp;已经上线测试 www.sisugo.com (备用www.sisugo.net)欢迎登录注册讨论~
-</p>
-<p>
-    <br/>
-</p>
-<p>
-    PS 谢谢老师同学和各路大神的帮助~
-</p>
-<p>
-    <br/>
-</p>
 # Web
+## How to Install
+### Prerequisite
+- Ubuntu has python3
+### install requirements
+- install python3 requirements
+
+    `pip3 install -r requirements.txt`
+
+- using resdis
+
+    `docker run -p 6379:6379 -d redis:2.8`
+
+
+    - you can use below to make sure it is on
+     `netstat -ntlp|grep 6379`
+- clone project
+
+    `git clone https://github.com/taoxinyi/Web.git`
+
+- go to folder
+
+    `cd Web`
+
+- start the server, then you can go to 127.0.0.1:8000
+    `python3 manage.py runserve`
+
+
+
+#if you want to access it not only from your  virtual machine, you can use below
+python3 manage.py runserver 0.0.0.0:8000```
