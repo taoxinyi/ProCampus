@@ -12,11 +12,11 @@
 ### 1.1.1. Prerequisite
 - Ubuntu has python3
 ### 1.1.2. install requirements
-- install python3 requirements
+- Install python3 requirements
 
     `pip3 install -r requirements.txt --user`
 
-- using redis
+- Using redis
 
     `docker run -p 6379:6379 -d redis:2.8`
 
