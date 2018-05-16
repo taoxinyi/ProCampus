@@ -1,0 +1,138 @@
+<!-- chat/templates/chat/room.html -->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+</head>
+<body>
+<div id="chat" style="border: 1px solid black;width: 40% ; height: 400px; overflow-y: scroll;margin: 10px auto;"></div>
+<div style="width: 40% ;margin: 10px auto;"><input id="chat-message-input" type="text"
+                                                   align="center" style="width: 80% ;"/><input
+        id="chat-message-submit" type="button" value="Send"/>
+    <br/>
+</div>
+
+</body>
+<script>
+    var roomName = {{ room_name_json }};
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        var type = data['type']
+        var isAuthor = data['isAuthor'];
+        if (type === "clear") {
+            var result = eval(data['message']);
+            for (var i in result) {
+                //表示遍历数组，而i表示的是数组的下标值，
+                //result[i]表示获得第i个json对象即JSONObject
+                //result[i]通过.字段名称即可获得指定字段的值
+                addToChat(result[i].author, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
+
+            }
+            //document.querySelector('#chat-log').value += (message);
+
+        }
+        else {
+            addToChat(data['author'], data['image'], data['message'], data['time'], data['isAuthor']);
+
+        }
+        var elem = document.getElementById('chat');
+         elem.scrollTop = elem.scrollHeight;
+
+    };
+
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+
+    function addToChat(author, imageUrl, text, time, isAuthor) {
+        var img = new Image();
+        img.src = imageUrl;
+        img.style.width = "60px";
+        var table = document.createElement("table");
+        var tr1 = document.createElement("tr");
+        var tr2 = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+
+        if (isAuthor === "0") {
+            td1.style.width = "200px";
+            td1.style.verticalAlign = "top";
+            td1.style.wordWrap = "break-word";
+            td1.style.wordBreak = "break-all";
+            td1.innerHTML = text;
+
+            td2.style.height = "60px";
+            td2.style.width = "60px";
+            td2.style.verticalAlign = "top";
+            td2.append(img);
+            tr1.appendChild(td2);
+            tr1.appendChild(td1);
+
+            td3.innerHTML = time;
+            td4.innerHTML = author;
+            td4.style.verticalAlign = "top";
+            tr2.appendChild(td4);
+            tr2.appendChild(td3);
+            table.appendChild(tr1);
+            table.appendChild(tr2);
+
+            document.getElementById("chat").appendChild(table);
+        }
+        else {
+
+            table.style.marginLeft = "70%";
+
+            td1.style.width = "200px";
+            td1.style.verticalAlign = "top";
+            td1.style.wordWrap = "break-word";
+            td1.style.wordBreak = "break-all";
+            td1.innerHTML = text;
+
+            td2.style.height = "60px";
+            td2.style.width = "60px";
+            td2.style.verticalAlign = "top";
+            td2.append(img);
+            tr1.appendChild(td1);
+            tr1.appendChild(td2);
+
+            td3.innerHTML = time;
+            td4.innerHTML = author;
+            tr2.appendChild(td3);
+            tr2.appendChild(td4);
+            table.appendChild(tr1);
+            table.appendChild(tr2);
+
+            document.getElementById("chat").appendChild(table);
+        }
+        var br = document.createElement("br");
+        document.getElementById("chat").appendChild(br);
+    }
+</script>
+</html>

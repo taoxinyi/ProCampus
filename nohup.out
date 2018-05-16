@@ -1,0 +1,1001 @@
+2018-05-15 16:11:27,370 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 16:11:27,371 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 16:11:27,371 - INFO - server - Listening on TCP address 0.0.0.0:8000
+[2018/05/15 16:11:30] HTTP GET / 200 [0.07, 59.78.1.143:13847]
+[2018/05/15 16:11:32] HTTP GET / 200 [0.04, 59.78.1.143:13847]
+[2018/05/15 16:11:33] HTTP GET /chat/ 200 [0.00, 59.78.1.143:13847]
+[2018/05/15 16:11:42] HTTP GET /forum/friend/ 200 [0.07, 59.78.1.143:13847]
+[2018/05/15 16:12:15] HTTP GET / 200 [0.03, 59.78.1.119:38075]
+[2018/05/15 16:12:15] HTTP GET /static/css/bootstrap.min.css 200 [0.04, 59.78.1.119:38075]
+[2018/05/15 16:12:15] HTTP GET /static/css/main.css 200 [0.00, 59.78.1.119:38076]
+[2018/05/15 16:12:15] HTTP GET /static/js/jquery.min.js 200 [0.03, 59.78.1.119:38077]
+[2018/05/15 16:12:15] HTTP GET /static/js/utils.js 200 [0.00, 59.78.1.119:38076]
+[2018/05/15 16:12:15] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 59.78.1.119:38079]
+[2018/05/15 16:12:15] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 59.78.1.119:38078]
+[2018/05/15 16:12:15] HTTP GET /static/image/logo.png 200 [0.00, 59.78.1.119:38075]
+[2018/05/15 16:12:15] HTTP GET /static/image/default1.png 200 [0.04, 59.78.1.119:38077]
+[2018/05/15 16:12:15] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.04, 59.78.1.119:38075]
+[2018/05/15 16:12:16] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.02, 59.78.1.119:38077]
+[2018/05/15 16:12:19] HTTP GET /chat/ 200 [0.00, 59.78.1.119:38077]
+[2018/05/15 16:12:29] HTTP GET /chat/test/ 200 [0.00, 59.78.1.119:38077]
+[2018/05/15 16:12:29] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.119:38083]
+[2018/05/15 16:12:29] WebSocket CONNECT /ws/chat/test/ [59.78.1.119:38083]
+2018-05-15 16:12:33,461 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/usr/local/lib/python3.5/dist-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  File "/home/ubuntu/QA/chat/consumers.py", line 40, in receive
+    'message': MyUser.objects.get(user_id=self.user.id).nickname+" : "+message
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/15 16:12:33] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.119:38083]
+[2018/05/15 16:13:10] HTTP GET /authentication/user/logout/ 302 [0.03, 59.78.1.143:13875]
+[2018/05/15 16:13:10] HTTP GET / 200 [0.03, 59.78.1.143:13875]
+[2018/05/15 16:13:10] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.143:13875]
+[2018/05/15 16:13:10] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.143:13876]
+[2018/05/15 16:13:12] HTTP GET /chat/ 200 [0.00, 59.78.1.143:13876]
+[2018/05/15 16:13:14] HTTP GET /chat/1234/ 200 [0.00, 59.78.1.143:13876]
+[2018/05/15 16:13:14] WebSocket HANDSHAKING /ws/chat/1234/ [59.78.1.143:13878]
+[2018/05/15 16:13:14] WebSocket CONNECT /ws/chat/1234/ [59.78.1.143:13878]
+2018-05-15 16:13:15,497 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/usr/local/lib/python3.5/dist-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  File "/home/ubuntu/QA/chat/consumers.py", line 40, in receive
+    'message': MyUser.objects.get(user_id=self.user.id).nickname+" : "+message
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+2018-05-15 16:34:15,359 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 16:34:15,359 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 16:34:15,360 - INFO - server - Listening on TCP address 0.0.0.0:8000
+[2018/05/15 16:34:16] HTTP GET / 200 [0.06, 59.78.1.143:14970]
+[2018/05/15 16:34:17] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 59.78.1.143:14970]
+[2018/05/15 16:34:17] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.143:14970]
+[2018/05/15 16:34:17] HTTP GET /static/js/jquery.min.js 200 [0.00, 59.78.1.143:14970]
+[2018/05/15 16:34:17] HTTP GET /static/js/jquery.cookie.js 200 [0.01, 59.78.1.143:14972]
+[2018/05/15 16:34:17] HTTP GET /static/js/bootstrap.min.js 200 [0.01, 59.78.1.143:14971]
+[2018/05/15 16:34:17] HTTP GET /static/js/utils.js 200 [0.01, 59.78.1.143:14975]
+[2018/05/15 16:34:17] HTTP GET /static/image/logo.png 200 [0.00, 59.78.1.143:14971]
+[2018/05/15 16:34:17] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:17] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:18] HTTP GET /chat/ 200 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:20] HTTP GET /chat/3123/ 200 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:20] WebSocket HANDSHAKING /ws/chat/3123/ [59.78.1.143:14976]
+[2018/05/15 16:34:20] WebSocket CONNECT /ws/chat/3123/ [59.78.1.143:14976]
+[2018/05/15 16:34:22] WebSocket DISCONNECT /ws/chat/3123/ [59.78.1.143:14976]
+[2018/05/15 16:34:23] HTTP GET /authentication/user/login/ 200 [0.03, 59.78.1.143:14975]
+[2018/05/15 16:34:24] HTTP POST /authentication/user/login/ 302 [0.16, 59.78.1.143:14975]
+[2018/05/15 16:34:24] HTTP GET / 200 [0.03, 59.78.1.143:14975]
+[2018/05/15 16:34:26] HTTP GET /chat/ 200 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:28] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:14975]
+[2018/05/15 16:34:28] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:14978]
+[2018/05/15 16:34:28] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:14978]
+[2018/05/15 16:35:18] HTTP GET / 200 [0.03, 202.120.19.80:25230]
+[2018/05/15 16:35:18] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 202.120.19.80:25230]
+[2018/05/15 16:35:18] HTTP GET /static/css/main.css 200 [0.00, 202.120.19.80:25231]
+[2018/05/15 16:35:18] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 202.120.19.80:25251]
+[2018/05/15 16:35:18] HTTP GET /static/js/jquery.min.js 200 [0.00, 202.120.19.80:25250]
+[2018/05/15 16:35:18] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 202.120.19.80:25252]
+[2018/05/15 16:35:18] HTTP GET /static/js/utils.js 200 [0.00, 202.120.19.80:25231]
+[2018/05/15 16:35:18] HTTP GET /static/image/logo.png 200 [0.00, 202.120.19.80:25230]
+[2018/05/15 16:35:18] HTTP GET /static/image/default1.png 200 [0.00, 202.120.19.80:25230]
+[2018/05/15 16:35:18] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 202.120.19.80:25250]
+[2018/05/15 16:35:18] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 202.120.19.80:25252]
+[2018/05/15 16:35:19] HTTP GET /favicon.ico 404 [0.02, 202.120.19.80:25230]
+[2018/05/15 16:35:27] HTTP GET /chat/ 200 [0.00, 202.120.19.80:25230]
+[2018/05/15 16:35:31] HTTP GET /chat/test/ 200 [0.00, 202.120.19.80:25230]
+[2018/05/15 16:35:31] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.80:25494]
+[2018/05/15 16:35:31] WebSocket CONNECT /ws/chat/test/ [202.120.19.80:25494]
+[2018/05/15 16:36:06] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.80:25494]
+[2018/05/15 16:37:11] HTTP GET / 200 [0.03, 59.78.0.59:64854]
+[2018/05/15 16:37:11] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 59.78.0.59:64854]
+[2018/05/15 16:37:11] HTTP GET /static/js/jquery.min.js 200 [0.00, 59.78.0.59:64856]
+[2018/05/15 16:37:11] HTTP GET /static/css/main.css 200 [0.00, 59.78.0.59:64855]
+[2018/05/15 16:37:11] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 59.78.0.59:64857]
+[2018/05/15 16:37:11] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 59.78.0.59:64858]
+[2018/05/15 16:37:11] HTTP GET /static/js/utils.js 200 [0.00, 59.78.0.59:64859]
+[2018/05/15 16:37:11] HTTP GET /static/image/default1.png 200 [0.00, 59.78.0.59:64857]
+[2018/05/15 16:37:11] HTTP GET /static/image/logo.png 200 [0.00, 59.78.0.59:64855]
+[2018/05/15 16:37:11] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 59.78.0.59:64859]
+[2018/05/15 16:37:12] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 59.78.0.59:64854]
+[2018/05/15 16:38:19] HTTP GET / 200 [0.03, 59.78.1.119:38259]
+[2018/05/15 16:38:20] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:20] HTTP GET /static/js/jquery.min.js 304 [0.00, 59.78.1.119:38261]
+[2018/05/15 16:38:20] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 59.78.1.119:38260]
+[2018/05/15 16:38:20] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:20] HTTP GET /static/js/utils.js 304 [0.00, 59.78.1.119:38260]
+[2018/05/15 16:38:20] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 59.78.1.119:38261]
+[2018/05/15 16:38:20] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.119:38261]
+[2018/05/15 16:38:20] HTTP GET /static/image/logo.png 304 [0.00, 59.78.1.119:38260]
+[2018/05/15 16:38:20] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:21] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:24] HTTP GET /chat/ 200 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:31] HTTP GET /chat/test/ 200 [0.00, 59.78.1.119:38259]
+[2018/05/15 16:38:31] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.119:38274]
+[2018/05/15 16:38:31] WebSocket CONNECT /ws/chat/test/ [59.78.1.119:38274]
+[2018/05/15 16:39:38] HTTP GET /chat/test/ 200 [0.00, 180.160.192.186:54176]
+[2018/05/15 16:39:39] WebSocket HANDSHAKING /ws/chat/test/ [180.160.192.186:58058]
+[2018/05/15 16:39:39] WebSocket CONNECT /ws/chat/test/ [180.160.192.186:58058]
+[2018/05/15 16:39:44] WebSocket DISCONNECT /ws/chat/test/ [180.160.192.186:58058]
+[2018/05/15 16:39:45] HTTP GET /chat/test/ 200 [0.00, 180.160.192.186:54176]
+[2018/05/15 16:39:45] WebSocket HANDSHAKING /ws/chat/test/ [180.160.192.186:58059]
+[2018/05/15 16:39:45] WebSocket CONNECT /ws/chat/test/ [180.160.192.186:58059]
+[2018/05/15 16:39:46] WebSocket DISCONNECT /ws/chat/test/ [180.160.192.186:58059]
+[2018/05/15 16:39:51] HTTP GET /chat/test 301 [0.00, 61.151.226.77:62309]
+[2018/05/15 16:39:51] HTTP GET /chat/test/ 200 [0.00, 61.151.226.77:62309]
+[2018/05/15 16:42:26] HTTP GET / 200 [0.03, 59.78.0.59:61670]
+[2018/05/15 16:42:26] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 59.78.0.59:61670]
+[2018/05/15 16:42:26] HTTP GET /static/css/main.css 200 [0.00, 59.78.0.59:61671]
+[2018/05/15 16:42:26] HTTP GET /static/js/jquery.min.js 200 [0.00, 59.78.0.59:61674]
+[2018/05/15 16:42:26] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 59.78.0.59:61676]
+[2018/05/15 16:42:26] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 59.78.0.59:61675]
+[2018/05/15 16:42:26] HTTP GET /static/js/utils.js 200 [0.00, 59.78.0.59:61677]
+[2018/05/15 16:42:26] HTTP GET /static/image/logo.png 200 [0.00, 59.78.0.59:61674]
+[2018/05/15 16:42:26] HTTP GET /static/image/default1.png 200 [0.00, 59.78.0.59:61670]
+[2018/05/15 16:42:26] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 59.78.0.59:61675]
+[2018/05/15 16:42:26] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 59.78.0.59:61677]
+[2018/05/15 16:42:27] HTTP GET /favicon.ico 404 [0.01, 59.78.0.59:61670]
+[2018/05/15 16:42:36] HTTP GET /chat/ 200 [0.00, 59.78.0.59:61670]
+[2018/05/15 16:42:42] HTTP GET /chat/test/ 200 [0.00, 59.78.0.59:61670]
+[2018/05/15 16:42:42] WebSocket HANDSHAKING /ws/chat/test/ [59.78.0.59:61681]
+[2018/05/15 16:42:42] WebSocket CONNECT /ws/chat/test/ [59.78.0.59:61681]
+[2018/05/15 16:43:56] WebSocket DISCONNECT /ws/chat/test/ [59.78.0.59:61681]
+[2018/05/15 16:44:00] HTTP GET /forum/friend/ 500 [0.10, 59.78.0.59:61692]
+[2018/05/15 16:44:07] HTTP GET /forum/category/8/ 200 [0.02, 59.78.0.59:61692]
+[2018/05/15 16:44:11] HTTP GET /forum/question/26/detail/ 200 [0.06, 59.78.0.59:61692]
+[2018/05/15 16:44:31] HTTP GET /chat/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:44:33] HTTP GET /chat// 404 [0.01, 59.78.0.59:61692]
+[2018/05/15 16:44:37] HTTP GET /chat/test/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:44:37] WebSocket HANDSHAKING /ws/chat/test/ [59.78.0.59:61711]
+[2018/05/15 16:44:37] WebSocket CONNECT /ws/chat/test/ [59.78.0.59:61711]
+[2018/05/15 16:44:42] WebSocket DISCONNECT /ws/chat/test/ [59.78.0.59:61711]
+[2018/05/15 16:44:45] HTTP GET /forum/question/add/ 302 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:44:45] HTTP GET /authentication/user/login/?next=/forum/question/add/ 200 [0.01, 59.78.0.59:61692]
+[2018/05/15 16:45:05] HTTP GET /forum/question/add/ 302 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:45:05] HTTP GET /authentication/user/login/?next=/forum/question/add/ 200 [0.01, 59.78.0.59:61692]
+[2018/05/15 16:45:07] HTTP POST /authentication/user/login/?next=/forum/question/add/ 200 [0.13, 59.78.0.59:61692]
+[2018/05/15 16:45:10] HTTP GET /authentication/user/login/?next=/forum/question/add/ 200 [0.02, 59.78.0.59:61692]
+[2018/05/15 16:45:18] HTTP GET /authentication/user/login/ 200 [0.01, 59.78.0.59:61692]
+[2018/05/15 16:45:19] HTTP POST /authentication/user/login/ 200 [0.11, 59.78.0.59:61692]
+[2018/05/15 16:45:21] HTTP GET /authentication/user/signup/ 200 [0.04, 59.78.0.59:61692]
+[2018/05/15 16:46:12] HTTP POST /authentication/user/signup/ 302 [0.31, 59.78.0.59:61692]
+[2018/05/15 16:46:12] HTTP GET /authentication/user/login/ 200 [0.01, 59.78.0.59:61692]
+[2018/05/15 16:46:14] HTTP POST /authentication/user/login/ 302 [0.19, 59.78.0.59:61692]
+[2018/05/15 16:46:15] HTTP GET / 200 [0.03, 59.78.0.59:61692]
+[2018/05/15 16:46:15] HTTP GET /media/user/photo/2018/05/15/11372771.jpg 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:46:24] HTTP GET /forum/question/24/detail/ 200 [0.06, 59.78.0.59:61692]
+[2018/05/15 16:46:25] HTTP GET /media/user/photo/2018/05/15/11372771.jpg 304 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:46:48] HTTP GET /chat/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:46:51] HTTP GET /chat/test/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:46:51] WebSocket HANDSHAKING /ws/chat/test/ [59.78.0.59:61754]
+[2018/05/15 16:46:51] WebSocket CONNECT /ws/chat/test/ [59.78.0.59:61754]
+[2018/05/15 16:47:14] WebSocket DISCONNECT /ws/chat/test/ [59.78.0.59:61754]
+[2018/05/15 16:47:17] HTTP GET /chat/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:47:19] HTTP GET /chat/test/ 200 [0.00, 59.78.0.59:61692]
+[2018/05/15 16:47:19] WebSocket HANDSHAKING /ws/chat/test/ [59.78.0.59:61761]
+[2018/05/15 16:47:19] WebSocket CONNECT /ws/chat/test/ [59.78.0.59:61761]
+[2018/05/15 16:47:21] WebSocket DISCONNECT /ws/chat/test/ [59.78.0.59:61761]
+[2018/05/15 17:28:34] HTTP GET / 200 [0.03, 47.92.2.1:16097]
+[2018/05/15 17:50:57] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:14978]
+[2018/05/15 17:54:34] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.119:38274]
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 16:34:15
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+he1re
+2018-05-15 18:56:35,453 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 18:56:35,454 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 18:56:35,454 - INFO - server - Listening on TCP address 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 18:56:35
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+2018-05-15 18:56:39,048 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 18:56:39,049 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 18:56:39,049 - INFO - server - Listening on TCP address 0.0.0.0:8000
+2018-05-15 18:57:43,446 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 18:57:43,446 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 18:57:43,447 - CRITICAL - server - Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018/05/15 18:57:46] HTTP GET / 200 [0.08, 103.94.185.88:45520]
+[2018/05/15 18:57:47] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 103.94.185.88:45522]
+[2018/05/15 18:57:47] HTTP GET /static/css/main.css 304 [0.00, 103.94.185.88:45526]
+[2018/05/15 18:57:47] HTTP GET /static/js/jquery.min.js 304 [0.00, 103.94.185.88:45528]
+[2018/05/15 18:57:47] HTTP GET /static/js/utils.js 304 [0.00, 103.94.185.88:45532]
+[2018/05/15 18:57:47] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 103.94.185.88:45530]
+[2018/05/15 18:57:47] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 103.94.185.88:45534]
+[2018/05/15 18:57:48] HTTP GET /static/image/logo.png 304 [0.01, 103.94.185.88:45542]
+[2018/05/15 18:57:48] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.01, 103.94.185.88:45540]
+[2018/05/15 18:57:48] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.01, 103.94.185.88:45544]
+[2018/05/15 18:57:49] HTTP GET /static/image/default1.png 304 [0.00, 103.94.185.88:45546]
+[2018/05/15 18:57:50] HTTP GET /chat/ 200 [0.00, 103.94.185.88:45548]
+[2018/05/15 18:57:53] HTTP GET /chat/test/ 200 [0.00, 103.94.185.88:45552]
+[2018/05/15 18:57:54] WebSocket HANDSHAKING /ws/chat/test/ [103.94.185.88:45554]
+[2018/05/15 18:57:54] WebSocket CONNECT /ws/chat/test/ [103.94.185.88:45554]
+[2018/05/15 18:58:01] HTTP GET /chat/test/ 200 [0.00, 103.94.185.88:45556]
+[2018/05/15 18:58:01] WebSocket DISCONNECT /ws/chat/test/ [103.94.185.88:45554]
+[2018/05/15 18:58:01] WebSocket HANDSHAKING /ws/chat/test/ [103.94.185.88:45558]
+[2018/05/15 18:58:01] WebSocket CONNECT /ws/chat/test/ [103.94.185.88:45558]
+[2018/05/15 18:58:02] HTTP GET /chat/test/ 200 [0.01, 103.94.185.88:45560]
+[2018/05/15 18:58:03] WebSocket DISCONNECT /ws/chat/test/ [103.94.185.88:45558]
+[2018/05/15 18:58:03] WebSocket HANDSHAKING /ws/chat/test/ [103.94.185.88:45562]
+[2018/05/15 18:58:03] WebSocket CONNECT /ws/chat/test/ [103.94.185.88:45562]
+[2018/05/15 18:58:28] HTTP GET /chat/test/ 200 [0.00, 202.120.19.124:61964]
+[2018/05/15 18:58:29] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.124:61976]
+[2018/05/15 18:58:29] WebSocket CONNECT /ws/chat/test/ [202.120.19.124:61976]
+[2018/05/15 18:58:46] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.124:61976]
+[2018/05/15 18:58:52] HTTP GET /chat/test/ 200 [0.00, 103.94.185.88:45568]
+[2018/05/15 18:58:53] WebSocket DISCONNECT /ws/chat/test/ [103.94.185.88:45562]
+[2018/05/15 18:58:54] WebSocket HANDSHAKING /ws/chat/test/ [103.94.185.88:45570]
+[2018/05/15 18:58:54] WebSocket CONNECT /ws/chat/test/ [103.94.185.88:45570]
+[2018/05/15 18:59:10] HTTP GET /chat/test/ 200 [0.00, 103.94.185.88:45574]
+[2018/05/15 18:59:10] WebSocket DISCONNECT /ws/chat/test/ [103.94.185.88:45570]
+[2018/05/15 18:59:11] WebSocket HANDSHAKING /ws/chat/test/ [103.94.185.88:45576]
+[2018/05/15 18:59:11] WebSocket CONNECT /ws/chat/test/ [103.94.185.88:45576]
+[2018/05/15 18:59:12] WebSocket DISCONNECT /ws/chat/test/ [103.94.185.88:45576]
+[2018/05/15 18:59:13] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:59682]
+[2018/05/15 18:59:14] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:59699]
+[2018/05/15 18:59:14] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:59699]
+[2018/05/15 18:59:14] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:59682]
+[2018/05/15 18:59:15] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:59699]
+[2018/05/15 18:59:15] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:59706]
+[2018/05/15 18:59:15] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:59706]
+[2018/05/15 18:59:23] HTTP GET /chat/test 301 [0.00, 61.151.225.241:42434]
+[2018/05/15 18:59:23] HTTP GET /chat/test/ 200 [0.00, 61.151.225.241:42434]
+[2018/05/15 18:59:33] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:59706]
+[2018/05/15 18:59:35] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:59886]
+[2018/05/15 18:59:35] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:59886]
+[2018/05/15 18:59:39] HTTP GET /chat/test/ 200 [0.00, 180.160.192.186:56392]
+[2018/05/15 18:59:39] WebSocket HANDSHAKING /ws/chat/test/ [180.160.192.186:59925]
+[2018/05/15 18:59:39] WebSocket CONNECT /ws/chat/test/ [180.160.192.186:59925]
+[2018/05/15 18:59:48] WebSocket DISCONNECT /ws/chat/test/ [180.160.192.186:59925]
+[2018/05/15 18:59:49] HTTP GET /chat/test/ 200 [0.00, 180.160.192.186:56392]
+[2018/05/15 18:59:49] WebSocket HANDSHAKING /ws/chat/test/ [180.160.192.186:59926]
+[2018/05/15 18:59:49] WebSocket CONNECT /ws/chat/test/ [180.160.192.186:59926]
+[2018/05/15 19:00:12] WebSocket DISCONNECT /ws/chat/test/ [180.160.192.186:59926]
+[2018/05/15 19:00:25] HTTP GET /chat/test/ 200 [0.00, 180.160.192.186:56399]
+[2018/05/15 19:00:25] WebSocket HANDSHAKING /ws/chat/test/ [180.160.192.186:59937]
+[2018/05/15 19:00:25] WebSocket CONNECT /ws/chat/test/ [180.160.192.186:59937]
+[2018/05/15 19:00:33] WebSocket DISCONNECT /ws/chat/test/ [180.160.192.186:59937]
+[2018/05/15 19:03:00] HTTP GET /chat/ 200 [0.00, 59.78.0.59:64261]
+[2018/05/15 19:03:03] HTTP GET /chat/test/ 200 [0.00, 59.78.0.59:64261]
+[2018/05/15 19:03:03] WebSocket HANDSHAKING /ws/chat/test/ [59.78.0.59:64262]
+[2018/05/15 19:03:03] WebSocket CONNECT /ws/chat/test/ [59.78.0.59:64262]
+[2018/05/15 19:03:09] HTTP GET /chat/test/ 200 [0.00, 202.120.19.124:2914]
+[2018/05/15 19:03:09] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.124:2917]
+[2018/05/15 19:03:09] WebSocket CONNECT /ws/chat/test/ [202.120.19.124:2917]
+[2018/05/15 19:03:11] HTTP GET / 200 [0.03, 202.120.19.96:62613]
+[2018/05/15 19:03:11] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:59886]
+[2018/05/15 19:03:14] HTTP GET / 200 [0.03, 101.226.93.193:62191]
+[2018/05/15 19:03:15] HTTP GET /static/js/jquery.min.js 200 [0.00, 101.226.93.193:62191]
+[2018/05/15 19:03:17] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 101.226.93.193:62191]
+[2018/05/15 19:03:17] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 101.226.93.193:62191]
+[2018/05/15 19:03:17] HTTP GET /static/js/utils.js 200 [0.00, 101.226.93.193:62191]
+[2018/05/15 19:03:19] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:62701]
+[2018/05/15 19:03:19] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:62701]
+[2018/05/15 19:03:59] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:62613]
+[2018/05/15 19:03:59] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:62701]
+[2018/05/15 19:04:00] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:63173]
+[2018/05/15 19:04:00] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:63173]
+[2018/05/15 19:05:27] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.124:2917]
+[2018/05/15 19:07:06] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:65487]
+[2018/05/15 19:07:06] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:65493]
+[2018/05/15 19:07:06] HTTP GET /favicon.ico 404 [0.01, 202.120.19.96:65487]
+[2018/05/15 19:07:06] HTTP GET /favicon.ico 404 [0.02, 202.120.19.96:65488]
+[2018/05/15 19:07:06] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:65493]
+[2018/05/15 19:07:33] HTTP GET /chat/test/ 200 [0.00, 202.120.19.124:6820]
+[2018/05/15 19:07:33] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.124:6821]
+[2018/05/15 19:07:33] WebSocket CONNECT /ws/chat/test/ [202.120.19.124:6821]
+[2018/05/15 19:08:55] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.124:6821]
+[2018/05/15 19:17:13] HTTP GET /chat/test/ 200 [0.00, 59.78.1.104:52943]
+2018-05-15 19:17:14,563 - ERROR - ws_protocol - [Failure instance: Traceback: <class 'UnicodeDecodeError'>: 'ascii' codec can't decode byte 0xb3 in position 21: ordinal not in range(128)
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:500:errback
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:567:_startRunCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:653:_runCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:1442:gotResult
+--- <exception caught here> ---
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:1384:_inlineCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/python/failure.py:422:throwExceptionIntoGenerator
+/usr/local/lib/python3.5/dist-packages/daphne/server.py:186:create_application
+/usr/local/lib/python3.5/dist-packages/twisted/python/threadpool.py:250:inContext
+/usr/local/lib/python3.5/dist-packages/twisted/python/threadpool.py:266:<lambda>
+/usr/local/lib/python3.5/dist-packages/twisted/python/context.py:122:callWithContext
+/usr/local/lib/python3.5/dist-packages/twisted/python/context.py:85:callWithContext
+/usr/local/lib/python3.5/dist-packages/channels/staticfiles.py:41:__call__
+/usr/local/lib/python3.5/dist-packages/channels/routing.py:56:__call__
+/usr/local/lib/python3.5/dist-packages/channels/sessions.py:34:__call__
+]
+[2018/05/15 19:17:34] HTTP GET /chat/test/ 200 [0.00, 59.78.1.119:47044]
+[2018/05/15 19:17:34] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.119:47048]
+[2018/05/15 19:17:34] WebSocket CONNECT /ws/chat/test/ [59.78.1.119:47048]
+[2018/05/15 19:17:34] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:9905]
+[2018/05/15 19:17:34] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:63173]
+[2018/05/15 19:17:35] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:9910]
+[2018/05/15 19:17:35] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:9910]
+[2018/05/15 19:17:44] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:9910]
+[2018/05/15 19:17:53] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.119:47048]
+[2018/05/15 19:17:54] HTTP GET /chat/test/ 200 [0.00, 59.78.1.119:47044]
+[2018/05/15 19:17:54] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.119:47068]
+[2018/05/15 19:17:54] WebSocket CONNECT /ws/chat/test/ [59.78.1.119:47068]
+[2018/05/15 19:18:10] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.119:47068]
+[2018/05/15 19:18:54] HTTP GET /chat/ 200 [0.00, 202.120.19.96:11116]
+[2018/05/15 19:18:57] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:11116]
+[2018/05/15 19:18:57] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:11151]
+[2018/05/15 19:18:57] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:11151]
+[2018/05/15 19:19:05] HTTP GET / 200 [0.03, 202.120.19.96:11116]
+[2018/05/15 19:19:06] HTTP GET /static/css/bootstrap.min.css 304 [0.01, 202.120.19.96:11116]
+[2018/05/15 19:19:06] HTTP GET /static/css/main.css 304 [0.00, 202.120.19.96:11116]
+[2018/05/15 19:19:06] HTTP GET /static/js/jquery.min.js 304 [0.00, 202.120.19.96:11234]
+[2018/05/15 19:19:06] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 202.120.19.96:11236]
+[2018/05/15 19:19:06] HTTP GET /static/js/utils.js 304 [0.00, 202.120.19.96:11233]
+[2018/05/15 19:19:06] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 202.120.19.96:11232]
+[2018/05/15 19:19:06] HTTP GET /static/image/logo.png 304 [0.00, 202.120.19.96:11232]
+[2018/05/15 19:19:06] HTTP GET /static/image/default1.png 304 [0.00, 202.120.19.96:11232]
+[2018/05/15 19:19:06] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 202.120.19.96:11236]
+[2018/05/15 19:19:06] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 202.120.19.96:11234]
+[2018/05/15 19:19:09] HTTP GET /chat/test/ 200 [0.00, 59.78.1.104:53035]
+2018-05-15 19:19:09,883 - ERROR - ws_protocol - [Failure instance: Traceback: <class 'UnicodeDecodeError'>: 'ascii' codec can't decode byte 0xb3 in position 21: ordinal not in range(128)
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:500:errback
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:567:_startRunCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:653:_runCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:1442:gotResult
+--- <exception caught here> ---
+/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py:1384:_inlineCallbacks
+/usr/local/lib/python3.5/dist-packages/twisted/python/failure.py:422:throwExceptionIntoGenerator
+/usr/local/lib/python3.5/dist-packages/daphne/server.py:186:create_application
+/usr/local/lib/python3.5/dist-packages/twisted/python/threadpool.py:250:inContext
+/usr/local/lib/python3.5/dist-packages/twisted/python/threadpool.py:266:<lambda>
+/usr/local/lib/python3.5/dist-packages/twisted/python/context.py:122:callWithContext
+/usr/local/lib/python3.5/dist-packages/twisted/python/context.py:85:callWithContext
+/usr/local/lib/python3.5/dist-packages/channels/staticfiles.py:41:__call__
+/usr/local/lib/python3.5/dist-packages/channels/routing.py:56:__call__
+/usr/local/lib/python3.5/dist-packages/channels/sessions.py:34:__call__
+]
+[2018/05/15 19:19:28] HTTP GET /chat/test/ 200 [0.00, 59.78.1.104:53057]
+[2018/05/15 19:19:29] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.104:53061]
+[2018/05/15 19:19:29] WebSocket CONNECT /ws/chat/test/ [59.78.1.104:53061]
+[2018/05/15 19:19:29] HTTP GET /favicon.ico 404 [0.01, 59.78.1.104:53057]
+[2018/05/15 19:19:55] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.104:53061]
+[2018/05/15 19:21:05] HTTP GET http://www.baidu.com/cache/global/img/gs.gif 404 [0.00, 80.82.70.187:40486]
+[2018/05/15 19:21:15] HTTP GET http://www.baidu.com/cache/global/img/gs.gif 404 [0.00, 80.82.70.187:50998]
+[2018/05/15 19:21:30] HTTP GET http://www.baidu.com/cache/global/img/gs.gif 404 [0.00, 80.82.70.187:35787]
+2018-05-15 19:21:45,469 - ERROR - http_protocol - Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+2018-05-15 19:21:55,477 - WARNING - server - Application instance <Task pending coro=<__call__() running at /usr/local/lib/python3.5/dist-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0xb158566c method=GET uri=http://www.baidu.com/cache/global/img/gs.gif clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018/05/15 19:23:05] HTTP GET /chat/test/ 200 [0.00, 202.120.19.96:14726]
+[2018/05/15 19:23:05] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:11151]
+[2018/05/15 19:23:05] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.96:14732]
+[2018/05/15 19:23:05] WebSocket CONNECT /ws/chat/test/ [202.120.19.96:14732]
+[2018/05/15 19:27:03] HTTP GET /chat/test/ 200 [0.00, 106.120.161.66:44631]
+[2018/05/15 19:27:35] HTTP GET /chat/test/ 200 [0.00, 101.199.112.53:39037]
+[2018/05/15 19:28:16] HTTP GET /forum/question/add/ 200 [0.04, 202.120.19.96:18563]
+[2018/05/15 19:28:16] HTTP GET /static/ueditor/ueditor.config.js 200 [0.03, 202.120.19.96:18563]
+[2018/05/15 19:28:16] HTTP GET /static/ueditor/ueditor.all.min.js 200 [0.04, 202.120.19.96:18574]
+[2018/05/15 19:28:17] HTTP GET /static/ueditor/lang/zh-cn/zh-cn.js 200 [0.03, 202.120.19.96:18574]
+[2018/05/15 19:28:17] HTTP GET /static/ueditor/themes/default/css/ueditor.css 200 [0.03, 202.120.19.96:18563]
+[2018/05/15 19:28:17] HTTP GET /ueditor/controller/?imagePathFormat=forum/question/images/%25(datetime)s%25(rnd)s.%25(extname)s&filePathFormat=forum/question/files/%25(datetime)s%25(rnd)s.%25(extname)s&action=config&&noCache=1526383698460 200 [0.00, 202.120.19.96:18589]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/themes/iframe.css 200 [0.01, 202.120.19.96:18563]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/themes/default/images/scale.png 200 [0.01, 202.120.19.96:18589]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/themes/default/images/icons.png 200 [0.00, 202.120.19.96:18574]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/themes/default/images/charts.png 200 [0.00, 202.120.19.96:18609]
+[2018/05/15 19:28:18] HTTP GET /forum/friend/ 200 [0.02, 202.120.19.96:18609]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/third-party/zeroclipboard/ZeroClipboard.js 200 [0.02, 202.120.19.96:18589]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/third-party/codemirror/codemirror.css 200 [0.03, 202.120.19.96:18563]
+[2018/05/15 19:28:18] HTTP GET /static/ueditor/third-party/codemirror/codemirror.js 200 [0.06, 202.120.19.96:18574]
+[2018/05/15 19:28:21] HTTP GET /forum/friend/ 200 [0.04, 202.120.19.96:18563]
+[2018/05/15 19:28:23] HTTP GET /chat/ 200 [0.00, 202.120.19.96:18563]
+[2018/05/15 19:30:08] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:65493]
+[2018/05/15 19:37:05] HTTP GET / 200 [0.03, 220.181.132.191:38164]
+[2018/05/15 19:37:05] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 220.181.132.191:38164]
+[2018/05/15 19:37:05] HTTP GET /static/css/main.css 200 [0.01, 220.181.132.191:38179]
+[2018/05/15 19:37:05] HTTP GET /static/js/jquery.min.js 200 [0.01, 220.181.132.191:38181]
+[2018/05/15 19:37:05] HTTP GET /static/js/bootstrap.min.js 200 [0.01, 220.181.132.191:38180]
+[2018/05/15 19:37:05] HTTP GET /static/js/jquery.cookie.js 200 [0.01, 220.181.132.191:38178]
+[2018/05/15 19:37:05] HTTP GET /static/js/utils.js 200 [0.01, 220.181.132.191:38177]
+[2018/05/15 19:37:06] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 220.181.132.191:38181]
+[2018/05/15 19:37:08] HTTP GET / 200 [0.02, 180.163.220.100:25233]
+[2018/05/15 19:37:08] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 180.163.220.100:25233]
+[2018/05/15 19:37:08] HTTP GET /static/css/main.css 200 [0.01, 180.163.220.95:61274]
+[2018/05/15 19:37:08] HTTP GET /static/js/jquery.min.js 200 [0.01, 180.163.220.47:14377]
+[2018/05/15 19:37:08] HTTP GET /static/js/jquery.cookie.js 200 [0.01, 180.163.220.124:46822]
+[2018/05/15 19:37:08] HTTP GET /static/js/bootstrap.min.js 200 [0.01, 180.163.220.46:56521]
+[2018/05/15 19:37:08] HTTP GET /static/js/utils.js 200 [0.00, 180.163.220.125:28161]
+[2018/05/15 19:37:08] HTTP GET /static/image/logo.png 200 [0.00, 180.163.220.100:25233]
+[2018/05/15 19:37:08] HTTP GET /static/image/default1.png 200 [0.00, 180.163.220.95:61274]
+[2018/05/15 19:37:08] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 180.163.220.46:56521]
+[2018/05/15 19:37:09] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 180.163.220.100:25233]
+[2018/05/15 19:44:32] HTTP GET /chat/test/ 200 [0.00, 106.120.161.66:23479]
+[2018/05/15 19:44:49] HTTP GET /chat/test/ 200 [0.00, 101.199.108.51:57465]
+[2018/05/15 20:00:30] WebSocket DISCONNECT /ws/chat/test/ [59.78.0.59:64262]
+[2018/05/15 20:00:37] HTTP GET / 200 [0.03, 59.78.0.59:65421]
+[2018/05/15 20:00:37] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 59.78.0.59:65421]
+[2018/05/15 20:00:37] HTTP GET /static/js/jquery.cookie.js 304 [0.01, 59.78.0.59:65428]
+[2018/05/15 20:00:37] HTTP GET /static/css/main.css 304 [0.01, 59.78.0.59:65425]
+[2018/05/15 20:00:37] HTTP GET /static/js/jquery.min.js 304 [0.01, 59.78.0.59:65426]
+[2018/05/15 20:00:37] HTTP GET /static/js/utils.js 304 [0.00, 59.78.0.59:65427]
+[2018/05/15 20:00:37] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 59.78.0.59:65424]
+[2018/05/15 20:00:37] HTTP GET /static/image/logo.png 304 [0.00, 59.78.0.59:65424]
+[2018/05/15 20:00:37] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 59.78.0.59:65425]
+[2018/05/15 20:08:18] HTTP GET / 200 [0.02, 202.120.19.105:54278]
+[2018/05/15 20:08:18] HTTP GET /static/js/jquery.min.js 304 [0.00, 202.120.19.105:54278]
+[2018/05/15 20:08:18] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 202.120.19.105:54290]
+[2018/05/15 20:08:18] HTTP GET /static/css/main.css 304 [0.00, 202.120.19.105:54291]
+[2018/05/15 20:08:18] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 202.120.19.105:54278]
+[2018/05/15 20:08:18] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 202.120.19.105:54290]
+[2018/05/15 20:08:18] HTTP GET /static/js/utils.js 304 [0.00, 202.120.19.105:54291]
+[2018/05/15 20:08:18] HTTP GET /static/image/logo.png 304 [0.00, 202.120.19.105:54278]
+[2018/05/15 20:08:19] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 202.120.19.105:54291]
+[2018/05/15 20:08:19] HTTP GET /static/image/default1.png 304 [0.00, 202.120.19.105:54290]
+[2018/05/15 20:08:19] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 202.120.19.105:54290]
+[2018/05/15 20:08:58] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.96:14732]
+[2018/05/15 20:22:11] HTTP GET / 200 [0.03, 59.78.1.143:7725]
+[2018/05/15 20:22:11] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:11] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:11] HTTP GET /static/js/jquery.min.js 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/js/utils.js 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/image/logo.png 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:12] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:14] HTTP GET /chat/ 200 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:16] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:7725]
+[2018/05/15 20:22:16] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:7746]
+[2018/05/15 20:22:16] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:7746]
+[2018/05/15 20:42:46] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:7746]
+[2018/05/15 21:55:11] HTTP GET / 200 [0.05, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/js/jquery.min.js 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/js/utils.js 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/image/logo.png 304 [0.00, 59.78.1.143:10544]
+[2018/05/15 21:55:11] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.143:10544]
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 18:57:43
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+2018-05-15 23:54:54,729 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 23:54:54,729 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 23:54:54,730 - INFO - server - Listening on TCP address 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 23:54:54
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+2018-05-15 23:54:59,341 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 23:54:59,342 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 23:54:59,342 - INFO - server - Listening on TCP address 0.0.0.0:8000
+2018-05-15 23:55:36,163 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-15 23:55:36,163 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-15 23:55:36,164 - CRITICAL - server - Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 23:55:36
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[2018/05/15 23:55:38] HTTP GET / 200 [0.07, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/css/main.css 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/js/jquery.min.js 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/js/utils.js 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/image/logo.png 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /static/image/default1.png 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:38] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:39] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:41] HTTP GET /chat/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:43] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:55:43] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:2138]
+[2018/05/15 23:55:43] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:2138]
+[2018/05/15 23:55:59] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:2138]
+[2018/05/15 23:56:02] HTTP GET /chat/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:56:03] HTTP GET /authentication/user/logout/ 302 [0.02, 59.78.1.143:2135]
+[2018/05/15 23:56:03] HTTP GET / 200 [0.03, 59.78.1.143:2135]
+[2018/05/15 23:56:04] HTTP GET /chat/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:56:07] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:56:07] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:2149]
+[2018/05/15 23:56:07] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:2149]
+[2018/05/15 23:56:13] HTTP GET /media/ 404 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:57:08] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:2149]
+[2018/05/15 23:57:11] HTTP GET /authentication/user/login/ 200 [0.01, 59.78.1.143:2135]
+[2018/05/15 23:57:13] HTTP POST /authentication/user/login/ 302 [0.18, 59.78.1.143:2135]
+[2018/05/15 23:57:13] HTTP GET / 200 [0.03, 59.78.1.143:2135]
+[2018/05/15 23:57:14] HTTP GET /chat/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:57:18] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:57:19] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:2176]
+[2018/05/15 23:57:19] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:2176]
+[2018/05/15 23:58:07] HTTP GET /chat/test/ 200 [0.00, 59.78.1.143:2135]
+[2018/05/15 23:58:07] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:2176]
+[2018/05/15 23:58:07] WebSocket HANDSHAKING /ws/chat/test/ [59.78.1.143:2196]
+[2018/05/15 23:58:07] WebSocket CONNECT /ws/chat/test/ [59.78.1.143:2196]
+[2018/05/15 23:59:36] WebSocket DISCONNECT /ws/chat/test/ [59.78.1.143:2196]
+[2018/05/16 00:08:53] HTTP GET /chat/test/ 200 [0.02, 112.65.48.3:62247]
+[2018/05/16 00:08:54] WebSocket HANDSHAKING /ws/chat/test/ [112.65.48.3:62248]
+[2018/05/16 00:08:54] WebSocket CONNECT /ws/chat/test/ [112.65.48.3:62248]
+[2018/05/16 00:09:01] WebSocket DISCONNECT /ws/chat/test/ [112.65.48.3:62248]
+[2018/05/16 00:09:14] HTTP GET /chat/test/ 200 [0.00, 112.65.48.3:62249]
+[2018/05/16 00:09:15] HTTP GET /favicon.ico 404 [0.01, 112.65.48.3:62249]
+[2018/05/16 00:09:15] WebSocket HANDSHAKING /ws/chat/test/ [112.65.48.3:56758]
+[2018/05/16 00:09:15] WebSocket CONNECT /ws/chat/test/ [112.65.48.3:56758]
+[2018/05/16 00:09:19] HTTP GET /chat/test/ 200 [0.00, 112.65.48.3:62249]
+[2018/05/16 00:09:19] WebSocket DISCONNECT /ws/chat/test/ [112.65.48.3:56758]
+[2018/05/16 00:09:19] WebSocket HANDSHAKING /ws/chat/test/ [112.65.48.3:56759]
+[2018/05/16 00:09:19] WebSocket CONNECT /ws/chat/test/ [112.65.48.3:56759]
+[2018/05/16 00:09:42] HTTP GET /media/ 404 [0.00, 112.65.48.3:62249]
+[2018/05/16 00:09:47] HTTP GET /media/ 404 [0.00, 112.65.48.3:62249]
+[2018/05/16 00:09:51] WebSocket DISCONNECT /ws/chat/test/ [112.65.48.3:56759]
+[2018/05/16 01:26:00] HTTP GET / 200 [0.02, 114.215.45.101:64840]
+[2018/05/16 03:04:15] HTTP GET /chat/test 301 [0.00, 183.57.53.177:56025]
+[2018/05/16 03:04:15] HTTP GET /chat/test/ 200 [0.00, 183.57.53.177:34417]
+[2018/05/16 03:19:50] HTTP GET / 200 [0.02, 101.199.121.223:48501]
+[2018/05/16 03:19:50] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 101.199.121.223:48501]
+[2018/05/16 03:19:50] HTTP GET /static/css/main.css 200 [0.01, 101.199.121.223:48521]
+[2018/05/16 03:19:50] HTTP GET /static/js/jquery.min.js 200 [0.01, 101.199.121.223:48520]
+[2018/05/16 03:19:50] HTTP GET /static/js/jquery.cookie.js 200 [0.02, 101.199.121.223:48523]
+[2018/05/16 03:19:50] HTTP GET /static/js/bootstrap.min.js 200 [0.01, 101.199.121.223:48524]
+[2018/05/16 03:19:50] HTTP GET /static/js/utils.js 200 [0.01, 101.199.121.223:48522]
+[2018/05/16 03:19:50] HTTP GET /static/image/logo.png 200 [0.00, 101.199.121.223:48524]
+[2018/05/16 03:19:50] HTTP GET /static/image/default1.png 200 [0.00, 101.199.121.223:48524]
+[2018/05/16 03:19:50] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 101.199.121.223:48520]
+[2018/05/16 03:19:50] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 101.199.121.223:48501]
+[2018/05/16 03:42:43] HTTP GET http://www.baidu.com/cache/global/img/gs.gif 404 [0.00, 80.82.78.50:56746]
+[2018/05/16 04:38:20] HTTP GET http://www.baidu.com/cache/global/img/gs.gif 404 [0.00, 80.82.70.187:44158]
+[2018/05/16 07:59:34] HTTP GET / 200 [0.03, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/css/main.css 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/js/jquery.min.js 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:34] HTTP GET /static/js/utils.js 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:35] HTTP GET /static/image/logo.png 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:35] HTTP GET /static/image/default1.png 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:35] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:40] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:18099]
+[2018/05/16 07:59:41] HTTP GET /favicon.ico 404 [0.01, 202.120.19.74:18099]
+[2018/05/16 07:59:41] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:30479]
+[2018/05/16 07:59:41] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:30479]
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 15, 2018 - 23:54:59
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+1 2018-05-15 23:55:48 <class 'str'>
+0 2018-05-15 23:56:13 <class 'str'>
+1 2018-05-15 23:57:23 <class 'str'>
+1 2018-05-15 23:57:37 <class 'str'>
+0 2018-05-16 00:09:42 <class 'str'>
+0 2018-05-16 00:09:47 <class 'str'>
+2018-05-16 09:00:09,242 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-16 09:00:09,244 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-16 09:00:09,245 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-16 09:00:09,245 - INFO - server - Listening on TCP address 0.0.0.0:8000
+2018-05-16 09:00:09,246 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-16 09:00:09,246 - CRITICAL - server - Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018/05/16 09:00:25] HTTP GET / 200 [0.07, 42.3.28.121:58569]
+[2018/05/16 09:00:26] HTTP GET /chat/test/ 200 [0.00, 42.3.28.121:46399]
+[2018/05/16 09:00:27] WebSocket HANDSHAKING /ws/chat/test/ [42.3.28.121:41079]
+[2018/05/16 09:00:27] WebSocket CONNECT /ws/chat/test/ [42.3.28.121:41079]
+[2018/05/16 09:00:28] HTTP GET /static/image/default.png 200 [0.00, 42.3.28.121:46051]
+[2018/05/16 09:01:52] HTTP GET / 200 [0.03, 202.120.19.91:33198]
+[2018/05/16 09:01:53] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 202.120.19.91:33198]
+[2018/05/16 09:01:53] HTTP GET /static/css/main.css 304 [0.01, 202.120.19.91:33201]
+[2018/05/16 09:01:53] HTTP GET /static/js/jquery.min.js 304 [0.00, 202.120.19.91:33202]
+[2018/05/16 09:01:53] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 202.120.19.91:33198]
+[2018/05/16 09:01:53] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 202.120.19.91:33201]
+[2018/05/16 09:01:53] HTTP GET /static/js/utils.js 304 [0.00, 202.120.19.91:33202]
+[2018/05/16 09:01:53] HTTP GET /static/image/logo.png 304 [0.00, 202.120.19.91:33198]
+[2018/05/16 09:01:53] HTTP GET /static/image/default1.png 304 [0.00, 202.120.19.91:33202]
+[2018/05/16 09:01:53] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 202.120.19.91:33201]
+[2018/05/16 09:01:53] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 202.120.19.91:33201]
+[2018/05/16 09:01:57] HTTP GET /chat/ 200 [0.00, 202.120.19.91:33201]
+[2018/05/16 09:02:02] HTTP GET /chat/test/ 200 [0.00, 202.120.19.91:33201]
+[2018/05/16 09:02:02] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:33278]
+[2018/05/16 09:02:02] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:33278]
+[2018/05/16 09:02:02] HTTP GET /static/image/default.png 200 [0.00, 202.120.19.91:33201]
+2018-05-16 09:02:08,351 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/ubuntu/QA/chat/consumers.py", line 74, in chat_message
+    'author': MyUser.objects.get(user_id=author_id).nickname if self.user.is_authenticated else "Anonymous"
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/16 09:02:08] WebSocket DISCONNECT /ws/chat/test/ [42.3.28.121:41079]
+[2018/05/16 09:02:32] HTTP GET /chat/test/ 200 [0.00, 42.3.28.121:39741]
+[2018/05/16 09:02:33] WebSocket HANDSHAKING /ws/chat/test/ [42.3.28.121:45217]
+[2018/05/16 09:02:33] WebSocket CONNECT /ws/chat/test/ [42.3.28.121:45217]
+[2018/05/16 09:02:51] HTTP GET / 200 [0.03, 101.226.113.53:39619]
+[2018/05/16 09:02:51] HTTP GET /static/js/jquery.min.js 200 [0.00, 101.226.113.53:39619]
+[2018/05/16 09:02:52] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 101.226.113.53:39619]
+[2018/05/16 09:02:52] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 101.226.113.53:39619]
+[2018/05/16 09:02:53] HTTP GET /static/js/utils.js 200 [0.00, 101.226.113.53:39619]
+[2018/05/16 09:02:57] HTTP GET /chat 301 [0.00, 101.226.79.226:56667]
+[2018/05/16 09:02:57] HTTP GET /chat/ 200 [0.00, 101.226.79.226:56667]
+[2018/05/16 09:03:13] WebSocket DISCONNECT /ws/chat/test/ [42.3.28.121:45217]
+[2018/05/16 09:06:10] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:40720]
+[2018/05/16 09:06:10] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:40747]
+[2018/05/16 09:06:10] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:40747]
+[2018/05/16 09:06:22] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:40720]
+[2018/05/16 09:06:23] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:40747]
+[2018/05/16 09:06:23] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:18547]
+[2018/05/16 09:06:23] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:18547]
+[2018/05/16 09:06:24] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:40720]
+[2018/05/16 09:06:24] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:18547]
+[2018/05/16 09:06:24] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:28943]
+[2018/05/16 09:06:24] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:28943]
+[2018/05/16 09:06:25] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:40720]
+[2018/05/16 09:06:25] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:28943]
+[2018/05/16 09:06:25] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:28956]
+[2018/05/16 09:06:25] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:28956]
+2018-05-16 09:07:14,638 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/ubuntu/QA/chat/consumers.py", line 74, in chat_message
+    'author': MyUser.objects.get(user_id=author_id).nickname if self.user.is_authenticated else "Anonymous"
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/16 09:07:14] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:28956]
+[2018/05/16 09:07:22] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:40720]
+[2018/05/16 09:07:23] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:25801]
+[2018/05/16 09:07:23] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:25801]
+[2018/05/16 09:08:57] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:33278]
+[2018/05/16 09:09:09] HTTP GET /favicon.ico 404 [0.01, 202.120.19.91:39733]
+[2018/05/16 09:09:09] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:39746]
+[2018/05/16 09:09:09] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:39746]
+[2018/05/16 09:09:12] HTTP GET / 200 [0.03, 202.120.19.91:39733]
+[2018/05/16 09:09:12] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:39746]
+[2018/05/16 09:09:13] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 202.120.19.91:39733]
+[2018/05/16 09:09:13] HTTP GET /static/css/main.css 200 [0.00, 202.120.19.91:39734]
+[2018/05/16 09:09:13] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 202.120.19.91:39736]
+[2018/05/16 09:09:13] HTTP GET /static/js/jquery.min.js 200 [0.00, 202.120.19.91:39735]
+[2018/05/16 09:09:13] HTTP GET /static/js/utils.js 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:13] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 202.120.19.91:39792]
+[2018/05/16 09:09:13] HTTP GET /static/image/logo.png 200 [0.00, 202.120.19.91:39792]
+[2018/05/16 09:09:13] HTTP GET /static/image/default1.png 200 [0.00, 202.120.19.91:39735]
+[2018/05/16 09:09:13] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.00, 202.120.19.91:39733]
+[2018/05/16 09:09:13] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:16] HTTP GET /authentication/user/login/ 200 [0.03, 202.120.19.91:39790]
+[2018/05/16 09:09:25] HTTP POST /authentication/user/login/ 302 [0.20, 202.120.19.91:39790]
+[2018/05/16 09:09:25] HTTP GET / 200 [0.03, 202.120.19.91:39790]
+[2018/05/16 09:09:25] HTTP GET /media/user/photo/2016/11/24/QQ%E5%9B%BE%E7%89%8720161123202858.png 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:42] HTTP GET /chat/ 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:48] HTTP GET /chat/test/ 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:48] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:40349]
+[2018/05/16 09:09:48] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:40349]
+[2018/05/16 09:09:49] HTTP GET /static/image/default.png 200 [0.00, 202.120.19.91:39790]
+[2018/05/16 09:09:53] HTTP GET /media/user/photo/2016/11/24/QQ%E5%9B%BE%E7%89%8720161123202858.png 200 [0.00, 202.120.19.74:44743]
+[2018/05/16 09:10:14] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:25801]
+[2018/05/16 09:10:24] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:44743]
+[2018/05/16 09:10:24] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:3104]
+[2018/05/16 09:10:24] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:3104]
+[2018/05/16 09:10:42] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:3104]
+[2018/05/16 09:10:44] HTTP GET / 200 [0.03, 202.120.19.74:44743]
+[2018/05/16 09:10:45] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 304 [0.00, 202.120.19.74:44743]
+[2018/05/16 09:10:46] HTTP GET /authentication/user/logout/ 302 [0.03, 202.120.19.74:44743]
+[2018/05/16 09:10:46] HTTP GET / 200 [0.03, 202.120.19.74:44743]
+[2018/05/16 09:10:52] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:44743]
+[2018/05/16 09:10:53] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:60227]
+[2018/05/16 09:10:53] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:60227]
+2018-05-16 09:10:55,851 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/ubuntu/QA/chat/consumers.py", line 74, in chat_message
+    'author': MyUser.objects.get(user_id=author_id).nickname if self.user.is_authenticated else "Anonymous"
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/16 09:10:55] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:40349]
+[2018/05/16 09:11:06] HTTP GET /chat/test/ 200 [0.00, 202.120.19.91:41549]
+[2018/05/16 09:11:06] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:41558]
+[2018/05/16 09:11:06] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:41558]
+2018-05-16 09:11:35,888 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/ubuntu/QA/chat/consumers.py", line 74, in chat_message
+    'author': MyUser.objects.get(user_id=author_id).nickname if self.user.is_authenticated else "Anonymous"
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/16 09:11:35] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:41558]
+[2018/05/16 09:12:05] HTTP GET /chat/test/ 200 [0.01, 202.120.19.74:18974]
+[2018/05/16 09:12:05] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:60227]
+[2018/05/16 09:12:05] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:18988]
+[2018/05/16 09:12:05] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:18988]
+[2018/05/16 09:13:45] HTTP GET /chat/test/ 200 [0.00, 202.120.19.91:43555]
+[2018/05/16 09:13:46] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:43581]
+[2018/05/16 09:13:46] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:43581]
+[2018/05/16 09:13:48] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:18988]
+[2018/05/16 09:13:49] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:59510]
+[2018/05/16 09:13:49] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:59510]
+[2018/05/16 09:13:52] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:59503]
+[2018/05/16 09:13:52] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:59562]
+[2018/05/16 09:13:52] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:59562]
+[2018/05/16 09:13:54] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:59503]
+[2018/05/16 09:13:54] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:59510]
+[2018/05/16 09:13:54] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:16459]
+[2018/05/16 09:13:54] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:16459]
+2018-05-16 09:13:57,012 - ERROR - server - Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/ubuntu/QA/chat/consumers.py", line 74, in chat_message
+    'author': MyUser.objects.get(user_id=author_id).nickname if self.user.is_authenticated else "Anonymous"
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018/05/16 09:13:57] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:43581]
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 16, 2018 - 09:00:09
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+1 2018-05-16 09:00:37 <class 'str'>
+1 2018-05-16 09:00:40 <class 'str'>
+0 2018-05-16 09:02:07 <class 'str'>
+0 2018-05-16 09:02:07 <class 'str'>
+0 2018-05-16 09:02:35 <class 'str'>
+1 2018-05-16 09:02:35 <class 'str'>
+0 2018-05-16 09:02:45 <class 'str'>
+1 2018-05-16 09:02:45 <class 'str'>
+0 2018-05-16 09:06:13 <class 'str'>
+1 2018-05-16 09:06:13 <class 'str'>
+0 2018-05-16 09:07:14 <class 'str'>
+0 2018-05-16 09:07:14 <class 'str'>
+0 2018-05-16 09:07:29 <class 'str'>
+1 2018-05-16 09:07:29 <class 'str'>
+0 2018-05-16 09:07:37 <class 'str'>
+1 2018-05-16 09:07:37 <class 'str'>
+0 2018-05-16 09:09:53 <class 'str'>
+1 2018-05-16 09:09:53 <class 'str'>
+0 2018-05-16 09:10:08 <class 'str'>
+1 2018-05-16 09:10:08 <class 'str'>
+0 2018-05-16 09:10:30 <class 'str'>
+1 2018-05-16 09:10:30 <class 'str'>
+0 2018-05-16 09:10:55 <class 'str'>
+0 2018-05-16 09:10:55 <class 'str'>
+0 2018-05-16 09:11:11 <class 'str'>
+1 2018-05-16 09:11:11 <class 'str'>
+0 2018-05-16 09:11:35 <class 'str'>
+0 2018-05-16 09:11:35 <class 'str'>
+0 2018-05-16 09:13:56 <class 'str'>
+0 2018-05-16 09:13:56 <class 'str'>
+0 2018-05-16 09:13:56 <class 'str'>
+0 2018-05-16 09:14:00 <class 'str'>
+0 2018-05-16 09:14:00 <class 'str'>
+2018-05-16 09:18:16,924 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-16 09:18:16,924 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-16 09:18:16,925 - INFO - server - Listening on TCP address 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 16, 2018 - 09:00:09
+Django version 2.0.5, using settings 'QuestionForum.settings'
+Starting ASGI/Channels version 2.1.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+2018-05-16 09:18:17,736 - INFO - server - HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2018-05-16 09:18:17,736 - INFO - server - Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2018-05-16 09:18:17,736 - CRITICAL - server - Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018/05/16 09:18:25] HTTP GET /chat/test/ 200 [0.01, 202.120.19.74:25274]
+[2018/05/16 09:18:25] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:9856]
+[2018/05/16 09:18:25] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:9856]
+[2018/05/16 09:18:29] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:25274]
+[2018/05/16 09:18:29] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:9856]
+[2018/05/16 09:18:29] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:34000]
+[2018/05/16 09:18:29] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:34000]
+[2018/05/16 09:18:47] HTTP GET / 200 [0.05, 202.120.19.91:48200]
+[2018/05/16 09:19:03] HTTP GET /chat/test/ 200 [0.00, 202.120.19.91:48526]
+[2018/05/16 09:19:04] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:48538]
+[2018/05/16 09:19:04] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:48538]
+[2018/05/16 09:20:26] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:48538]
+[2018/05/16 09:20:37] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:34000]
+[2018/05/16 09:26:56] HTTP GET / 200 [0.03, 47.93.112.232:54101]
+[2018/05/16 09:41:18] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.91:7129]
+[2018/05/16 09:41:18] WebSocket CONNECT /ws/chat/test/ [202.120.19.91:7129]
+[2018/05/16 09:41:18] HTTP GET /favicon.ico 404 [0.01, 202.120.19.91:7108]
+[2018/05/16 09:46:21] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.91:7129]
+[2018/05/16 09:49:04] HTTP GET / 200 [0.03, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/css/bootstrap.min.css 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/css/main.css 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/js/jquery.min.js 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/js/jquery.cookie.js 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/js/bootstrap.min.js 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:04] HTTP GET /static/js/utils.js 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:05] HTTP GET /static/image/logo.png 304 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:05] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:2117]
+[2018/05/16 09:49:05] HTTP GET /static/image/default1.png 304 [0.00, 202.120.19.74:2124]
+[2018/05/16 09:49:05] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 304 [0.00, 202.120.19.74:2124]
+[2018/05/16 09:49:05] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:2127]
+[2018/05/16 09:49:05] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:2127]
+[2018/05/16 09:53:14] HTTP GET / 200 [0.03, 202.120.19.74:5330]
+[2018/05/16 09:53:14] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 202.120.19.74:5330]
+[2018/05/16 09:53:14] HTTP GET /static/css/main.css 200 [0.00, 202.120.19.74:5338]
+[2018/05/16 09:53:14] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 202.120.19.74:5340]
+[2018/05/16 09:53:14] HTTP GET /static/js/jquery.min.js 200 [0.00, 202.120.19.74:5339]
+[2018/05/16 09:53:14] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 202.120.19.74:5341]
+[2018/05/16 09:53:14] HTTP GET /static/js/utils.js 200 [0.00, 202.120.19.74:5342]
+[2018/05/16 09:53:15] HTTP GET /static/image/default1.png 200 [0.01, 202.120.19.74:5340]
+[2018/05/16 09:53:15] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.01, 202.120.19.74:5338]
+[2018/05/16 09:53:15] HTTP GET /static/image/logo.png 200 [0.00, 202.120.19.74:5339]
+[2018/05/16 09:53:15] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 202.120.19.74:5341]
+[2018/05/16 09:53:17] HTTP GET /chat/ 200 [0.00, 202.120.19.74:5330]
+[2018/05/16 09:53:19] HTTP GET /chat/3123123/ 200 [0.00, 202.120.19.74:5330]
+[2018/05/16 09:53:19] WebSocket HANDSHAKING /ws/chat/3123123/ [202.120.19.74:14162]
+[2018/05/16 09:53:19] WebSocket CONNECT /ws/chat/3123123/ [202.120.19.74:14162]
+[2018/05/16 09:53:30] HTTP GET /static/image/default.png 200 [0.00, 202.120.19.74:5340]
+[2018/05/16 09:54:14] HTTP GET / 200 [0.03, 202.120.19.74:45452]
+[2018/05/16 09:54:15] HTTP GET /static/css/bootstrap.min.css 200 [0.00, 202.120.19.74:45452]
+[2018/05/16 09:54:15] HTTP GET /static/css/main.css 200 [0.00, 202.120.19.74:45458]
+[2018/05/16 09:54:15] HTTP GET /static/js/jquery.min.js 200 [0.00, 202.120.19.74:45459]
+[2018/05/16 09:54:15] HTTP GET /static/js/jquery.cookie.js 200 [0.00, 202.120.19.74:45460]
+[2018/05/16 09:54:15] HTTP GET /static/js/bootstrap.min.js 200 [0.00, 202.120.19.74:45461]
+[2018/05/16 09:54:15] HTTP GET /static/js/utils.js 200 [0.00, 202.120.19.74:45462]
+[2018/05/16 09:54:15] HTTP GET /static/image/logo.png 200 [0.00, 202.120.19.74:45461]
+[2018/05/16 09:54:15] HTTP GET /static/image/default1.png 200 [0.00, 202.120.19.74:45460]
+[2018/05/16 09:54:15] HTTP GET /media/user/photo/2016/11/26/QQ%E5%9B%BE%E7%89%8720161126134831.jpg 200 [0.01, 202.120.19.74:45458]
+[2018/05/16 09:54:16] HTTP GET /static/fonts/glyphicons-halflings-regular.woff 200 [0.00, 202.120.19.74:45460]
+[2018/05/16 09:57:27] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:2127]
+[2018/05/16 10:00:27] HTTP GET / 200 [0.03, 202.120.19.74:28710]
+[2018/05/16 10:00:29] HTTP GET /chat/test/ 200 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:00:29] WebSocket HANDSHAKING /ws/chat/test/ [202.120.19.74:19395]
+[2018/05/16 10:00:29] WebSocket CONNECT /ws/chat/test/ [202.120.19.74:19395]
+[2018/05/16 10:00:35] HTTP GET /chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F 301 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:00:35] HTTP GET /chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ 200 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:00:35] WebSocket DISCONNECT /ws/chat/test/ [202.120.19.74:19395]
+[2018/05/16 10:00:35] WebSocket HANDSHAKING /ws/chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ [202.120.19.74:35174]
+2018-05-16 10:00:36,143 - ERROR - server - Exception inside application: Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/usr/local/lib/python3.5/dist-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/ubuntu/QA/chat/consumers.py", line 21, in connect
+    self.channel_name
+  File "/usr/local/lib/python3.5/dist-packages/channels_redis/core.py", line 273, in group_add
+    assert self.valid_group_name(group), "Group name not valid"
+  File "/usr/local/lib/python3.5/dist-packages/channels/layers.py", line 163, in valid_group_name
+    "alphanumerics, hyphens, or periods."
+  Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+[2018/05/16 10:00:36] WebSocket DISCONNECT /ws/chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ [202.120.19.74:35174]
+[2018/05/16 10:00:42] HTTP GET /authentication/user/login/ 200 [0.01, 202.120.19.74:28710]
+[2018/05/16 10:00:48] HTTP POST /authentication/user/login/ 200 [0.13, 202.120.19.74:28710]
+[2018/05/16 10:00:49] HTTP GET /authentication/user/login/ 200 [0.01, 202.120.19.74:28710]
+[2018/05/16 10:00:52] HTTP POST /authentication/user/login/ 302 [0.17, 202.120.19.74:28710]
+[2018/05/16 10:00:53] HTTP GET / 200 [0.05, 202.120.19.74:28710]
+[2018/05/16 10:00:54] HTTP GET /chat/ 200 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:00:59] HTTP GET /chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ 200 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:01:00] WebSocket HANDSHAKING /ws/chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ [202.120.19.74:28623]
+[2018/05/16 10:01:00] WebSocket DISCONNECT /ws/chat/3123123/ [202.120.19.74:14162]
+2018-05-16 10:01:01,175 - ERROR - server - Exception inside application: Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/usr/local/lib/python3.5/dist-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/ubuntu/QA/chat/consumers.py", line 21, in connect
+    self.channel_name
+  File "/usr/local/lib/python3.5/dist-packages/channels_redis/core.py", line 273, in group_add
+    assert self.valid_group_name(group), "Group name not valid"
+  File "/usr/local/lib/python3.5/dist-packages/channels/layers.py", line 163, in valid_group_name
+    "alphanumerics, hyphens, or periods."
+  Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+[2018/05/16 10:01:01] WebSocket DISCONNECT /ws/chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ [202.120.19.74:28623]
+[2018/05/16 10:01:05] HTTP GET /chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ 200 [0.00, 202.120.19.74:28710]
+[2018/05/16 10:01:05] WebSocket HANDSHAKING /ws/chat/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/ [202.120.19.74:32881]
+2018-05-16 10:01:06,180 - ERROR - server - Exception inside application: Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/usr/local/lib/python3.5/dist-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/usr/local/lib/python3.5/dist-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/usr/local/lib/python3.5/dist-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/ubuntu/QA/chat/consumers.py", line 21, in connect
+    self.channel_name
+  File "/usr/local/lib/python3.5/dist-packages/channels_redis/core.py", line 273, in group_add
+    assert self.valid_group_name(group), "Group name not valid"
+  File "/usr/local/lib/python3.5/dist-packages/channels/layers.py", line 163, in valid_group_name
+    "alphanumerics, hyphens, or periods."
+  Group name must be a valid unicode string containing only ASCII alphanumerics, hyphens, or periods.

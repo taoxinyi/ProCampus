@@ -1,0 +1,33 @@
+{% extends 'website/frontend/frontend_base.html' %}
+{% load staticfiles %}
+{% block title %}
+
+{% endblock %}
+
+{% block external_header %}
+
+{% endblock %}
+
+{% block left %}
+
+    <div class="col-md-12 col-xs-12 article">
+        <h3>好友列表</h3>
+    </div>
+    {% if friend_list %}
+        {% for myuser in friend_list %}
+            <div class="col-md-12 col-xs-12">
+                <h3><a
+                        href="{% url 'personal-question' myuser.id %}">{{ myuser.nickname }}</a>
+                </h3>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <div class="col-md-12 col-xs-12 article">
+            <h3>暂无</h3>
+        </div>
+    {% endif %}
+
+
+    {% include 'utils/pagination.html' %}
+{% endblock %}

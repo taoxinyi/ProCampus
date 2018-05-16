@@ -1,0 +1,104 @@
+{% load staticfiles %}
+
+<div class="col-md-15">
+    {% for question in question_list_top %}
+        <div class="col-md-12 col-xs-12 article">
+            <table width="100%" border="0">
+
+                <tr>
+                    <td rowspan="3" width="140">{% if question.author.myuser.photo %}
+                        <img src="{% url 'media' question.author.myuser.photo %}" class="img-square" width="140"
+                             height="140">
+                    {% else %}
+                        {% if question.author.myuser.identity == 'T' %}
+                            <img src="{% static 'image/default.png' %}" class="img-circle" width="140" height="140">
+                        {% else %}
+                            <img src="{% static 'image/default1.png' %}" class="img-circle" width="140" height="140">
+                        {% endif %}
+                    {% endif %}</td>
+                <tr>
+                    <td>
+                        <div class="col-md-12 col-xs-12">
+                            <h3>[置顶]<a href="{% url 'question-detail' question.id %}">{{ question.title }}</a></h3>
+                            <p><span
+                                    aria-hidden="true"></span>{{ question.publish_time|date:"Y-m-d" }}&nbsp;{{ question.publish_time|time:"H:i" }}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-10 col-xs-10">
+                            <a href="{% url 'category-question-list' question.category.id %}"><span
+                                    class="label label-default" style="margin-bottom=100px"><span
+                                    class="text-left"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&emsp;{{ question.category }}</span></span></a>
+
+                            &nbsp;&nbsp;&nbsp; <a
+                                href="{% url 'personal-question' question.author.id %}">{{ question.author.myuser.nickname }}</a>
+                            &nbsp;&nbsp;&nbsp;回帖数：{{ question.answer_set.count }}
+                            &nbsp;&nbsp;&nbsp;浏览次数：{{ question.show_times }}
+                        </div>
+
+                        <div class="col-md-3 col-xs-3">
+                            <p></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    {% endfor %}
+    {% for question in question_list %}
+        <div class="col-md-12 col-xs-12 article">
+            <table width="100%" border="0">
+
+                <tr>
+                    <td rowspan="3" width="140">{% if question.author.myuser.photo %}
+                        <img src="{% url 'media' question.author.myuser.photo %}" class="img-square" width="140"
+                             height="140">
+                    {% else %}
+                        {% if question.author.myuser.identity == 'T' %}
+                            <img src="{% static 'image/default.png' %}" class="img-circle" width="140" height="140">
+                        {% else %}
+                            <img src="{% static 'image/default1.png' %}" class="img-circle" width="140" height="140">
+                        {% endif %}
+                    {% endif %}</td>
+                <tr>
+                    <td>
+                        <div class="col-md-12 col-xs-12">
+                            <h3><a href="{% url 'question-detail' question.id %}">{{ question.title }}</a></h3>
+                            <p><span
+                                    aria-hidden="true"></span>{{ question.publish_time|date:"Y-m-d" }}&nbsp;{{ question.publish_time|time:"H:i" }}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-10 col-xs-10">
+                            <a href="{% url 'category-question-list' question.category.id %}"><span
+                                    class="label label-default" style="margin-bottom=100px"><span
+                                    class="text-left"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&emsp;{{ question.category }}</span></span></a>
+
+                            &nbsp;&nbsp;&nbsp; <a
+                                href="{% url 'personal-question' question.author.id %}">{{ question.author.myuser.nickname }}</a>
+                            &nbsp;&nbsp;&nbsp;回帖数：{{ question.answer_set.count }}
+                            &nbsp;&nbsp;&nbsp;浏览次数：{{ question.show_times }}
+                        </div>
+
+                        <div class="col-md-3 col-xs-3">
+                            <p></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    {% endfor %}
+    {% include 'utils/pagination.html' %}
+
+</div>
