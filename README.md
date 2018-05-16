@@ -14,9 +14,9 @@
 ### 1.1.2. install requirements
 - install python3 requirements
 
-    `pip3 install -r requirements.txt`
+    `pip3 install -r requirements.txt --user`
 
-- using resdis
+- using redis
 
     `docker run -p 6379:6379 -d redis:2.8`
 
