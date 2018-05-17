@@ -14,7 +14,7 @@
                     {% block left %}{% endblock %}
                 </div>
                 <div class="col-md-3 right-content">
-                    {% include "website/frontend/sidebar.html" %}
+                    {% block right %}{% endblock %}
                 </div>
             </div>
         </div>
@@ -23,14 +23,7 @@
 {% endblock %}
 
 {% block external_js %}
-<script type="text/javascript">
-    $(function(){
-            if ($('body').height() < 950)
-            {
-                $('.main-page').height(430);
-            }
-        })
-</script>
+
     {% block front_js %}
 
     {% endblock %}

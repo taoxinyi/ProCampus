@@ -10,6 +10,14 @@
 
 {% block left %}
     <script>
+        document.addEventListener("agree_add_event", function (e) {
+            if (e.reply_person_id ==={{ theuser.id }}) {
+                var button = document.getElementById("button");
+                button.value = "delete from friend";
+                button.onclick = intend_delete;
+            }
+        });
+
         function intend_add() {
             var se = confirm("whether add this person as your friend!");
             if (se === true) {
@@ -79,12 +87,11 @@
                 <p><a href="{% url 'personal-question' theuser.user.id %}" style="font-size:25px;">提问列表</a></p>
                 <br>
                 <p><a href="{% url 'personal-answer' theuser.user.id %}" style="font-size:25px;">回答列表</a></p>
-                {% if not isFriend %}
-                    <input type="button" onclick="intend_add()" value="add as friend"/>
-                {% else %}
-                    {% if not isSelf %}
-                        <input type="button" onclick="intend_delete()" value="delete from friend"/>
-
+                {% if not isSelf %}
+                    {% if not isFriend %}
+                        <input id="button" type="button" onclick="intend_add()" value="add as friend"/>
+                    {% else %}
+                        <input id="button" type="button" onclick="intend_delete()" value="delete from friend"/>
                     {% endif %}
                 {% endif %}
 
