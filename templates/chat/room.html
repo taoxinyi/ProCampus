@@ -3,22 +3,6 @@
 {% block external_header %}
 {% endblock %}
 {% block left %}
-    <style type="text/css">
-        .parent {
-            display: flex;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .l-child {
-            flex: 0 0 40px;
-        }
-
-        .r-child {
-            padding-left: 10px;
-            margin: auto 10px;
-        }
-    </style>
     <head>
         <style>
             /* bubble style */
@@ -90,7 +74,7 @@
             .floattext {
                 position: absolute;
                 top: -20px;
-                white-space: nowrap;
+                white-space:nowrap;
             }
 
             span {
@@ -112,12 +96,6 @@
         </div>
     </div>
     </body>
-{% endblock %}
-
-{% block right %}
-    <div id="online_list">online user list</div>
-{% endblock %}
-{% block front_js %}
     <script>
         var roomName = {{ room_name_json }};
         var chatSocket = new WebSocket(
@@ -126,38 +104,18 @@
 
         chatSocket.onmessage = function (e) {
             var data = JSON.parse(e.data);
-            var type = data['type'];
+            var message = data['message'];
+            var type = data['type']
+            var isAuthor = data['isAuthor'];
             if (type === "clear") {
                 var result = eval(data['message']);
-                var current_list = eval(data['current_list']);
-                document.getElementById("online_list").innerText = "";
-                for (var i in current_list) {
-                    addToList(current_list[i].name, current_list[i].id, current_list[i].image);
-
+                for (var i in result) {
+                    addToChat(result[i].author, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
                 }
-                for (i in result) {
-                    addToChat(result[i].author, result[i].author_id, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
-                }
+                //document.querySelector('#chat-log').value += (message);
             }
-            else if (type === "chat_message") {
-                addToChat(data['author'], data['author_id'], data['image'], data['message'], data['time'], data['isAuthor']);
-            }
-            else if (type === "client_enter") {
-                var p = document.createElement("p");
-                p.innerText = data['name'] + " enters this room";
-                p.style.marginTop = "70px";
-                p.style.textAlign = "center";
-
-                document.getElementById("chat").appendChild(p);
-                addToList(data['name'], data['id'], data['image']);
-            } else if (type === "client_leave") {
-                var p = document.createElement("p");
-                p.innerText = data['name'] + " has left this room";
-                p.style.marginTop = "70px";
-                p.style.textAlign = "center";
-
-                document.getElementById("chat").appendChild(p);
-                deleteFromList(data['id']);
+            else {
+                addToChat(data['author'], data['image'], data['message'], data['time'], data['isAuthor']);
             }
             var elem = document.getElementById('chat');
             elem.scrollTop = elem.scrollHeight;
@@ -180,19 +138,13 @@
             messageInputDom.value = '';
         };
 
-        function addToChat(author, author_id, imageUrl, text, time, isAuthor) {
-            var a = document.createElement("a");
-            a.href = "/forum/question/user/" + author_id + "/list/";
+        function addToChat(author, imageUrl, text, time, isAuthor) {
             var img = new Image();
             img.src = imageUrl;
-            a.appendChild(img);
             var div_outside = document.createElement("div");
             div_outside.style.padding = "10px";
             var div_img = document.createElement("div");
-            if (author_id !== 0)
-                div_img.appendChild(a);
-            else
-                div_img.appendChild(img);
+            div_img.appendChild(img);
 
             var div_box = document.createElement("div");
             div_box.className = "box";
@@ -236,30 +188,7 @@
             document.getElementById("chat").appendChild(div_outside);
 
         }
-
-        function deleteFromList(id) {
-            document.getElementById(id).parentNode.removeChild(document.getElementById(id));
-        }
-
-        function addToList(name, id, imageUrl) {
-            var div_list = document.getElementById("online_list");
-            var div_list_item = document.createElement("div");
-            div_list_item.className = "parent";
-            div_list_item.id = id;
-            var a = document.createElement("a");
-            a.href = "/forum/question/user/" + id + "/list/";
-            var img = new Image();
-            img.style.width = "40px";
-            img.src = imageUrl;
-            a.className = "l-child";
-            a.appendChild(img);
-            var nickname = document.createElement("div");
-            nickname.innerHTML = name;
-            nickname.className = "r-child";
-            div_list_item.appendChild(a);
-            div_list_item.appendChild(nickname);
-            div_list.appendChild(div_list_item);
-        }
     </script>
-
+{% endblock %}
+{% block front_js %}
 {% endblock %}

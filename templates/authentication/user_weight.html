@@ -1,5 +1,41 @@
 {% load staticfiles %}
+<script>
+    var FriendSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/friend/' + {{ myuser.id }} +'/');
+    FriendSocket.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        var type = data['type'];
 
+        if (type === "request_add_friend") {
+            var request_person = data['request_person'];
+            var request_person_id = data['request_person_id'];
+            receive_request_add(request_person, request_person_id);
+        }
+        else if (type === "agree_add_friend") {
+            var reply_person=data['reply_person'];
+            receive_agree_add(reply_person)
+        }
+    };
+
+    function receive_request_add(request_person, request_person_id) {
+        var se = confirm(request_person + " wants to add you as friend");
+        if (se === true) {
+            FriendSocket.send(JSON.stringify({
+                'type': "agree_add_friend",
+                'group': request_person_id,
+                'reply_person': {{ myuser.id }},
+                'request_person': request_person_id
+            }));
+        }
+
+    }
+
+    function receive_agree_add(reply_person) {
+        confirm(reply_person + " agrees to add you as friend");
+
+    }
+</script>
 <div class="col-md-12 article">
     <div class="col-md-12 text-center">
         <h2 class="category-header">个人信息</h2>

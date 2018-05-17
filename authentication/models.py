@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class MyUser(models.Model):
     IDENTITY_CHOICE = (
         ('T', u'老师'),
@@ -17,7 +16,6 @@ class MyUser(models.Model):
     identity = models.CharField(max_length=1, choices=IDENTITY_CHOICE)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     friend = models.ManyToManyField('self')
-    chat_room = models.ManyToManyField('chat.ChatRoomGroup')
 
     def __str__(self):
         return self.nickname

@@ -1,47 +1,4 @@
 {% load staticfiles %}
-<script>
-    var FriendSocket = new WebSocket(
-        'ws://' + window.location.host +
-        '/ws/friend/' + {{ myuser.id }} +'/');
-    FriendSocket.onmessage = function (e) {
-        var data = JSON.parse(e.data);
-        var type = data['type'];
-
-        if (type === "request_add_friend") {
-            var request_person = data['request_person'];
-            var request_person_id = data['request_person_id'];
-            receive_request_add(request_person, request_person_id);
-        }
-        else if (type === "agree_add_friend") {
-            var reply_person = data['reply_person'];
-            var reply_person_id = data['reply_person_id'];
-            receive_agree_add(reply_person, reply_person_id);
-        }
-    };
-
-    function receive_request_add(request_person, request_person_id) {
-        var se = confirm(request_person + " wants to add you as friend");
-        if (se === true) {
-            FriendSocket.send(JSON.stringify({
-                'type': "agree_add_friend",
-                'group': request_person_id,
-                'reply_person': {{ myuser.id }},
-                'request_person': request_person_id
-            }));
-        }
-
-    }
-
-    function receive_agree_add(reply_person, reply_person_id) {
-        confirm(reply_person + " agrees to add you as friend");
-        var event = new CustomEvent("agree_add_event");
-        event.reply_person_id = reply_person_id;
-
-        // Dispatch/Trigger/Fire the event
-        document.dispatchEvent(event);
-
-    }
-</script>
 <nav class="nav navbar-default">
 
     <div class="container-fluid">
@@ -50,7 +7,6 @@
 
             <div class="navbar-header">
                 <img src="{% static 'image/logo.png' %} " width="168px" height="44px">
-
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#navbar-weight" aria-expanded="false">
                     <span class="icon-bar"></span>
@@ -59,10 +15,10 @@
                 </button>
 
             </div>
-
             <div class="collapse navbar-collapse" id="navbar-weight">
 
                 <ul class="nav navbar-nav">
+
 
                     <li id="home-page"><a href="{% url 'homepage' %}">首页</a></li>
                     <li id="home-page"><a href="{% url 'question-add' %}">发布问题</a></li>
@@ -70,24 +26,11 @@
                     <li id="home-page"><a href="/chat/">chat</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {% if myuser.user.is_authenticated %}
-                        <li style="padding: 10px">{{ myuser.nickname }}</li>
-                        <li>{% if user.myuser.photo %}
-                            <a href="{% url 'personal-question' user.id %}"><img
-                                    src="{% url 'media' myuser.photo %}" class="img-circle" width="30"
-                                    height="30"></a>
-                        {% else %}
-                            {% if user.myuser.identity == 'T' %}
-                                <img src="{% static 'image/default.png' %}" class="img-circle" width="30" height="30">
-                            {% else %}
-                                <img src="{% static 'image/default1.png' %}" class="img-circle" width="30"
-                                     height="30">
-                            {% endif %}
-                        {% endif %}</li>
-                        <li><a href="{% url 'user-logout' %}">注销</a></li>
+                    {% if user.is_authenticated %}
                         {% if user.is_staff %}
                             <li><a href="{% url 'dashboard' %}">后台</a></li>
                         {% endif %}
+                        <li><a href="{% url 'user-logout' %}">注销</a></li>
                     {% else %}
                         <li id="login"><a href="{% url 'user-login' %}">登录</a></li>
                         <li id="login"><a href="{% url 'user-signup' %}">注册</a></li>
