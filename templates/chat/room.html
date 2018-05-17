@@ -1,138 +1,194 @@
-<!-- chat/templates/chat/room.html -->
+{% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Chat Room</title>
-</head>
-<body>
-<div id="chat" style="border: 1px solid black;width: 40% ; height: 400px; overflow-y: scroll;margin: 10px auto;"></div>
-<div style="width: 40% ;margin: 10px auto;"><input id="chat-message-input" type="text"
-                                                   align="center" style="width: 80% ;"/><input
-        id="chat-message-submit" type="button" value="Send"/>
-    <br/>
-</div>
-
-</body>
-<script>
-    var roomName = {{ room_name_json }};
-
-    var chatSocket = new WebSocket(
-        'ws://' + window.location.host +
-        '/ws/chat/' + roomName + '/');
-
-    chatSocket.onmessage = function (e) {
-        var data = JSON.parse(e.data);
-        var message = data['message'];
-        var type = data['type']
-        var isAuthor = data['isAuthor'];
-        if (type === "clear") {
-            var result = eval(data['message']);
-            for (var i in result) {
-                //表示遍历数组，而i表示的是数组的下标值，
-                //result[i]表示获得第i个json对象即JSONObject
-                //result[i]通过.字段名称即可获得指定字段的值
-                addToChat(result[i].author, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
+{% block external_header %}
+{% endblock %}
+{% block left %}
+    <head>
+        <style>
+            /* bubble style */
+            .left {
+                clear: both;
 
             }
-            //document.querySelector('#chat-log').value += (message);
+
+            .left div:nth-of-type(1) {
+                float: left;
+            }
+
+            .left div:nth-of-type(2) {
+                background-color: aquamarine;
+                float: left;
+                margin: 20px 20px 10px 15px;
+                padding: 10px;
+                border-radius: 7px;
+            }
+
+            .right div:first-child img,
+            .left div:first-child img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .right {
+                clear: both;
+            }
+
+            .right div:nth-child(1) {
+                float: right;
+            }
+
+            .right div:nth-of-type(2) {
+                float: right;
+                background-color: gold;
+                margin: 20px 10px 10px 20px;
+                padding: 10px;
+                border-radius: 7px;
+            }
+
+            .left_triangle {
+                height: 0px;
+                width: 0px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent aquamarine transparent transparent;
+                position: absolute;
+                left: -15px;
+                top: 8px;
+            }
+
+            .box {
+                position: relative;
+            }
+
+            .right_triangle {
+                height: 0px;
+                width: 0px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent transparent transparent gold;
+                position: absolute;
+                right: -15px;
+                top: 8px;
+            }
+
+            .floattext {
+                position: absolute;
+                top: -20px;
+                white-space:nowrap;
+            }
+
+            span {
+                max-width: 100px;
+                display: block;
+                text-align: left;
+                word-wrap: break-word;
+            }
+        </style>
+    </head>
+    <body>
+    <div style="height: 100%;">
+        <div id="chat"
+             style="border: 1px solid black;width: 90% ; height: 600px; overflow-y: scroll;margin: 10px auto;"></div>
+        <div style="width: 40% ;margin: 10px auto;"><input id="chat-message-input" type="text"
+                                                           align="center" style="width: 80% ;"/><input
+                id="chat-message-submit" type="button" value="Send"/>
+            <br/>
+        </div>
+    </div>
+    </body>
+    <script>
+        var roomName = {{ room_name_json }};
+        var chatSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/chat/' + roomName + '/');
+
+        chatSocket.onmessage = function (e) {
+            var data = JSON.parse(e.data);
+            var message = data['message'];
+            var type = data['type']
+            var isAuthor = data['isAuthor'];
+            if (type === "clear") {
+                var result = eval(data['message']);
+                for (var i in result) {
+                    addToChat(result[i].author, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
+                }
+                //document.querySelector('#chat-log').value += (message);
+            }
+            else {
+                addToChat(data['author'], data['image'], data['message'], data['time'], data['isAuthor']);
+            }
+            var elem = document.getElementById('chat');
+            elem.scrollTop = elem.scrollHeight;
+        };
+        chatSocket.onclose = function (e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function (e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+        document.querySelector('#chat-message-submit').onclick = function (e) {
+            var messageInputDom = document.querySelector('#chat-message-input');
+            var message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+
+        function addToChat(author, imageUrl, text, time, isAuthor) {
+            var img = new Image();
+            img.src = imageUrl;
+            var div_outside = document.createElement("div");
+            div_outside.style.padding = "10px";
+            var div_img = document.createElement("div");
+            div_img.appendChild(img);
+
+            var div_box = document.createElement("div");
+            div_box.className = "box";
+
+            var span_text = document.createElement("span");
+            span_text.innerHTML = text;
+
+            var p = document.createElement("p");
+            p.className = "floattext";
+            p.innerHTML = author;
+            div_box.appendChild(p);
+
+            if (isAuthor === "0") {
+                var div_left = document.createElement("div");
+                div_left.className = "left";
+                var div_left_tri = document.createElement("div");
+                div_left_tri.className = "left_triangle";
+                div_box.appendChild(div_left_tri);
+                div_box.appendChild(span_text);
+                p.style.left = "0";
+                div_left.appendChild(div_img);
+                div_left.appendChild(div_box);
+                div_outside.appendChild(div_left)
+
+            }
+            else {
+                var div_right = document.createElement("div");
+                div_right.className = "right";
+                var div_right_tri = document.createElement("div");
+                div_right_tri.className = "right_triangle";
+                p.style.right = "5px";
+                div_box.appendChild(div_right_tri);
+                div_box.appendChild(span_text);
+
+                div_right.appendChild(div_img);
+                div_right.appendChild(div_box);
+
+
+                div_outside.appendChild(div_right);
+            }
+            document.getElementById("chat").appendChild(div_outside);
 
         }
-        else {
-            addToChat(data['author'], data['image'], data['message'], data['time'], data['isAuthor']);
-
-        }
-        var elem = document.getElementById('chat');
-         elem.scrollTop = elem.scrollHeight;
-
-    };
-
-    chatSocket.onclose = function (e) {
-        console.error('Chat socket closed unexpectedly');
-    };
-
-    document.querySelector('#chat-message-input').focus();
-    document.querySelector('#chat-message-input').onkeyup = function (e) {
-        if (e.keyCode === 13) {  // enter, return
-            document.querySelector('#chat-message-submit').click();
-        }
-    };
-
-    document.querySelector('#chat-message-submit').onclick = function (e) {
-        var messageInputDom = document.querySelector('#chat-message-input');
-        var message = messageInputDom.value;
-        chatSocket.send(JSON.stringify({
-            'message': message
-        }));
-
-        messageInputDom.value = '';
-    };
-
-    function addToChat(author, imageUrl, text, time, isAuthor) {
-        var img = new Image();
-        img.src = imageUrl;
-        img.style.width = "60px";
-        var table = document.createElement("table");
-        var tr1 = document.createElement("tr");
-        var tr2 = document.createElement("tr");
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-
-        if (isAuthor === "0") {
-            td1.style.width = "200px";
-            td1.style.verticalAlign = "top";
-            td1.style.wordWrap = "break-word";
-            td1.style.wordBreak = "break-all";
-            td1.innerHTML = text;
-
-            td2.style.height = "60px";
-            td2.style.width = "60px";
-            td2.style.verticalAlign = "top";
-            td2.append(img);
-            tr1.appendChild(td2);
-            tr1.appendChild(td1);
-
-            td3.innerHTML = time;
-            td4.innerHTML = author;
-            td4.style.verticalAlign = "top";
-            tr2.appendChild(td4);
-            tr2.appendChild(td3);
-            table.appendChild(tr1);
-            table.appendChild(tr2);
-
-            document.getElementById("chat").appendChild(table);
-        }
-        else {
-
-            table.style.marginLeft = "70%";
-
-            td1.style.width = "200px";
-            td1.style.verticalAlign = "top";
-            td1.style.wordWrap = "break-word";
-            td1.style.wordBreak = "break-all";
-            td1.innerHTML = text;
-
-            td2.style.height = "60px";
-            td2.style.width = "60px";
-            td2.style.verticalAlign = "top";
-            td2.append(img);
-            tr1.appendChild(td1);
-            tr1.appendChild(td2);
-
-            td3.innerHTML = time;
-            td4.innerHTML = author;
-            tr2.appendChild(td3);
-            tr2.appendChild(td4);
-            table.appendChild(tr1);
-            table.appendChild(tr2);
-
-            document.getElementById("chat").appendChild(table);
-        }
-        var br = document.createElement("br");
-        document.getElementById("chat").appendChild(br);
-    }
-</script>
-</html>
+    </script>
+{% endblock %}
+{% block front_js %}
+{% endblock %}

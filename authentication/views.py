@@ -1,6 +1,7 @@
 # coding=utf-8
 from django.contrib.auth import logout, login
 from django.db.models import Count
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView, RedirectView, FormView, ListView, UpdateView
 from django.urls import reverse_lazy
@@ -32,7 +33,7 @@ class SignupView(FrontMixin, CreateView):
         return super(SignupView, self).form_valid(form)
 
     def form_invalid(self, form):
-        print (form.errors)
+        print(form.errors)
         context = {'message': form.errors, 'announcement': Announcement.objects.all()[0],
                    'category_list': Category.objects.annotate(question_num=Count('question')).order_by('name')}
         return render(self.request, 'utils/error_page.html', context)
@@ -56,7 +57,14 @@ class LoginView(FrontMixin, FormView):
         if user is not None:
             if user.is_active:
                 login(self.request, user)
-                return super(LoginView, self).form_valid(form)
+                try:
+                    # after login, redirecting to previous page
+                    next_page = self.request.GET['next']
+                    return HttpResponseRedirect(next_page)
+                except:
+                    return super(LoginView, self).form_valid(form)
+
+
             else:
                 return self.response_error_page('你的账户尚未激活')
         else:

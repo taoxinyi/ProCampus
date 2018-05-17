@@ -39,3 +39,8 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.author.__str__() + '\'s answer'
+
+
+class RequestReplyFriend(models.Model):
+    request_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="request_user")
+    reply_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="reply_user")

@@ -86,7 +86,6 @@ class QuestionCreateView(LoginRequiredMixin, FrontMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.show_times = 0
-        print(form.instance.is_top)
         return super(QuestionCreateView, self).form_valid(form)
 
     def get_success_url(self):
@@ -217,7 +216,7 @@ class PersonalQuestionListView(FrontMixin, ListView):
         if the_user.id == current_user.id:
             context['isSelf'] = True
         elif the_user in current_user.friend.all():
-                context['isFriend'] = True
+            context['isFriend'] = True
         print('self', context['isSelf'], 'friend', context['isFriend'])
         return context
 
@@ -266,7 +265,8 @@ class PersonalReplyListView(FrontMixin, ListView):
         return Answer.objects.filter(reply_author=MyUser.objects.get(pk=self.kwargs['pk'])).order_by('-publish_time')
 
 
-class FriendListView(FrontMixin, ListView):
+class FriendListView(LoginRequiredMixin, FrontMixin, ListView):
+    login_url = reverse_lazy('user-login')
     paginate_by = 10
     template_name = 'forum/friend_list.html'
     context_object_name = 'friend_list'
