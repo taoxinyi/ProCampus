@@ -17622,3 +17622,2454 @@ ValueError: I/O operation on closed file.
 
 [2018-05-17 10:04:52,998] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7f9534172940 method=GET uri=/static/css/bootstrap.min.css clientproto=HTTP/1.1> took too long to shut down and was killed.
 [2018-05-17 10:04:53,000] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7f9534194f28 method=GET uri=/static/fonts/glyphicons-halflings-regular.woff clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-17 10:19:22,824] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 10:19:22,825] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 10:19:22,826] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 10:26:22,328] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 10:26:22,329] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 10:26:22,330] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 10:27:18,423] [ERROR] server : Exception inside application: 'reply_person_id'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 158, in receive
+    reply_person_id=text_data_json['reply_person_id']
+  'reply_person_id'
+[2018-05-17 10:27:33,814] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 10:27:33,814] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 10:27:33,815] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 10:33:45,632] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 10:33:45,633] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 10:33:45,634] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 10:40:45,333] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py:54> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebSocketProtocol client=['192.168.19.1', 9546] path=b'/ws/friend/3/'> took too long to shut down and was killed.
+[2018-05-17 10:41:15,386] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py:54> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebSocketProtocol client=['192.168.19.1', 9552] path=b'/ws/friend/3/'> took too long to shut down and was killed.
+[2018-05-17 10:49:56,662] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 10:49:56,662] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 10:49:56,664] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 11:00:11,183] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 11:00:11,184] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 11:00:11,185] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 11:07:55,976] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 11:07:55,977] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 11:07:55,978] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 11:18:30,976] [ERROR] ws_protocol : [Failure instance: Traceback: <class 'KeyError'>: <WebSocketProtocol client=['192.168.19.1', 10861] path=b'/ws/friend/1/'>
+/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py:459:callback
+/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py:567:_startRunCallbacks
+/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py:653:_runCallbacks
+/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py:1442:gotResult
+--- <exception caught here> ---
+/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py:1386:_inlineCallbacks
+/home/xytao/.local/lib/python3.5/site-packages/daphne/server.py:191:create_application
+]
+[2018-05-17 12:34:41,965] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 12:34:41,965] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 12:34:41,966] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:08:03,204] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:08:03,205] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:08:03,205] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:10:53,950] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:10:53,950] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:10:53,951] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:14:33,227] [ERROR] server : Exception inside application: 'NoneType' object has no attribute 'id'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 26, in connect
+    s = await  self.get_history()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 126, in get_history
+    d["author_id"] = i.user.id
+  'NoneType' object has no attribute 'id'
+[2018-05-17 13:15:47,004] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:15:47,004] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:15:47,005] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:15:49,559] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:15:49,559] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:40,817] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:40,817] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:41,784] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:41,784] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:42,625] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:42,625] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:43,209] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:16:43,209] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:17:02,099] [ERROR] server : Exception inside application: 'NoneType' object has no attribute 'user'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 26, in connect
+    s = await  self.get_history()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 126, in get_history
+    d["author_id"] = i.user.id if i.user.user.is_authenticated else 0
+  'NoneType' object has no attribute 'user'
+[2018-05-17 13:17:31,069] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:17:31,069] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:17:31,070] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:22:10,903] [ERROR] exception : Internal Server Error: /chat/111/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:22:10,903] [ERROR] exception : Internal Server Error: /chat/111/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:29:52,709] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:29:52,709] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:30:44,942] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:30:44,942] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:30:45,723] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:30:45,723] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:31:31,829] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:31:31,830] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:31:31,831] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:31:33,067] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:31:33,067] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:32:16,913] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:32:16,913] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:32:16,914] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:34:12,333] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:34:12,333] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 447, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/base.py", line 88, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/urls/resolvers.py", line 632, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'personal-question' with arguments '('',)' not found. 1 pattern(s) tried: ['forum/question/user/(?P<pk>[0-9]+)/list/$']
+[2018-05-17 13:38:34,978] [ERROR] exception : Internal Server Error: /forum/question/user/7/list/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/forum/views.py", line 210, in get_context_data
+    the_user = MyUser.objects.get(user_id=self.kwargs['pk'])
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+authentication.models.DoesNotExist: MyUser matching query does not exist.
+[2018-05-17 13:38:34,978] [ERROR] exception : Internal Server Error: /forum/question/user/7/list/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/forum/views.py", line 210, in get_context_data
+    the_user = MyUser.objects.get(user_id=self.kwargs['pk'])
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+authentication.models.DoesNotExist: MyUser matching query does not exist.
+[2018-05-17 13:39:47,428] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:39:47,428] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:39:47,429] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:40:16,616] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:40:16,616] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:40:16,617] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:40:37,655] [ERROR] server : Exception inside application: MyUser matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/django/QA/chat/consumers.py", line 81, in chat_message
+    'author': MyUser.objects.get(id=author_id).nickname if author_id > 0 else "Anonymous"
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  MyUser matching query does not exist.
+[2018-05-17 13:41:22,026] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:41:22,026] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:41:22,027] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:41:25,975] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:41:25,975] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:41:25,977] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:42:04,751] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:42:04,751] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:42:04,754] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 13:58:49,306] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 13:58:49,306] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 13:58:49,307] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 15:35:24,083] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 15:35:24,083] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 15:35:24,084] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:12:46,564] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:12:46,566] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:12:46,568] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:13:16,603] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py:54> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.5/asyncio/futures.py:431, Task._wakeup()]>> for connection <WebSocketProtocol client=['127.0.0.1', 34192] path=b'/ws/chat/123/'> took too long to shut down and was killed.
+[2018-05-17 16:14:57,230] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:14:57,231] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:14:57,233] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:15:05,250] [ERROR] server : Exception inside application: 'tuple' object has no attribute 'myuser_set'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 20, in connect
+    await self.add_to_current_list()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 95, in add_to_current_list
+    ChatRoomGroup.objects.get_or_create(name=self.room_group_name).myuser_set.add(self.myuser)
+  'tuple' object has no attribute 'myuser_set'
+[2018-05-17 16:16:21,537] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:16:21,538] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:16:21,540] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:17:05,258] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:17:05,259] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:17:05,261] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:19:02,240] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:19:02,240] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:19:02,241] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:19:03,329] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:19:03,330] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:19:03,332] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:19:11,256] [ERROR] server : Exception inside application: <coroutine object __call__ at 0x7f864940cdb0> is not JSON serializable
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 31, in connect
+    'type': 'clear'
+  File "/usr/lib/python3.5/json/__init__.py", line 230, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+  <coroutine object __call__ at 0x7f864940cdb0> is not JSON serializable
+[2018-05-17 16:19:24,862] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:19:24,863] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:19:24,863] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:19:26,070] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:19:26,071] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:19:26,074] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:21:39,671] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:21:39,671] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:21:39,672] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:21:40,388] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:21:40,389] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:21:40,391] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:21:52,763] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:21:52,763] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:21:52,764] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:21:53,714] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:21:53,715] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:21:53,718] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:24:12,323] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:24:12,323] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:24:12,324] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 16:24:13,155] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 16:24:13,156] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 16:24:13,158] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 16:46:03,008] [ERROR] server : Exception inside application: 'RelatedManager' object is not iterable
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 20, in connect
+    current_list = await self.add_to_current_list_and_return()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 98, in add_to_current_list_and_return
+    for current_user in self.room_object.myuser_set:
+  'RelatedManager' object is not iterable
+[2018-05-17 18:14:42,339] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:14:42,340] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:14:42,341] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 18:14:43,054] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:14:43,056] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:14:43,059] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 18:14:44,347] [ERROR] server : Exception inside application: 'RelatedManager' object is not iterable
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 20, in connect
+    current_list = await self.add_to_current_list_and_return()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 98, in add_to_current_list_and_return
+    for current_user in self.room_object.myuser_set:
+  'RelatedManager' object is not iterable
+[2018-05-17 18:14:52,803] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:14:52,803] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:14:52,804] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 18:15:24,549] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:15:24,550] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:15:24,551] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 18:15:47,824] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:15:47,825] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:15:47,826] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 18:45:03,731] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 18:45:03,731] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 18:45:03,732] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:07:46,233] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:07:46,234] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:07:46,234] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:11:03,581] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:11:03,582] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:11:03,583] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:12:19,226] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:12:19,226] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:12:19,227] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:14:57,065] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:14:57,065] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:14:57,066] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:20:23,529] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:23,529] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:24,947] [ERROR] exception : Internal Server Error: /authentication/user/login/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:24,947] [ERROR] exception : Internal Server Error: /authentication/user/login/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:27,191] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:27,191] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:28,030] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 25, in get_context_data
+    context = super(ChatIndexView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:28,030] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 25, in get_context_data
+    context = super(ChatIndexView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:40,320] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:20:40,320] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:21:04,570] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:21:04,571] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:21:04,571] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:21:12,394] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:21:12,394] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:22:56,678] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:22:56,678] [ERROR] exception : Internal Server Error: /chat/1234/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 19:37:23,051] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:37:23,052] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:37:23,053] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:37:23,063] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:37:23,063] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:37:23,064] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:37:29,062] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'get_username'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 17, in connect
+    self.username = self.get_username()
+  'ChatConsumer' object has no attribute 'get_username'
+[2018-05-17 19:37:42,079] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'get_username'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 17, in connect
+    self.username = self.get_username()
+  'ChatConsumer' object has no attribute 'get_username'
+[2018-05-17 19:41:54,948] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:41:54,948] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:41:54,950] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:41:55,548] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:41:55,549] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:41:55,550] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:44:25,974] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:44:25,975] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:44:25,976] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:44:25,979] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:44:25,979] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:44:25,980] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:44:38,102] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:44:38,102] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:44:38,104] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:44:38,168] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:44:38,168] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:44:38,169] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:44:40,115] [ERROR] server : Exception inside application: 'NoneType' object has no attribute 'user'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 30, in connect
+    s = await  self.get_history()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 151, in get_history
+    i.user.user) if i.user.user.is_authenticated else '/static/image/default.png'
+  'NoneType' object has no attribute 'user'
+[2018-05-17 19:45:04,811] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:45:04,812] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:45:04,813] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:45:04,818] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:45:04,819] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:45:04,821] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 19:48:00,527] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:48:00,527] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:48:00,527] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:48:00,527] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:48:00,528] [CRITICAL] server : Listen failure: [Errno 98] Address already in use
+[2018-05-17 19:48:00,528] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:49:10,262] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:49:10,263] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:49:10,264] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 19:49:10,277] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 19:49:10,278] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 19:49:10,278] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 20:07:08,955] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:07:08,955] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:07:08,955] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:07:08,955] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:07:08,956] [CRITICAL] server : Listen failure: [Errno 98] Address already in use
+[2018-05-17 20:07:08,956] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:08:36,049] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:08:36,050] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:08:36,050] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:13:49,147] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:13:49,148] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:13:49,149] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:13:56,285] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:13:56,285] [ERROR] exception : Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/list.py", line 157, in get
+    context = self.get_context_data()
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:27:06,968] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:27:06,969] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:27:06,970] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-17 20:27:15,289] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:27:15,290] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:27:15,292] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:28:08,227] [ERROR] exception : Internal Server Error: /chat/12345/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:28:08,227] [ERROR] exception : Internal Server Error: /chat/12345/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 34, in get_context_data
+    context = super(ChatRoomView, self).get_context_data(**kwargs)
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:28:10,598] [ERROR] exception : Internal Server Error: /authentication/user/login/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:28:10,598] [ERROR] exception : Internal Server Error: /authentication/user/login/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/xytao/django/QA/website/mixin.py", line 8, in get_context_data
+    return super(FrontMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/announcement/mixin.py", line 6, in get_context_data
+    context = super(LeastAnnouncementMixin, self).get_context_data(*args, **kwargs)
+  File "/home/xytao/django/QA/authentication/mixin.py", line 7, in get_context_data
+    context['myuser'] = self.request.user.myuser
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/fields/related_descriptors.py", line 389, in __get__
+    self.related.get_accessor_name()
+django.db.models.fields.related_descriptors.RelatedObjectDoesNotExist: User has no myuser.
+[2018-05-17 20:49:33,854] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:49:33,854] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:49:33,855] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:49:50,028] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:49:50,028] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:49:50,029] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:50:09,056] [ERROR] server : Exception inside application: object functools.partial can't be used in 'await' expression
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 244, in websocket_disconnect
+    await self.disconnect(message["code"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 63, in disconnect
+    await self.delete_from_db
+  object functools.partial can't be used in 'await' expression
+[2018-05-17 20:50:19,425] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:50:19,426] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:50:19,427] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:50:24,484] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:50:24,485] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:50:24,486] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:57:39,556] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:57:39,557] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:57:39,558] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:58:21,958] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:58:21,958] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:58:21,959] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 20:58:48,173] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 20:58:48,173] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 20:58:48,174] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 21:01:02,766] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 21:01:02,767] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 21:01:02,768] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 21:02:04,395] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 21:02:04,395] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 21:02:04,396] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 21:02:31,676] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 21:02:31,677] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 21:02:31,678] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 21:04:18,855] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 21:04:18,855] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 21:04:18,856] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:13:35,501] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:13:35,502] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:13:35,503] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:14:06,230] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:14:06,231] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:14:06,232] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:15:23,291] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:15:23,292] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:15:23,293] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:15:33,284] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:15:33,285] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:15:33,286] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:17:35,061] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:17:35,061] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:17:35,062] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:22:16,802] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:22:16,803] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:22:16,804] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:26:14,170] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:26:14,170] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:26:14,172] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:27:07,574] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:27:07,574] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:27:07,575] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:27:54,003] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:27:54,003] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:27:54,004] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:31:05,383] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:31:05,383] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:31:05,384] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:32:47,844] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-17 23:32:47,844] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-17 23:32:47,845] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-17 23:38:28,506] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-17 23:38:28,507] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-17 23:38:28,507] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-17 23:38:28,507] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-17 23:38:28,508] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-17 23:38:39,265] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7ffbb017bf60 method=GET uri=/static/css/bootstrap.min.css clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-17 23:38:39,265] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7ffbb87542e8 method=GET uri=/static/js/bootstrap.min.js clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-17 23:38:39,265] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7ffbb015df28 method=GET uri=/static/css/main.css clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-17 23:38:39,266] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7ffbb01df7b8 method=GET uri=/static/js/jquery.min.js clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-17 23:38:39,266] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7ffbb87326a0 method=GET uri=/static/js/jquery.cookie.js clientproto=HTTP/1.1> took too long to shut down and was killed.
