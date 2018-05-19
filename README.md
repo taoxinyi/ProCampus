@@ -6,6 +6,7 @@
         - [1.2.1. Prerequisite](#121-prerequisite)
         - [1.2.2. install requirements](#122-install-requirements)
     - [1.3. Run](#13-run)
+    - [Wired Thing](#wired-thing)
 
 <!-- /TOC -->
 # ProCampus
@@ -28,7 +29,8 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
 
 
     - you can use below to make sure it is on
-     `netstat -ntlp|grep 6379`
+
+         `netstat -ntlp|grep 6379`
 - clone project
 
     `git clone https://github.com/taoxinyi/Web.git`
@@ -50,3 +52,7 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
     Then you can use the ip from your virtual machine to test from host or mobile device in the same network.
 
     For instance, using `192.168.3.135:8000` in your host machine and` 127.0.0.1:8000` in virtual machine to test chat function.
+## Wired Thing
+When using [protobuf.min.js(protobuf.js)](https://github.com/dcodeIO/ProtoBuf.js), it is really wired that this library may convert underscore case into upper camel case refering to the `.proto` file.
+
+ For instance, `chat_message_item` in `.proto` file may decoded as `chatMessageItem` in javascript.
