@@ -1,0 +1,23 @@
+syntax = "proto3";
+package chat;
+
+message ChatMessageItem {
+
+
+    int32 clientId = 1;
+    string clientName = 2;
+    string message = 3;
+    string imageUrl = 4;
+
+}
+
+message ChatMessage {
+    enum Type {
+        CHAT_MESSAGE = 0;
+        CLIENT_ENTER = 1;
+        CLIENT_LEAVE = 2;
+    }
+    Type type = 1;
+    repeated ChatMessageItem chat_message_item = 2;
+    repeated ChatMessageItem current_client=3;
+}

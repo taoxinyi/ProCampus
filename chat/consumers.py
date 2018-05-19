@@ -6,6 +6,7 @@ from authentication.models import MyUser
 from chat.models import ChatRoomGroup, ChatHistory
 from channels.db import database_sync_to_async
 from datetime import datetime
+import protobuf.chat_message_pb2 as ChatMessage
 import json
 
 from forum.models import RequestReplyFriend
@@ -16,12 +17,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.user = self.scope["user"]
         self.myuser = self.user.myuser
+        self.myuser = self.user.myuser
         self.username = self.get_username()
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
 
         self.room_object = await self.save_group()
-        current_list = await self.return_to_current_list_and_add_to_db()
         # Join room group
         await self.channel_layer.group_add(
             self.room_group_name,
@@ -29,33 +30,42 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
 
         await self.accept()
+        # get serialized history and send to this client
         s = await  self.get_history()
-        await self.send(text_data=json.dumps({
-            'message': s,
-            'type': 'clear',
-            'current_list': current_list
-        }))
+        await self.send(bytes_data=s)
+        # send to all clients in this group about this client's arrival
+        chat_message = ChatMessage.ChatMessage()
+        chat_message.type = ChatMessage.ChatMessage.CLIENT_ENTER
+        chat_message_item = ChatMessage.ChatMessageItem()
+        chat_message_item.clientId = self.user.id
+        chat_message_item.clientName = self.user.myuser.nickname
+        chat_message_item.imageUrl = self.get_user_image_url(self.user)
+        chat_message.chat_message_item.extend([chat_message_item])
+        b = chat_message.SerializeToString()
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'client_enter',
-                'id': self.user.id,
-                'name': self.user.myuser.nickname,
-                'image': self.get_user_image_url(self.user)
+                'protobuf': b
 
             }
         )
+        await self.add_current_user_to_db()
 
     async def disconnect(self, close_code):
         # Leave room group
+        chat_message = ChatMessage.ChatMessage()
+        chat_message.type = ChatMessage.ChatMessage.CLIENT_LEAVE
+        chat_message_item = ChatMessage.ChatMessageItem()
+        chat_message_item.clientId = self.user.id
+        chat_message_item.clientName = self.user.myuser.nickname
+        chat_message.chat_message_item.extend([chat_message_item])
+        b = chat_message.SerializeToString()
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'client_leave',
-                'id': self.user.id,
-                'name': self.user.myuser.nickname,
-                'image': self.get_user_image_url(self.user)
-
+                'protobuf': b
             })
         await self.channel_layer.group_discard(
             self.room_group_name,
@@ -64,26 +74,22 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.delete_from_db()
 
     # Receive message from WebSocket
-    async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-        # Send message to room group
+    async def receive(self, bytes_data):
+        chat_message = ChatMessage.ChatMessageItem()
+        chat_message.ParseFromString(bytes_data)
         await self.channel_layer.group_send(
             self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': message,
-                'author_id': self.user.id if self.user.is_authenticated else 0,
-                'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            }
+            {'type': 'chat_message',
+             'protobuf': bytes_data}
         )
-        await  self.save_history(message)
+        await  self.save_history(chat_message.message)
 
     # Receive message from room group
     async def chat_message(self, event):
-        message = event['message']
-        author_id = event['author_id']
-        time = event['time']
+        chat_message_item = ChatMessage.ChatMessageItem()
+        chat_message_item.ParseFromString(event['protobuf'])
+        message = chat_message_item.message
+        author_id = chat_message_item.clientId
         isAuthor = "0"
         if self.user.is_authenticated and author_id == self.user.id:
             isAuthor = "1"
@@ -91,16 +97,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
             image = '/static/image/default.png'
         else:
             image = self.get_user_image_url(User.objects.get(id=author_id))
+        chat_message_item.imageUrl = image
+        chat_message_item.clientName = MyUser.objects.get(user_id=author_id).nickname if author_id > 0 else "Anonymous"
+        chat_message = ChatMessage.ChatMessage()
+        # which is default
+        chat_message.type = 0
+        chat_message.chat_message_item.extend([chat_message_item])
+        b = chat_message.SerializeToString()
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({
-            'type': "chat_message",
-            'message': message,
-            'image': image,
-            'isAuthor': isAuthor,
-            'time': time,
-            'author_id': author_id,
-            'author': MyUser.objects.get(user_id=author_id).nickname if author_id > 0 else "Anonymous"
-        }))
+        await self.send(bytes_data=b)
 
     def get_user_image_url(self, user):
 
@@ -114,12 +119,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive client enter from room group
     async def client_enter(self, event):
-        await self.send(text_data=json.dumps(event))
+        await self.send(bytes_data=event['protobuf'])
 
     # Receive client leave from room group
     async def client_leave(self, event):
-        print(event)
-        await self.send(text_data=json.dumps(event))
+        await self.send(bytes_data=event['protobuf'])
 
     @database_sync_to_async
     def get_myuser(self):
@@ -129,19 +133,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return self.myuser.nickname if self.user.is_authenticated else "Anonymous"
 
     @database_sync_to_async
-    def return_to_current_list_and_add_to_db(self):
+    def add_current_user_to_db(self):
 
-        s = []
-        for current_user in self.room_object.myuser_set.all():
-            d = {}
-            d['image'] = self.get_user_image_url(current_user.user)
-            d['id'] = current_user.user.id
-            d['name'] = current_user.nickname
-            s.append(d)
-
-        # add
         self.myuser.chat_room.add(self.room_object)
-        return s
 
     @database_sync_to_async
     def delete_from_db(self):
@@ -164,19 +158,34 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def get_history(self):
-
-        s = []
+        chat_message = ChatMessage.ChatMessage()
+        chat_message.type = ChatMessage.ChatMessage.CHAT_MESSAGE
         for i in ChatRoomGroup.objects.get(name=self.room_group_name).chathistory_set.all():
-            d = {}
-            d["message"] = i.history
-            d['image'] = self.get_user_image_url(
+            chat_message_item = chat_message.chat_message_item.add()
+            chat_message_item.message = i.history
+            chat_message_item.clientId = i.user.user.id if i.user else 0
+            chat_message_item.imageUrl = self.get_user_image_url(
                 i.user.user) if i.user else '/static/image/default.png'
-            d["author_id"] = i.user.user.id if i.user else 0
-            d["isAuthor"] = "1" if self.user.is_authenticated and self.myuser == i.user else "0"
-            d["time"] = i.time.strftime('%Y-%m-%d %H:%M:%S')
-            d["author"] = i.user.nickname if i.user else "Anonymous"
-            s.append(d)
+            chat_message_item.clientName = i.user.nickname if i.user else "Anonymous"
+        for current_user in self.room_object.myuser_set.all():
+            current_client = chat_message.current_client.add()
+            current_client.imageUrl = self.get_user_image_url(current_user.user)
+            current_client.clientId = current_user.user.id
+            current_client.clientName = current_user.nickname
+        return chat_message.SerializeToString()
+        """
+        d = {}
+        d["message"] = i.history
+        d['image'] = self.get_user_image_url(
+            i.user.user) if i.user else '/static/image/default.png'
+        d["author_id"] = i.user.user.id if i.user else 0
+        d["isAuthor"] = "1" if self.user.is_authenticated and self.myuser == i.user else "0"
+        d["time"] = i.time.strftime('%Y-%m-%d %H:%M:%S')
+        d["author"] = i.user.nickname if i.user else "Anonymous"
+        
+        s.append(d)
         return s
+        """
 
 
 class FriendConsumer(AsyncWebsocketConsumer):

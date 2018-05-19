@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <script>
+
     var FriendSocket = new WebSocket(
         'ws://' + window.location.host +
         '/ws/friend/' + {{ myuser.id }} +'/');
@@ -20,15 +21,31 @@
     };
 
     function receive_request_add(request_person, request_person_id) {
-        var se = confirm(request_person + " wants to add you as friend");
-        if (se === true) {
+
+        var notification = new NotificationFx({
+            request_username: request_person,
+            request_user_id: request_person_id,
+            request_user_imageUrl: '',
+            message: ' is trying to be your friend',
+            layout: 'attached',
+            effect: 'bouncyflip',
+            type: 'notice', // notice, warning or error
+            onClose: function () {
+                bttn.disabled = false;
+            }
+        });
+
+        // show the notification
+        notification.show();
+
+        document.addEventListener("confirm_add_event", function (e) {
             FriendSocket.send(JSON.stringify({
                 'type': "agree_add_friend",
                 'group': request_person_id,
                 'reply_person': {{ myuser.id }},
                 'request_person': request_person_id
             }));
-        }
+        });
 
     }
 

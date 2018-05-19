@@ -12,23 +12,35 @@
     <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/ns-default.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/ns-style-attached.css" %}"/>
+    <script src="{% static "js/modernizr.custom.js" %}"></script>
     {% block external_header %}{% endblock %}
 </head>
 <body>
-    {% block body %}{% endblock %}
+
+{% block body %}{% endblock %}
 </body>
 {% block external_js %}{% endblock %}
+<script src="{% static 'js/classie.js' %}"></script>
+<script src="{% static "js/notificationFx.js" %}"></script>
+<script src="{% static "js/protobuf.min.js" %}"></script>
+
+
 <script type="text/javascript">
     var csrftoken = $.cookie('csrftoken');
-        function csrfSafeMethod(method) {
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
+
+    function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
             }
-        });
+        }
+    });
 </script>
 </html>

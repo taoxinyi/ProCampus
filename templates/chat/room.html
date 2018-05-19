@@ -1,5 +1,6 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
+
 {% block external_header %}
 {% endblock %}
 {% block left %}
@@ -119,48 +120,72 @@
 {% endblock %}
 {% block front_js %}
     <script>
+        //set root name
         var roomName = {{ room_name_json }};
+        //establish WebSocket based on this specifc room name
         var chatSocket = new WebSocket(
             'ws://' + window.location.host +
             '/ws/chat/' + roomName + '/');
-
+        //When the WebSocket received message
         chatSocket.onmessage = function (e) {
-            var data = JSON.parse(e.data);
-            var type = data['type'];
-            if (type === "clear") {
-                var result = eval(data['message']);
-                var current_list = eval(data['current_list']);
-                document.getElementById("online_list").innerText = "";
-                for (var i in current_list) {
-                    addToList(current_list[i].name, current_list[i].id, current_list[i].image);
+            var d = e.data;
+            var arrayBuffer;
+            var fileReader = new FileReader();
+            fileReader.onload = function () {
+                //when load as array buffer succeed
+                arrayBuffer = this.result;
+                //turn this buffer as uint8 array buffer
+                var uint8Array = new Uint8Array(arrayBuffer);
+                //load protobuf.js to decode
+                protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
+                    if (err)
+                        throw err;
+                    var chatMessage = root.lookupType("chat.ChatMessage");
+                    //decode it to object
+                    var chatMessageDecoded = chatMessage.decode(uint8Array);
+                    var type = chatMessageDecoded.type;
+                    //Somehow the first character of protobuf class name is converted to lower case.
+                    var l = chatMessageDecoded.chatMessageItem;
+                    if (type === 0) {//CHAT_MESSAGE
+                        if (chatMessageDecoded.currentClient.length !== 0) {//add current user list
+                            var cl = chatMessageDecoded.currentClient;
+                            for (var i = 0; i < cl.length; i++) {
+                                addToList(cl[i].clientName, cl[i].clientId, cl[i].imageUrl);
 
-                }
-                for (i in result) {
-                    addToChat(result[i].author, result[i].author_id, result[i].image, result[i].message, result[i].time, result[i].isAuthor);
-                }
-            }
-            else if (type === "chat_message") {
-                addToChat(data['author'], data['author_id'], data['image'], data['message'], data['time'], data['isAuthor']);
-            }
-            else if (type === "client_enter") {
-                var p = document.createElement("p");
-                p.innerText = data['name'] + " enters this room";
-                p.style.marginTop = "70px";
-                p.style.textAlign = "center";
+                            }
 
-                document.getElementById("chat").appendChild(p);
-                addToList(data['name'], data['id'], data['image']);
-            } else if (type === "client_leave") {
-                var p = document.createElement("p");
-                p.innerText = data['name'] + " has left this room";
-                p.style.marginTop = "70px";
-                p.style.textAlign = "center";
+                        }
+                        for (i = 0; i < l.length; i++) {//add chat message
+                            var isAuthor = l[i].clientId ==={{ user.id }};
+                            addToChat(l[i].clientName, l[i].clientId, l[i].imageUrl, l[i].message, "", isAuthor);
 
-                document.getElementById("chat").appendChild(p);
-                deleteFromList(data['id']);
-            }
-            var elem = document.getElementById('chat');
-            elem.scrollTop = elem.scrollHeight;
+                        }
+                    } else if (type === 1) {
+                        l = chatMessageDecoded.chatMessageItem[0];
+                        var p = document.createElement("p");
+                        p.innerText = l.clientName + " enters this room";
+                        p.style.marginTop = "70px";
+                        p.style.textAlign = "center";
+                        document.getElementById("chat").appendChild(p);
+                        addToList(l.clientName, l.clientId, l.imageUrl);
+
+                    } else if (type === 2) {
+                        l = chatMessageDecoded.chatMessageItem[0];
+                        p = document.createElement("p");
+                        p.innerText = l.clientName + " has left this room";
+                        p.style.marginTop = "70px";
+                        p.style.textAlign = "center";
+                        document.getElementById("chat").appendChild(p);
+                        deleteFromList(l.clientId);
+
+                    }
+                });
+
+            };
+            //read binary data (BLob) as array buffer
+            fileReader.readAsArrayBuffer(d);
+
+
         };
         chatSocket.onclose = function (e) {
             console.error('Chat socket closed unexpectedly');
@@ -171,12 +196,23 @@
                 document.querySelector('#chat-message-submit').click();
             }
         };
+        //submit
         document.querySelector('#chat-message-submit').onclick = function (e) {
             var messageInputDom = document.querySelector('#chat-message-input');
-            var message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
+            var m = messageInputDom.value;
+            var id ={{ user.id }};
+            protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var chatMessage = root.lookupType("chat.ChatMessageItem");
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {clientId: id, message: m};
+                var message = chatMessage.create(payload);
+                var buffer = chatMessage.encode(message).finish();
+                chatSocket.send(buffer);
+
+            });
             messageInputDom.value = '';
         };
 
@@ -205,7 +241,7 @@
             p.innerHTML = author;
             div_box.appendChild(p);
 
-            if (isAuthor === "0") {
+            if (isAuthor === false) {
                 var div_left = document.createElement("div");
                 div_left.className = "left";
                 var div_left_tri = document.createElement("div");
@@ -234,11 +270,15 @@
                 div_outside.appendChild(div_right);
             }
             document.getElementById("chat").appendChild(div_outside);
+            var div = document.getElementById("chat");
+            div.scrollTop = div.scrollHeight - div.clientHeight;
 
         }
 
         function deleteFromList(id) {
             document.getElementById(id).parentNode.removeChild(document.getElementById(id));
+            var div = document.getElementById("chat");
+            div.scrollTop = div.scrollHeight - div.clientHeight;
         }
 
         function addToList(name, id, imageUrl) {
@@ -259,6 +299,8 @@
             div_list_item.appendChild(a);
             div_list_item.appendChild(nickname);
             div_list.appendChild(div_list_item);
+            var div = document.getElementById("chat");
+            div.scrollTop = div.scrollHeight - div.clientHeight;
         }
     </script>
 

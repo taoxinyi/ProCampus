@@ -1,21 +1,27 @@
 <!-- TOC -->
 
-- [1. Web](#1-web)
-    - [1.1. How to Install](#11-how-to-install)
-        - [1.1.1. Prerequisite](#111-prerequisite)
-        - [1.1.2. install requirements](#112-install-requirements)
-        - [1.1.3. Run](#113-run)
+- [ProCampus](#procampus)
+    - [1.1. Feature](#11-feature)
+    - [1.2. How to Install](#12-how-to-install)
+        - [1.2.1. Prerequisite](#121-prerequisite)
+        - [1.2.2. install requirements](#122-install-requirements)
+    - [1.3. Run](#13-run)
 
 <!-- /TOC -->
-# 1. Web
-## 1.1. How to Install
-### 1.1.1. Prerequisite
+# ProCampus
+A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Protobuf and more.
+## 1.1. Feature
+- Based on Django 2.0
+- Using Django Channels in order to apply WebSocket for realtime chat and notifications, Redis as backend
+    - Using Protobuf (Protocol buffers) as data structure between client and server, making the packet size significantly smaller compared to JSON.
+- To be continued
+## 1.2. How to Install
+### 1.2.1. Prerequisite
 - Ubuntu has python3
-### 1.1.2. install requirements
+### 1.2.2. install requirements
 - Install python3 requirements
 
     `pip3 install -r requirements.txt --user`
-
 - Using redis
 
     `docker run -p 6379:6379 -d redis:2.8`
@@ -27,7 +33,7 @@
 
     `git clone https://github.com/taoxinyi/Web.git`
 
-### 1.1.3. Run
+## 1.3. Run
 - go to folder
 
     `cd Web`
