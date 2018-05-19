@@ -53,7 +53,7 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
 
     For instance, using `192.168.3.135:8000` in your host machine and` 127.0.0.1:8000` in virtual machine to test chat function.
 ## Weird Thing
-When using [protobuf.min.js(protobuf.js)](https://github.com/dcodeIO/ProtoBuf.js), it is really wired that this library may convert underscore case into lower camel case refering to the `.proto` file.
+When using [protobuf.min.js(protobuf.js)](https://github.com/dcodeIO/ProtoBuf.js), it is really weird that this library may convert underscore case into lower camel case refering to the `.proto` file.
 
  For instance, `chat_message_item` as key in `.proto` file may decoded as `chatMessageItem` in Javascript.
 
