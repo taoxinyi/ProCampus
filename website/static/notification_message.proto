@@ -1,0 +1,21 @@
+syntax = "proto3";
+package chat;
+
+message NotificationItem {
+    enum Type {
+        REQUEST_ADD_FRIEND = 0;
+        AGREE_ADD_FRIEND = 1;
+        DISAGREE_ADD_FRIEND = 2;
+        REQUEST_DELETE_FRIEND = 3;
+    }
+    Type type = 1;
+    int32 fromClientId = 2;
+    int32 toClientId = 3;
+    string fromClientName = 4;
+    string toClientName = 5;
+
+}
+
+message Notification {
+    repeated NotificationItem notification_item = 1;
+}

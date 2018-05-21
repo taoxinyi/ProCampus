@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from authentication.models import MyUser
 from chat.models import ChatRoomGroup, ChatHistory
 from channels.db import database_sync_to_async
-from datetime import datetime
 import protobuf.chat_message_pb2 as ChatMessage
+import protobuf.notification_message_pb2 as Notification
 import json
 
 from forum.models import RequestReplyFriend
@@ -16,7 +16,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         self.user = self.scope["user"]
-        self.myuser = self.user.myuser
         self.myuser = self.user.myuser
         self.username = self.get_username()
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -173,19 +172,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             current_client.clientId = current_user.user.id
             current_client.clientName = current_user.nickname
         return chat_message.SerializeToString()
-        """
-        d = {}
-        d["message"] = i.history
-        d['image'] = self.get_user_image_url(
-            i.user.user) if i.user else '/static/image/default.png'
-        d["author_id"] = i.user.user.id if i.user else 0
-        d["isAuthor"] = "1" if self.user.is_authenticated and self.myuser == i.user else "0"
-        d["time"] = i.time.strftime('%Y-%m-%d %H:%M:%S')
-        d["author"] = i.user.nickname if i.user else "Anonymous"
-        
-        s.append(d)
-        return s
-        """
 
 
 class FriendConsumer(AsyncWebsocketConsumer):
@@ -199,12 +185,19 @@ class FriendConsumer(AsyncWebsocketConsumer):
         )
         await self.accept()
         wait_for_reply_list = RequestReplyFriend.objects.filter(reply_user_id=self.user.myuser.id)
+
+        notification = Notification.Notification()
+        list_notification_item = []
         for o in wait_for_reply_list:
-            await self.send(text_data=json.dumps({
-                'request_person': o.request_user.nickname,
-                'request_person_id': o.request_user.id,
-                'type': "request_add_friend",
-            }))
+            notification_item = Notification.NotificationItem()
+            notification_item.type = Notification.NotificationItem.REQUEST_ADD_FRIEND
+            notification_item.fromClientId = o.request_user.id
+            notification_item.fromClientName = o.request_user.nickname
+            list_notification_item.append(notification_item)
+        notification.notification_item.extend(list_notification_item)
+        s = notification.SerializeToString()
+
+        await self.send(bytes_data=s)
 
     async def disconnect(self, close_code):
         # Leave room group
@@ -214,42 +207,92 @@ class FriendConsumer(AsyncWebsocketConsumer):
         )
 
     # Receive message from WebSocket, send it to corresponding group
-    async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
+    async def receive(self, bytes_data):
+        notification_item = Notification.NotificationItem()
+        notification_item.ParseFromString(bytes_data)
         # if the user confirms becoming friends, make them friend in the database
-        request_person_id = text_data_json['request_person']
-        reply_person_id = text_data_json['reply_person']
-        if (text_data_json['type'] == "agree_add_friend"):
+        request_person_id = notification_item.fromClientId
+        reply_person_id = notification_item.toClientId
+        if notification_item.type == Notification.NotificationItem.AGREE_ADD_FRIEND:
             await  self.make_friends(request_person_id, reply_person_id)
             await self.delete_request_from_db(request_person_id, reply_person_id)
-        if (text_data_json['type'] == "request_add_friend"):
+            notification_type = "agree_add_friend"
+            group_id = str(request_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.REQUEST_ADD_FRIEND:
             await self.add_request_to_db(request_person_id, reply_person_id)
+            notification_type = "request_add_friend"
+            group_id = str(reply_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.DISAGREE_ADD_FRIEND:
+            await self.delete_request_from_db(request_person_id, reply_person_id)
+            notification_type = "disagree_add_friend"
+            group_id = str(request_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.REQUEST_DELETE_FRIEND:
+            await  self.delete_friends(request_person_id, reply_person_id)
+            notification_type = "request_delete_friend"
+            group_id = str(reply_person_id)
+        # group send to the reply person group
         await self.channel_layer.group_send(
-            str(text_data_json['group']),
-            text_data_json
-        )
+            group_id,
+            {
+                'type': notification_type,
+                'protobuf': bytes_data
+            })
 
     # Receive request_add_friend message from group
     # Send it to the frontend of this user for confirmation
     async def request_add_friend(self, event):
-        request_person = await self.get_myuser(event['request_person'])
-
-        await self.send(text_data=json.dumps({
-            'request_person': request_person.nickname,
-            'request_person_id': request_person.id,
-            'type': "request_add_friend",
-        }))
+        bytes_data = event['protobuf']
+        notification_item = Notification.NotificationItem()
+        notification_item.ParseFromString(bytes_data)
+        request_person = await self.get_myuser(notification_item.fromClientId)
+        notification_item.fromClientName = request_person.nickname
+        notification = Notification.Notification()
+        notification.notification_item.extend([notification_item])
+        s = notification.SerializeToString()
+        await self.send(bytes_data=s)
 
     # Receive agree_add_friend message from group
     # Send back to the frontend of this request user
     async def agree_add_friend(self, event):
-        reply_person = await self.get_myuser(event['reply_person'])
-        await self.send(text_data=json.dumps({
-            'reply_person': reply_person.nickname,
-            'reply_person_id': reply_person.id,
-            'type': "agree_add_friend",
+        bytes_data = event['protobuf']
+        notification_item = Notification.NotificationItem()
+        notification_item.ParseFromString(bytes_data)
+        reply_person = await self.get_myuser(notification_item.toClientId)
+        notification_item.toClientName = reply_person.nickname
+        notification = Notification.Notification()
+        notification.notification_item.extend([notification_item])
+        s = notification.SerializeToString()
+        await self.send(bytes_data=s)
 
-        }))
+    # Receive disagree_add_friend message from group
+    # Send back to the frontend of this request user
+    async def disagree_add_friend(self, event):
+        bytes_data = event['protobuf']
+        notification_item = Notification.NotificationItem()
+        notification_item.ParseFromString(bytes_data)
+        reply_person = await self.get_myuser(notification_item.toClientId)
+        notification_item.toClientName = reply_person.nickname
+        notification = Notification.Notification()
+        notification.notification_item.extend([notification_item])
+        s = notification.SerializeToString()
+        await self.send(bytes_data=s)
+
+    # Receive request_delete_friend message from group
+    # Send it to the frontend of this user for confirmation
+    async def request_delete_friend(self, event):
+        bytes_data = event['protobuf']
+        notification_item = Notification.NotificationItem()
+        notification_item.ParseFromString(bytes_data)
+        request_person = await self.get_myuser(notification_item.fromClientId)
+        notification_item.fromClientName = request_person.nickname
+        notification = Notification.Notification()
+        notification.notification_item.extend([notification_item])
+        print (notification)
+        s = notification.SerializeToString()
+        await self.send(bytes_data=s)
 
     @database_sync_to_async
     def get_myuser(self, id):
@@ -260,6 +303,11 @@ class FriendConsumer(AsyncWebsocketConsumer):
         request_person = MyUser.objects.get(id=request_person_id)
         reply_person = MyUser.objects.get(id=reply_person_id)
         request_person.friend.add(reply_person)
+    @database_sync_to_async
+    def delete_friends(self, request_person_id, reply_person_id):
+        request_person = MyUser.objects.get(id=request_person_id)
+        reply_person = MyUser.objects.get(id=reply_person_id)
+        request_person.friend.remove(reply_person)
 
     @database_sync_to_async
     def add_request_to_db(self, request_person_id, reply_person_id):

@@ -120,6 +120,7 @@
 {% endblock %}
 {% block front_js %}
     <script>
+
         //set root name
         var roomName = {{ room_name_json }};
         //establish WebSocket based on this specifc room name
@@ -217,6 +218,7 @@
         };
 
         function addToChat(author, author_id, imageUrl, text, time, isAuthor) {
+
             var a = document.createElement("a");
             a.href = "/forum/question/user/" + author_id + "/list/";
             var img = new Image();
@@ -282,25 +284,27 @@
         }
 
         function addToList(name, id, imageUrl) {
-            var div_list = document.getElementById("online_list");
-            var div_list_item = document.createElement("div");
-            div_list_item.className = "parent";
-            div_list_item.id = id;
-            var a = document.createElement("a");
-            a.href = "/forum/question/user/" + id + "/list/";
-            var img = new Image();
-            img.style.width = "40px";
-            img.src = imageUrl;
-            a.className = "l-child";
-            a.appendChild(img);
-            var nickname = document.createElement("div");
-            nickname.innerHTML = name;
-            nickname.className = "r-child";
-            div_list_item.appendChild(a);
-            div_list_item.appendChild(nickname);
-            div_list.appendChild(div_list_item);
-            var div = document.getElementById("chat");
-            div.scrollTop = div.scrollHeight - div.clientHeight;
+            if (!document.getElementById(id)) {//if not exist
+                var div_list = document.getElementById("online_list");
+                var div_list_item = document.createElement("div");
+                div_list_item.className = "parent";
+                div_list_item.id = id;
+                var a = document.createElement("a");
+                a.href = "/forum/question/user/" + id + "/list/";
+                var img = new Image();
+                img.style.width = "40px";
+                img.src = imageUrl;
+                a.className = "l-child";
+                a.appendChild(img);
+                var nickname = document.createElement("div");
+                nickname.innerHTML = name;
+                nickname.className = "r-child";
+                div_list_item.appendChild(a);
+                div_list_item.appendChild(nickname);
+                div_list.appendChild(div_list_item);
+                var div = document.getElementById("chat");
+                div.scrollTop = div.scrollHeight - div.clientHeight;
+            }
         }
     </script>
 

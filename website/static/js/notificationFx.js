@@ -54,6 +54,7 @@
         request_username: '',
         request_user_id: '',
         request_user_imageUrl: '',
+        message_type: '',
         // the message
         message: 'yo!',
         // layout type: growl|attached|bar|other
@@ -69,7 +70,7 @@
         type: 'error',
         // if the user doesn´t close the notification then we remove it
         // after the following time
-        ttl: 60000,
+        ttl: 6000,
         // callbacks
         onClose: function () {
             return false;
@@ -101,7 +102,8 @@
         parent.appendChild(lchild);
         parent.appendChild(rchild);
         var strinner = '<span class="ns-close"></span></div>';
-        strinner += '<div><button class="ns-confirm" >Confirm</button><button class="ns-dismiss" >Dismiss</button></div>';
+        if (this.options.message_type === "request_add_friend")
+            strinner += '<div><button class="ns-confirm" >Confirm</button><button class="ns-dismiss" >Dismiss</button></div>';
         this.ntf.appendChild(parent);
         this.ntf.innerHTML += strinner;
 
@@ -129,14 +131,26 @@
         this.ntf.querySelector('.ns-close').addEventListener('click', function () {
             self.dismiss();
         });
-        this.ntf.querySelector('.ns-confirm').addEventListener('click', function () {
-            var event = new CustomEvent("confirm_add_event");
-            event.reply_person_id = self.options.request_user_id;
+        if (this.options.message_type === "request_add_friend") {
+            this.ntf.querySelector('.ns-confirm').addEventListener('click', function () {
+                var event = new CustomEvent("confirm_add_event");
+                event.reply_person_id = self.options.request_user_id;
+                document.dispatchEvent(event);
+                var event = new CustomEvent("agree_add_event");
+                event.reply_person_id = self.options.request_user_id;
 
-            // Dispatch/Trigger/Fire the event
-            document.dispatchEvent(event);
-        });
-    };
+                document.dispatchEvent(event);
+                self.dismiss();
+            });
+            this.ntf.querySelector('.ns-dismiss').addEventListener('click', function () {
+                var event = new CustomEvent("dismiss_add_event");
+                event.reply_person_id = self.options.request_user_id;
+                // Dispatch/Trigger/Fire the event
+                document.dispatchEvent(event);
+                self.dismiss();
+            });
+        }
+    }
 
     /**
      * show the notification

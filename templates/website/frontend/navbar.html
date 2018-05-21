@@ -1,27 +1,50 @@
 {% load staticfiles %}
+
 <script>
 
     var FriendSocket = new WebSocket(
         'ws://' + window.location.host +
         '/ws/friend/' + {{ myuser.id }} +'/');
     FriendSocket.onmessage = function (e) {
-        var data = JSON.parse(e.data);
-        var type = data['type'];
+        var d = e.data;
+        var arrayBuffer;
+        var fileReader = new FileReader();
+        fileReader.onload = function () {
+            //when load as array buffer succeed
+            arrayBuffer = this.result;
+            //turn this buffer as uint8 array buffer
+            var uint8Array = new Uint8Array(arrayBuffer);
+            //load protobuf.js to decode
+            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notification = root.lookupType("chat.Notification");
+                //decode it to object
+                var notificationDecoded = notification.decode(uint8Array);
+                var l = notificationDecoded.notificationItem;
+                for (var i = 0; i < l.length; i++) {
+                    if (l[i].type === 0) {//request add friend
+                        receive_request_add(l[i].fromClientName, l[i].fromClientId);
+                    }
+                    else if (l[i].type === 1) {//agree add friend
+                        receive_agree_add(l[i].toClientName, l[i].toClientId);
+                    }
+                    else if (l[i].type === 2) {//agree add friend
+                        receive_disagree_add(l[i].toClientName, l[i].toClientId);
+                    }
+                    else if (l[i].type === 3) {//request delete friend
+                        receive_request_delete(l[i].fromClientName, l[i].fromClientId);
+                    }
 
-        if (type === "request_add_friend") {
-            var request_person = data['request_person'];
-            var request_person_id = data['request_person_id'];
-            receive_request_add(request_person, request_person_id);
-        }
-        else if (type === "agree_add_friend") {
-            var reply_person = data['reply_person'];
-            var reply_person_id = data['reply_person_id'];
-            receive_agree_add(reply_person, reply_person_id);
-        }
+                }
+            });
+
+        };
+        //read binary data (BLob) as array buffer
+        fileReader.readAsArrayBuffer(d);
     };
 
     function receive_request_add(request_person, request_person_id) {
-
         var notification = new NotificationFx({
             request_username: request_person,
             request_user_id: request_person_id,
@@ -29,30 +52,95 @@
             message: ' is trying to be your friend',
             layout: 'attached',
             effect: 'bouncyflip',
-            type: 'notice', // notice, warning or error
-            onClose: function () {
-                bttn.disabled = false;
-            }
+            type: 'notice',// notice, warning or error
+            message_type: "request_add_friend"
         });
 
         // show the notification
         notification.show();
-
         document.addEventListener("confirm_add_event", function (e) {
-            FriendSocket.send(JSON.stringify({
-                'type': "agree_add_friend",
-                'group': request_person_id,
-                'reply_person': {{ myuser.id }},
-                'request_person': request_person_id
-            }));
+            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notificationItem = root.lookupType("chat.NotificationItem");
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {type: 1, fromClientId: request_person_id, toClientId: {{ myuser.id }}};
+                var message = notificationItem.create(payload);
+                var buffer = notificationItem.encode(message).finish();
+                FriendSocket.send(buffer);
+
+            });
+        });
+        document.addEventListener("dismiss_add_event", function (e) {
+            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notificationItem = root.lookupType("chat.NotificationItem");
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {type: 2, fromClientId: request_person_id, toClientId: {{ myuser.id }}};
+                var message = notificationItem.create(payload);
+                var buffer = notificationItem.encode(message).finish();
+                FriendSocket.send(buffer);
+
+            });
         });
 
     }
 
     function receive_agree_add(reply_person, reply_person_id) {
-        confirm(reply_person + " agrees to add you as friend");
+        var notification = new NotificationFx({
+            request_username: reply_person,
+            request_user_id: reply_person_id,
+            request_user_imageUrl: '',
+            message: ' agrees to add you as friend"',
+            layout: 'attached',
+            effect: 'bouncyflip',
+            type: 'notice'// notice, warning or error
+        });
+
+        // show the notification
+        notification.show();
         var event = new CustomEvent("agree_add_event");
         event.reply_person_id = reply_person_id;
+
+        // Dispatch/Trigger/Fire the event
+        document.dispatchEvent(event);
+
+    }
+
+    function receive_disagree_add(reply_person, reply_person_id) {
+        var notification = new NotificationFx({
+            request_username: reply_person,
+            request_user_id: reply_person_id,
+            request_user_imageUrl: '',
+            message: ' disagrees to add you as friend"',
+            layout: 'attached',
+            effect: 'bouncyflip',
+            type: 'notice'// notice, warning or error
+        });
+
+        // show the notification
+        notification.show();
+
+    }
+
+    function receive_request_delete(request_person, request_person_id) {
+        var notification = new NotificationFx({
+            request_username: request_person,
+            request_user_id: request_person_id,
+            request_user_imageUrl: '',
+            message: ' deletes you as friend"',
+            layout: 'attached',
+            effect: 'bouncyflip',
+            type: 'notice'// notice, warning or error
+        });
+
+        // show the notification
+        notification.show();
+        var event = new CustomEvent("delete_event");
+        event.request_person_id = request_person_id;
 
         // Dispatch/Trigger/Fire the event
         document.dispatchEvent(event);
