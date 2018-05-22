@@ -136,9 +136,9 @@
                 var event = new CustomEvent("confirm_add_event");
                 event.reply_person_id = self.options.request_user_id;
                 document.dispatchEvent(event);
+                var event = new CustomEvent("agree_add_event");
+                event.reply_person_id = self.options.request_user_id;
 
-                event = new CustomEvent("agree_add_event");
-                event.reply_person_id = self.options.reply_person_id;
                 document.dispatchEvent(event);
                 self.dismiss();
             });

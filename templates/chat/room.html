@@ -22,6 +22,101 @@
     </style>
     <head>
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            ul li {
+                list-style: none;
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            #easyEditor {
+
+                height: 100px;
+                box-shadow: 0px 0px 20px 4px #aaa;
+                border-radius: 10px;
+                padding: 4px;
+                margin: 0 auto;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                ime-mode: active;
+            }
+
+            #nav {
+                width: 500px;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+
+            #nav > div {
+                float: left;
+            }
+
+            #emoji {
+                width: 30px;
+                height: 30px;
+                position: relative;
+            }
+
+            #emoji .emoji_btn {
+                width: 100%;
+                cursor: pointer;
+            }
+
+            .clearfloat {
+                zoom: 1;
+            }
+
+            .clearfloat:after {
+                content: "";
+                display: block;
+                height: 0;
+                visibility: hidden;
+                clear: both;
+            }
+
+            #emoji_list {
+                width: 280px;
+                height: 85px;
+                padding: 4px;
+                position: absolute;
+                top: -100px;
+                left: 0;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                display: none;
+                background-color: #fff;
+            }
+
+            #emoji_list li {
+                width: 30px;
+                height: 24px;
+                text-align: center;
+                float: left;
+                cursor: pointer;
+                overflow: hidden;
+            }
+
+            #at,
+            #getHtml,
+            #getText {
+                height: 30px;
+                line-height: 30px;
+                margin-left: 15px;
+            }
+
+            #show {
+                width: 500px;
+                margin: 0 auto;
+                word-break: break-all;
+            }
+
             /* bubble style */
             .left {
                 clear: both;
@@ -105,13 +200,47 @@
     <body>
     <div style="height: 100%;">
         <div id="chat"
-             style="border: 1px solid black;width: 90% ; height: 600px; overflow-y: scroll;margin: 10px auto;"></div>
-        <div style="width: 40% ;margin: 10px auto;"><input id="chat-message-input" type="text"
-                                                           align="center" style="width: 80% ;"/><input
-                id="chat-message-submit" type="button" value="Send"/>
+             style="border: 1px solid black;width: 90% ; height: 450px; overflow-y: scroll;margin: 10px auto;"></div>
+        <div style="width: 90% ;margin: 10px auto;">
+            <div id="emoji">
+                <ul id="emoji_list" style="z-index: 999">
+                    <li><img src="{% static "emoji/1.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/2.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/3.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/4.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/5.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/6.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/7.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/8.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/9.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/10.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/11.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/12.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/13.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/14.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/15.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/16.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/17.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/18.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/19.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/20.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/21.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/22.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/23.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/24.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/25.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/26.gif" %}" alt=""/></li>
+                    <li><img src="{% static "emoji/27.gif" %}" alt=""/></li>
+                </ul>
+                <img id="emoji_btn" class="emoji_btn" src="{% static "emoji/1.gif" %}" alt="" title="插入表情"/>
+            </div>
+            <div id="easyEditor"></div>
+            <input id="chat-message-submit" type="button" value="Send"
+                   style="float: right;top: -40px;position: relative;margin: 5px;"/>
             <br/>
         </div>
     </div>
+
     </body>
 {% endblock %}
 
@@ -119,8 +248,79 @@
     <div id="online_list">online user list</div>
 {% endblock %}
 {% block front_js %}
-    <script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
+    <script src="{% static "js/easyEditor.min.js" %}"></script>
 
+    <script>
+        var editor = easyEditor('easyEditor');
+
+        //表情
+        var emojiBtn = document.getElementById('emoji_btn');
+        var emojiBox = document.getElementById('emoji_list');
+        var emojiList = emojiBox.getElementsByTagName('img');
+        //辦定事件添加表情
+        for (var i = 0; i < emojiList.length; i++) {
+            emojiList[i].alt = i + 1;
+            addEvent(emojiList[i], 'click', function () {
+                var src = this.getAttribute('src');
+                var alt = this.getAttribute('alt');
+                editor.insertEmoji({
+                    src: src,
+                    remark: alt
+
+                }); //添加表情
+            });
+        }
+
+
+        //At人
+
+        //表情面板顯示
+        addEvent(emojiBtn, 'click', function () {
+            emojiBox.style.display = 'block';
+        });
+        //表情面板消失
+        maskClick(emojiBox, function () {
+            emojiBox.style.display = 'none';
+        });
+
+        function maskClick(el, func) {
+            var str = str == undefined ? 'maskClick' : str;
+            addEvent(document, 'mouseup', function (event) {
+                var event = event || window.event;
+                var target = event.target;
+                if (!isParent(target, el)) {
+                    func && func();
+                }
+            });
+        }
+
+        function isParent(obj, parentObj) {
+            while (obj != undefined && obj != null && obj.tagName != 'HTML' && obj.tagName.toUpperCase() != 'BODY') {
+                if (obj == parentObj) {
+                    return true;
+                }
+                obj = obj.parentNode;
+            }
+            return false;
+        }
+
+        //事件辦定
+        function addEvent(element, type, callback) {
+            if (element.addEventListener) {
+                element.addEventListener(type, callback, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + type, callback)
+            }
+        }
+
+        $("#easyEditor").keydown(function (event) {
+
+            if (event.ctrlKey && event.which === 13) {
+                 document.querySelector('#chat-message-submit').onclick();
+
+            }
+        });
         //set root name
         var roomName = {{ room_name_json }};
         //establish WebSocket based on this specifc room name
@@ -152,13 +352,12 @@
                             var cl = chatMessageDecoded.currentClient;
                             for (var i = 0; i < cl.length; i++) {
                                 addToList(cl[i].clientName, cl[i].clientId, cl[i].imageUrl);
-
                             }
 
                         }
                         for (i = 0; i < l.length; i++) {//add chat message
                             var isAuthor = l[i].clientId ==={{ user.id }};
-                            addToChat(l[i].clientName, l[i].clientId, l[i].imageUrl, l[i].message, "", isAuthor);
+                            addToChat(l[i].clientName, l[i].clientId, l[i].imageUrl, convertToHtml(l[i].message), "", isAuthor);
 
                         }
                     } else if (type === 1) {
@@ -181,7 +380,6 @@
 
                     }
                 });
-
             };
             //read binary data (BLob) as array buffer
             fileReader.readAsArrayBuffer(d);
@@ -191,16 +389,11 @@
         chatSocket.onclose = function (e) {
             console.error('Chat socket closed unexpectedly');
         };
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function (e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
+
         //submit
         document.querySelector('#chat-message-submit').onclick = function (e) {
             var messageInputDom = document.querySelector('#chat-message-input');
-            var m = messageInputDom.value;
+            var m = editor.getContent(true);
             var id ={{ user.id }};
             protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
                 if (err)
@@ -214,8 +407,54 @@
                 chatSocket.send(buffer);
 
             });
-            messageInputDom.value = '';
+            document.getElementById("easyEditor").innerHTML = "";
         };
+
+        function fireKeyEvent(el, evtType, keyCode) {
+            var doc = el.ownerDocument,
+                win = doc.defaultView || doc.parentWindow,
+                evtObj;
+            if (doc.createEvent) {
+                if (win.KeyEvent) {
+                    evtObj = doc.createEvent('KeyEvents');
+                    evtObj.initKeyEvent(evtType, true, true, win, false, false, false, false, keyCode, 0);
+                }
+                else {
+                    evtObj = doc.createEvent('UIEvents');
+                    Object.defineProperty(evtObj, 'keyCode', {
+                        get: function () {
+                            return this.keyCodeVal;
+                        }
+                    });
+                    Object.defineProperty(evtObj, 'which', {
+                        get: function () {
+                            return this.keyCodeVal;
+                        }
+                    });
+                    evtObj.initUIEvent(evtType, true, true, win, 1);
+                    evtObj.keyCodeVal = keyCode;
+                    if (evtObj.keyCode !== keyCode) {
+                        console.log("keyCode " + evtObj.keyCode + " 和 (" + evtObj.which + ") 不匹配");
+                    }
+                }
+                el.dispatchEvent(evtObj);
+            }
+            else if (doc.createEventObject) {
+                evtObj = doc.createEventObject();
+                evtObj.keyCode = keyCode;
+                el.fireEvent('on' + evtType, evtObj);
+            }
+        }
+
+        function convertToHtml(m) {
+            return m.replace(/\|(\d+)\|/g, function (match, group1) {
+                if (parseInt(group1) < 28 && parseInt(group1) > 0)
+                    return '<img src="/static/emoji/' + group1 + '.gif">';
+                else return '|' + group1 + '|'
+            });
+
+
+        }
 
         function addToChat(author, author_id, imageUrl, text, time, isAuthor) {
 
