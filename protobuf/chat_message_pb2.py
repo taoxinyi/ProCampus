@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='chat_message.proto',
   package='chat',
   syntax='proto3',
-  serialized_pb=_b('\n\x12\x63hat_message.proto\x12\x04\x63hat\"Z\n\x0f\x43hatMessageItem\x12\x10\n\x08\x63lientId\x18\x01 \x01(\x05\x12\x12\n\nclientName\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\x12\x10\n\x08imageUrl\x18\x04 \x01(\t\"\xd2\x01\n\x0b\x43hatMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.chat.ChatMessage.Type\x12\x30\n\x11\x63hat_message_item\x18\x02 \x03(\x0b\x32\x15.chat.ChatMessageItem\x12-\n\x0e\x63urrent_client\x18\x03 \x03(\x0b\x32\x15.chat.ChatMessageItem\"<\n\x04Type\x12\x10\n\x0c\x43HAT_MESSAGE\x10\x00\x12\x10\n\x0c\x43LIENT_ENTER\x10\x01\x12\x10\n\x0c\x43LIENT_LEAVE\x10\x02\x62\x06proto3')
+  serialized_pb=_b('\n\x12\x63hat_message.proto\x12\x04\x63hat\"\xa2\x01\n\x0f\x43hatMessageItem\x12\x10\n\x08\x63lientId\x18\x01 \x01(\x05\x12\x12\n\nclientName\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\x12\x10\n\x08imageUrl\x18\x04 \x01(\t\x12\x11\n\ttimeStamp\x18\x05 \x01(\x05\x12\x0f\n\x07\x66ileUrl\x18\x06 \x01(\t\x12\x10\n\x08\x66ileSize\x18\x07 \x01(\x05\x12\x10\n\x08\x66ileName\x18\x08 \x01(\t\"\xd2\x01\n\x0b\x43hatMessage\x12$\n\x04type\x18\x01 \x01(\x0e\x32\x16.chat.ChatMessage.Type\x12\x30\n\x11\x63hat_message_item\x18\x02 \x03(\x0b\x32\x15.chat.ChatMessageItem\x12-\n\x0e\x63urrent_client\x18\x03 \x03(\x0b\x32\x15.chat.ChatMessageItem\"<\n\x04Type\x12\x10\n\x0c\x43HAT_MESSAGE\x10\x00\x12\x10\n\x0c\x43LIENT_ENTER\x10\x01\x12\x10\n\x0c\x43LIENT_LEAVE\x10\x02\x62\x06proto3')
 )
 
 
@@ -45,8 +45,8 @@ _CHATMESSAGE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=271,
-  serialized_end=331,
+  serialized_start=344,
+  serialized_end=404,
 )
 _sym_db.RegisterEnumDescriptor(_CHATMESSAGE_TYPE)
 
@@ -86,6 +86,34 @@ _CHATMESSAGEITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='timeStamp', full_name='chat.ChatMessageItem.timeStamp', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fileUrl', full_name='chat.ChatMessageItem.fileUrl', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fileSize', full_name='chat.ChatMessageItem.fileSize', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='fileName', full_name='chat.ChatMessageItem.fileName', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -98,8 +126,8 @@ _CHATMESSAGEITEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28,
-  serialized_end=118,
+  serialized_start=29,
+  serialized_end=191,
 )
 
 
@@ -144,8 +172,8 @@ _CHATMESSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=121,
-  serialized_end=331,
+  serialized_start=194,
+  serialized_end=404,
 )
 
 _CHATMESSAGE.fields_by_name['type'].enum_type = _CHATMESSAGE_TYPE

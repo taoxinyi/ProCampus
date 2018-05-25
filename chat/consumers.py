@@ -1,4 +1,7 @@
 # chat/consumers.py
+import datetime
+import os
+
 from channels.generic.websocket import AsyncWebsocketConsumer
 from django.contrib.auth.models import User
 
@@ -20,8 +23,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.username = self.get_username()
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
-
         self.room_object = await self.save_group()
+
+        self.file_size = 0
+        self.current_size = 0
+        self.filename = ""
+        self.current_bytes = b""
         # Join room group
         await self.channel_layer.group_add(
             self.room_group_name,
@@ -74,24 +81,62 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, bytes_data):
-        chat_message = ChatMessage.ChatMessageItem()
-        chat_message.ParseFromString(bytes_data)
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {'type': 'chat_message',
-             'protobuf': bytes_data}
-        )
-        await  self.save_history(chat_message.message)
+        chat_message_item = ChatMessage.ChatMessageItem()
+        try:
+            chat_message_item.ParseFromString(bytes_data)
+            if chat_message_item.fileSize > 0:
+                self.file_size = chat_message_item.fileSize
+                self.current_size = 0
+                self.filename = chat_message_item.fileName
+            else:
+                chat_message_item.timeStamp = int(datetime.datetime.now().timestamp())
+                bytes_data = chat_message_item.SerializeToString()
+
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {'type': 'chat_message',
+                     'protobuf': bytes_data}
+                )
+                await  self.save_history(chat_message_item.message)
+        except Exception:
+            self.current_size += len(bytes_data)
+            self.current_bytes += bytes_data
+
+            if self.current_size == self.file_size:
+                directory = os.path.join("media", "user", str(self.myuser.id))
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+                file_rename = self.filename.split('.')[0] + \
+                              datetime.datetime.now().strftime("_%Y%m%d%H%M%S.") + \
+                              self.filename.split('.')[1] \
+                    if '.' in self.filename else self.filename + datetime.datetime.now().strftime(
+                    "_%Y%m%d%H%M%S")
+
+                file_url = os.path.join(directory, file_rename)
+                test_file = open(file_url, "wb")
+                test_file.write(self.current_bytes)
+                test_file.close()
+                await self.save_history(is_file=True, file_name=self.filename, file_size=self.file_size,
+                                        file_url=file_url)
+                self.current_bytes = b""
+                self.current_size = ""
+                chat_message_item.timeStamp = int(datetime.datetime.now().timestamp())
+                chat_message_item.clientId = self.user.id
+                chat_message_item.fileName = self.filename
+                chat_message_item.fileSize = self.file_size
+                chat_message_item.fileUrl = file_url
+                bytes_data = chat_message_item.SerializeToString()
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {'type': 'chat_message',
+                     'protobuf': bytes_data}
+                )
 
     # Receive message from room group
     async def chat_message(self, event):
         chat_message_item = ChatMessage.ChatMessageItem()
         chat_message_item.ParseFromString(event['protobuf'])
-        message = chat_message_item.message
         author_id = chat_message_item.clientId
-        isAuthor = "0"
-        if self.user.is_authenticated and author_id == self.user.id:
-            isAuthor = "1"
         if author_id == 0:
             image = '/static/image/default.png'
         else:
@@ -103,6 +148,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_message.type = 0
         chat_message.chat_message_item.extend([chat_message_item])
         b = chat_message.SerializeToString()
+        chat_message.ParseFromString(b)
         # Send message to WebSocket
         await self.send(bytes_data=b)
 
@@ -145,15 +191,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return ChatRoomGroup.objects.get_or_create(name=self.room_group_name)[0]
 
     @database_sync_to_async
-    def save_history(self, history):
+    def save_history(self, history=None, is_file=False, file_name=None, file_size=None, file_url=None):
 
-        """
-        save to db
-        :param history:
-        :return:
-        """
         group = ChatRoomGroup.objects.get(name=self.room_group_name)
-        ChatHistory.objects.create(room_group=group, history=history, user=self.myuser)
+        if (is_file):
+            ChatHistory.objects.create(room_group=group, user=self.myuser, file_name=file_name,
+                                       file_size=file_size, file_url=file_url)
+        else:
+            ChatHistory.objects.create(room_group=group, history=history, user=self.myuser)
 
     @database_sync_to_async
     def get_history(self):
@@ -161,10 +206,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_message.type = ChatMessage.ChatMessage.CHAT_MESSAGE
         for i in ChatRoomGroup.objects.get(name=self.room_group_name).chathistory_set.all():
             chat_message_item = chat_message.chat_message_item.add()
-            chat_message_item.message = i.history
+            if i.file_size:
+                chat_message_item.fileName = i.file_name
+                chat_message_item.fileUrl = i.file_url
+                chat_message_item.fileSize = i.file_size
+            else:
+                try:
+                    chat_message_item.message = i.history
+                except Exception:
+                    chat_message_item.message = ""
             chat_message_item.clientId = i.user.user.id if i.user else 0
             chat_message_item.imageUrl = self.get_user_image_url(
                 i.user.user) if i.user else '/static/image/default.png'
+            chat_message_item.timeStamp = int(i.time.timestamp())
             chat_message_item.clientName = i.user.nickname if i.user else "Anonymous"
         for current_user in self.room_object.myuser_set.all():
             current_client = chat_message.current_client.add()
@@ -290,7 +344,6 @@ class FriendConsumer(AsyncWebsocketConsumer):
         notification_item.fromClientName = request_person.nickname
         notification = Notification.Notification()
         notification.notification_item.extend([notification_item])
-        print (notification)
         s = notification.SerializeToString()
         await self.send(bytes_data=s)
 
@@ -303,6 +356,7 @@ class FriendConsumer(AsyncWebsocketConsumer):
         request_person = MyUser.objects.get(id=request_person_id)
         reply_person = MyUser.objects.get(id=reply_person_id)
         request_person.friend.add(reply_person)
+
     @database_sync_to_async
     def delete_friends(self, request_person_id, reply_person_id):
         request_person = MyUser.objects.get(id=request_person_id)

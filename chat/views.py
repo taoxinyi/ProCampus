@@ -18,11 +18,14 @@ def room(request, room_name):
     })
 
 
-class ChatIndexView(FrontMixin, TemplateView):
+class ChatIndexView(LoginRequiredMixin, FrontMixin, TemplateView):
     template_name = 'chat/index.html'
+    login_url = reverse_lazy('user-login')
 
     def get_context_data(self, **kwargs):
         context = super(ChatIndexView, self).get_context_data(**kwargs)
+        context['friend_list'] = self.request.user.myuser.friend.all()
+
         return context
 
 

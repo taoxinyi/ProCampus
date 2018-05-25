@@ -4,12 +4,25 @@
 {% block external_header %}
 {% endblock %}
 {% block left %}
-    <body>
-    What chat room would you like to enter?<br/>
-    <div><input id="room-name-input" type="text" /><br/>
-        <input id="room-name-submit" type="button" value="Enter"/></div>
-    </body>
+
+    <div class="article">
+
+        What chat room would you like to enter?<br/>
+        <div><input id="room-name-input" type="text"/><br/>
+            <input id="room-name-submit" type="button" value="Enter"/></div>
+        <div>Explore where your friends are
+            {% for friend in friend_list %}
+                {% for chat_room in friend.chat_room.all %}
+                    <div>{{ friend.nickname }}</div>
+                    <div>{{ chat_room.name }}</div>
+
+                {% endfor %}
+
+            {% endfor %}</div>
+
+    </div>
     <script>
+
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function (e) {
             if (e.keyCode === 13) {  // enter, return

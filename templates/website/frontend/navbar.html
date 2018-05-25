@@ -5,44 +5,41 @@
     var FriendSocket = new WebSocket(
         'ws://' + window.location.host +
         '/ws/friend/' + {{ myuser.id }} +'/');
+    FriendSocket.binaryType = "arraybuffer";
+
     FriendSocket.onmessage = function (e) {
-        var d = e.data;
-        var arrayBuffer;
-        var fileReader = new FileReader();
-        fileReader.onload = function () {
-            //when load as array buffer succeed
-            arrayBuffer = this.result;
-            //turn this buffer as uint8 array buffer
-            var uint8Array = new Uint8Array(arrayBuffer);
-            //load protobuf.js to decode
-            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
-                if (err)
-                    throw err;
-                var notification = root.lookupType("chat.Notification");
-                //decode it to object
-                var notificationDecoded = notification.decode(uint8Array);
-                var l = notificationDecoded.notificationItem;
-                for (var i = 0; i < l.length; i++) {
-                    if (l[i].type === 0) {//request add friend
-                        receive_request_add(l[i].fromClientName, l[i].fromClientId);
-                    }
-                    else if (l[i].type === 1) {//agree add friend
-                        receive_agree_add(l[i].toClientName, l[i].toClientId);
-                    }
-                    else if (l[i].type === 2) {//agree add friend
-                        receive_disagree_add(l[i].toClientName, l[i].toClientId);
-                    }
-                    else if (l[i].type === 3) {//request delete friend
-                        receive_request_delete(l[i].fromClientName, l[i].fromClientId);
-                    }
-
+        var arrayBuffer = e.data;
+        //when load as array buffer succeed
+        //turn this buffer as uint8 array buffer
+        var uint8Array = new Uint8Array(arrayBuffer);
+        //load protobuf.js to decode
+        protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+            if (err)
+                throw err;
+            var notification = root.lookupType("chat.Notification");
+            //decode it to object
+            var notificationDecoded = notification.decode(uint8Array);
+            var l = notificationDecoded.notificationItem;
+            for (var i = 0; i < l.length; i++) {
+                if (l[i].type === 0) {//request add friend
+                    receive_request_add(l[i].fromClientName, l[i].fromClientId);
                 }
-            });
-
-        };
-        //read binary data (BLob) as array buffer
-        fileReader.readAsArrayBuffer(d);
+                else if (l[i].type === 1) {//agree add friend
+                    receive_agree_add(l[i].toClientName, l[i].toClientId);
+                }
+                else if (l[i].type === 2) {//agree add friend
+                    receive_disagree_add(l[i].toClientName, l[i].toClientId);
+                }
+                else if (l[i].type === 3) {//request delete friend
+                    receive_request_delete(l[i].fromClientName, l[i].fromClientId);
+                }
+            }
+        });
     };
+
+
+    //read binary data (BLob) as array buffer
+
 
     function receive_request_add(request_person, request_person_id) {
         var notification = new NotificationFx({

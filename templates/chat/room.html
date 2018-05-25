@@ -58,13 +58,13 @@
                 float: left;
             }
 
-            #emoji {
+            #emoji, #file_upload {
                 width: 30px;
                 height: 30px;
                 position: relative;
             }
 
-            #emoji .emoji_btn {
+            #emoji .emoji_btn, #file_btn {
                 width: 100%;
                 cursor: pointer;
             }
@@ -81,22 +81,21 @@
                 clear: both;
             }
 
-            #emoji_list {
-                width: 280px;
-                height: 85px;
-                padding: 4px;
+            #emoji_list, #file_box {
+                width: 350px;
+                height: 200px;
                 position: absolute;
-                top: -100px;
+                top: -700%;
                 left: 0;
-                border: 1px solid #ccc;
-                border-radius: 8px;
                 display: none;
                 background-color: #fff;
+                box-shadow: 0px 0px 2px 2px #aaa;
+
             }
 
             #emoji_list li {
-                width: 30px;
-                height: 24px;
+                width: 36px;
+                height: 30px;
                 text-align: center;
                 float: left;
                 cursor: pointer;
@@ -117,9 +116,15 @@
                 word-break: break-all;
             }
 
+            .div_outside_bubble {
+                overflow: hidden;
+                margin: 0 10px;
+            }
+
             /* bubble style */
             .left {
                 clear: both;
+                overflow: hidden;
 
             }
 
@@ -130,7 +135,7 @@
             .left div:nth-of-type(2) {
                 background-color: aquamarine;
                 float: left;
-                margin: 20px 20px 10px 15px;
+                margin: 20px 20px 5px 15px;
                 padding: 10px;
                 border-radius: 7px;
             }
@@ -143,6 +148,8 @@
 
             .right {
                 clear: both;
+                overflow: hidden;
+
             }
 
             .right div:nth-child(1) {
@@ -152,7 +159,7 @@
             .right div:nth-of-type(2) {
                 float: right;
                 background-color: gold;
-                margin: 20px 10px 10px 20px;
+                margin: 20px 10px 5px 20px;
                 padding: 10px;
                 border-radius: 7px;
             }
@@ -190,7 +197,7 @@
             }
 
             span {
-                max-width: 100px;
+                max-width: 160px;
                 display: block;
                 text-align: left;
                 word-wrap: break-word;
@@ -198,41 +205,48 @@
         </style>
     </head>
     <body>
+
     <div style="height: 100%;">
         <div id="chat"
              style="border: 1px solid black;width: 90% ; height: 450px; overflow-y: scroll;margin: 10px auto;"></div>
         <div style="width: 90% ;margin: 10px auto;">
-            <div id="emoji">
-                <ul id="emoji_list" style="z-index: 999">
-                    <li><img src="{% static "emoji/1.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/2.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/3.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/4.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/5.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/6.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/7.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/8.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/9.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/10.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/11.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/12.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/13.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/14.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/15.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/16.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/17.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/18.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/19.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/20.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/21.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/22.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/23.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/24.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/25.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/26.gif" %}" alt=""/></li>
-                    <li><img src="{% static "emoji/27.gif" %}" alt=""/></li>
-                </ul>
-                <img id="emoji_btn" class="emoji_btn" src="{% static "emoji/1.gif" %}" alt="" title="插入表情"/>
+            <div style="display: flex">
+                <div id="emoji">
+                    <ul id="emoji_list" style="z-index: 999">
+                        <div style="display:flex;background: lightgray;">
+                        <span id="s1" onclick="changeTab('1')"
+                              style="cursor: pointer;padding: 10px;background-color: white">QQ</span>
+                            <span id="s2" onclick="changeTab('2')" style="cursor: pointer;padding: 10px">微博</span>
+                            <span id="s3" onclick="changeTab('3')" style="cursor: pointer;padding: 10px">微信</span>
+                            <span id="s4" onclick="changeTab('4')" style="cursor: pointer;padding: 10px">酷安</span>
+
+                        </div>
+                        <div style="margin-top: 5px">
+                            <div id="content1" style="display: block;height:150px;overflow-y: auto">
+                            </div>
+                            <div id="content2" style="display: none;height:150px;overflow-y: auto">
+                            </div>
+                            <div id="content3" style="display: none;height:150px;overflow-y: auto">
+                            </div>
+                            <div id="content4" style="display: none;height:150px;overflow-y: auto">
+                            </div>
+                        </div>
+                    </ul>
+                    <img id="emoji_btn" class="emoji_btn" src="{% static "emoji/1_1.gif" %}" title="插入表情"/>
+                </div>
+                <div id="file_upload">
+                    <img id="file_btn" src="{% static "image/file.png" %}" title="upload" width="30px"/>
+                    <div id="file_box">
+                        <div class="panel-heading">Transfer FIle</div>
+                        <div class="panel-body">
+                            <input type="file" id="file"/><br/>
+                            <input type="button" value="中止" onclick="stop();"/>
+                            <input type="button" value="继续" onclick="containue();"/>
+                            <progress id="progressOne" style="width:100%;" max="100" value="0"></progress>
+                            <p id="Status" style="word-break:break-all;"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="easyEditor"></div>
             <input id="chat-message-submit" type="button" value="Send"
@@ -250,27 +264,239 @@
 {% block front_js %}
     <link rel="stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
     <script src="{% static "js/easyEditor.min.js" %}"></script>
-
     <script>
-        var editor = easyEditor('easyEditor');
+        protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
+            if (err)
+                throw err;
+            var chatMessage = root.lookupType("chat.ChatMessage");
+            var chatMessageItem = root.lookupType("chat.ChatMessageItem");
+            var roomName = {{ room_name_json }};
+            //establish WebSocket based on this specifc room name
+            var chatSocket = new WebSocket(
+                'ws://' + window.location.host +
+                '/ws/chat/' + roomName + '/');
+            //When the WebSocket received message
+            chatSocket.binaryType = "arraybuffer";
 
+            chatSocket.onmessage = function (e) {
+                var arrayBuffer = e.data;
+
+                //turn this buffer as uint8 array buffer
+                var uint8Array = new Uint8Array(arrayBuffer);
+                //decode it to object
+                try {
+                    var chatMessageDecoded = chatMessage.decode(uint8Array);
+                } catch (e) {
+                    if (e instanceof protobuf.util.ProtocolError) {
+                        console.log("missing");
+                    } else {
+                        alert("The file is uploaded, but the protobuf.js " +
+                            "library seems to struggle to parse protobuf message from the server.\n" +
+                            "From what I can tell, it's the bug of this library and it may happen randomly.\n" +
+                            "I apologize the inconvenience. \n" +
+                            "This page will refresh automatically in order to load correctly.");
+                        window.location.reload();
+                    }
+                }
+                var type = chatMessageDecoded.type;
+                //Somehow the first character of protobuf class name is converted to lower case.
+                var l = chatMessageDecoded.chatMessageItem;
+                if (type === 0) {//CHAT_MESSAGE
+                    if (chatMessageDecoded.currentClient.length !== 0) {//add current user list
+                        var cl = chatMessageDecoded.currentClient;
+                        for (var i = 0; i < cl.length; i++) {
+                            addToList(cl[i].clientName, cl[i].clientId, cl[i].imageUrl);
+                        }
+
+                    }
+                    for (i = 0; i < l.length; i++) {//add chat message
+                        var isAuthor = l[i].clientId ==={{ user.id }};
+                        addToChat(l[i].clientName, l[i].clientId, l[i].imageUrl,
+                            convertToHtml(l[i].message), formatDate(l[i].timeStamp * 1000),
+                            l[i].fileSize, l[i].fileName, l[i].fileUrl, isAuthor);
+
+                    }
+                } else if (type === 1) {
+                    l = chatMessageDecoded.chatMessageItem[0];
+                    var p = document.createElement("p");
+                    p.innerText = l.clientName + " enters this room";
+                    p.style.textAlign = "center";
+                    document.getElementById("chat").appendChild(p);
+                    addToList(l.clientName, l.clientId, l.imageUrl);
+
+                } else if (type === 2) {
+                    l = chatMessageDecoded.chatMessageItem[0];
+                    p = document.createElement("p");
+                    p.innerText = l.clientName + " has left this room";
+                    p.style.marginTop = "70px";
+                    p.style.textAlign = "center";
+                    document.getElementById("chat").appendChild(p);
+                    deleteFromList(l.clientId);
+
+                }
+
+
+            };
+            chatSocket.onclose = function (e) {
+                console.error('Chat socket closed unexpectedly');
+            };
+
+            //submit
+            document.querySelector('#chat-message-submit').onclick = function (e) {
+                var m = editor.getContent(true);
+                if (m === "") return;
+                var id ={{ user.id }};
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {clientId: id, message: m};
+                var message = chatMessageItem.create(payload);
+                var buffer = chatMessageItem.encode(message).finish();
+                chatSocket.send(buffer);
+                document.getElementById("easyEditor").innerHTML = "";
+            };
+            //below is to handle file upload
+            var fileBox = document.getElementById('file');
+            var reader = null;  //读取操作对象
+            var step = 1024 * 2048;  //每次读取文件大小 ,字节数
+            var cuLoaded = 0; //当前已经读取总数
+            var file = null; //当前读取的文件对象
+            var enableRead = true;//标识是否可以读取文件
+            var total = 0;        //记录当前文件总字节数
+            var startTime = null; //标识开始上传时间
+            fileBox.onchange = function () {
+                //获取文件对象
+                file = this.files[0];
+                total = file.size;
+                if (total !== 0) {
+                    console.info("文件大小：" + file.size);
+                    bindReader();
+                }
+
+            };
+
+            //绑定reader
+            function bindReader() {
+                cuLoaded = 0;
+                startTime = new Date();
+                enableRead = true;
+                reader = new FileReader();
+                //读取一段成功
+                reader.onload = function (e) {
+                    console.info('读取总数：' + e.loaded);
+                    if (enableRead === false)
+                        return false;
+                    //根据当前缓冲区来控制客户端读取速度
+                    /*if (chatSocket.bufferedAmount > step * 10) {
+                        setTimeout(function () {
+                            //继续读取
+                            console.log('--------------》进入等待');
+                            loadSuccess(e.loaded);
+                        }, 3);
+                    } else {
+                        //继续读取
+                        loadSuccess(e.loaded);
+                    }*/
+                    loadSuccess(e.loaded);
+                };
+                //开始读取
+                readBlob();
+            }
+
+            //读取文件成功处理
+            function loadSuccess(loaded) {
+                //将分段数据上传到服务器
+                var blob = reader.result;
+                //使用WebSocket 服务器发送数据
+                if (cuLoaded === 0) {
+                    //发送文件名
+                    //Somehow the first character of protobuf class name is converted to lower case.
+                    //default type is 0, no need to write.
+                    var payload = {fileName: file.name, fileSize: total};
+                    var message = chatMessageItem.create(payload);
+                    var buffer = chatMessageItem.encode(message).finish();
+                    chatSocket.send(buffer);
+                }
+                chatSocket.send(blob);
+                //如果没有读完，继续
+                cuLoaded += loaded;
+                if (cuLoaded < total) {
+                    readBlob();
+                } else {
+                    console.log('总共上传：' + cuLoaded + ',总共用时：' + (new Date().getTime() - startTime.getTime()) / 1000);
+                }
+                //显示结果进度
+                var percent = (cuLoaded / total) * 100;
+                document.getElementById('Status').innerText = percent;
+                document.getElementById('progressOne').value = percent;
+            }
+
+            //指定开始位置，分块读取文件
+            function readBlob() {
+                //指定开始位置和结束位置读取文件
+                var blob = file.slice(cuLoaded, cuLoaded + step);
+                reader.readAsArrayBuffer(blob);
+            }
+
+            //中止
+            function stop() {
+                //中止读取操作
+                console.info('中止，cuLoaded：' + cuLoaded);
+                enableRead = false;
+                reader.abort();
+            }
+
+            //继续
+            function containue() {
+                console.info('继续，cuLoaded：' + cuLoaded);
+                enableRead = true;
+                readBlob();
+            }
+        });
+        var editor = easyEditor('easyEditor');
         //表情
         var emojiBtn = document.getElementById('emoji_btn');
         var emojiBox = document.getElementById('emoji_list');
-        var emojiList = emojiBox.getElementsByTagName('img');
         //辦定事件添加表情
-        for (var i = 0; i < emojiList.length; i++) {
-            emojiList[i].alt = i + 1;
-            addEvent(emojiList[i], 'click', function () {
-                var src = this.getAttribute('src');
-                var alt = this.getAttribute('alt');
-                editor.insertEmoji({
-                    src: src,
-                    remark: alt
-
-                }); //添加表情
-            });
+        for (i = 0; i < 59; i++) {
+            var content1 = document.getElementById("content1");
+            content1.innerHTML += "<li><img src=\"/static/emoji/1_" + i + ".gif\" ></li>"
         }
+        for (i = 0; i < 80; i++) {
+            var content1 = document.getElementById("content2");
+            content1.innerHTML += "<li><img src=\"/static/emoji/2_" + i + ".png\" ></li>"
+        }
+        for (i = 0; i < 6; i++) {
+            var content1 = document.getElementById("content3");
+            content1.innerHTML += "<li><img src=\"/static/emoji/3_" + i + ".png\" ></li>"
+        }
+        for (i = 0; i < 108; i++) {
+            var content1 = document.getElementById("content4");
+            content1.innerHTML += "<li><img src=\"/static/emoji/4_" + i + ".png\" ></li>"
+        }
+        for (var j = 1; j < 5; j++) {
+            var content = document.getElementById('content' + j);
+            var emojiList = content.getElementsByTagName('img');
+            for (var i = 0; i < emojiList.length; i++) {
+                emojiList[i].alt = j + "_" + i;
+                addEvent(emojiList[i], 'click', function () {
+                    var src = this.getAttribute('src');
+                    var alt = this.getAttribute('alt');
+                    editor.insertEmoji({
+                        src: src,
+                        remark: alt
+                    }); //添加表情
+                });
+
+            }
+        }
+        var lostFocus = function () {
+            setTimeout(function () {
+                var value = $('#easyEditor').val();
+                $('#easyEditor').val('').focus().val(value);
+            }, 0);
+        };
+
+        $('#easyEditor').blur(lostFocus);
 
 
         //At人
@@ -283,6 +509,16 @@
         maskClick(emojiBox, function () {
             emojiBox.style.display = 'none';
         });
+
+        var file_Btn = document.getElementById("file_btn");
+        var file_Box = document.getElementById("file_box")
+        addEvent(file_Btn, 'click', function () {
+            file_Box.style.display = 'block';
+        });
+        maskClick(file_Box, function () {
+            file_Box.style.display = 'none';
+        });
+
 
         function maskClick(el, func) {
             var str = str == undefined ? 'maskClick' : str;
@@ -317,146 +553,55 @@
         $("#easyEditor").keydown(function (event) {
 
             if (event.ctrlKey && event.which === 13) {
-                 document.querySelector('#chat-message-submit').onclick();
+                document.querySelector('#chat-message-submit').onclick();
 
             }
         });
-        //set root name
-        var roomName = {{ room_name_json }};
-        //establish WebSocket based on this specifc room name
-        var chatSocket = new WebSocket(
-            'ws://' + window.location.host +
-            '/ws/chat/' + roomName + '/');
-        //When the WebSocket received message
-        chatSocket.onmessage = function (e) {
-            var d = e.data;
-            var arrayBuffer;
-            var fileReader = new FileReader();
-            fileReader.onload = function () {
-                //when load as array buffer succeed
-                arrayBuffer = this.result;
-                //turn this buffer as uint8 array buffer
-                var uint8Array = new Uint8Array(arrayBuffer);
-                //load protobuf.js to decode
-                protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
-                    if (err)
-                        throw err;
-                    var chatMessage = root.lookupType("chat.ChatMessage");
-                    //decode it to object
-                    var chatMessageDecoded = chatMessage.decode(uint8Array);
-                    var type = chatMessageDecoded.type;
-                    //Somehow the first character of protobuf class name is converted to lower case.
-                    var l = chatMessageDecoded.chatMessageItem;
-                    if (type === 0) {//CHAT_MESSAGE
-                        if (chatMessageDecoded.currentClient.length !== 0) {//add current user list
-                            var cl = chatMessageDecoded.currentClient;
-                            for (var i = 0; i < cl.length; i++) {
-                                addToList(cl[i].clientName, cl[i].clientId, cl[i].imageUrl);
-                            }
 
-                        }
-                        for (i = 0; i < l.length; i++) {//add chat message
-                            var isAuthor = l[i].clientId ==={{ user.id }};
-                            addToChat(l[i].clientName, l[i].clientId, l[i].imageUrl, convertToHtml(l[i].message), "", isAuthor);
-
-                        }
-                    } else if (type === 1) {
-                        l = chatMessageDecoded.chatMessageItem[0];
-                        var p = document.createElement("p");
-                        p.innerText = l.clientName + " enters this room";
-                        p.style.marginTop = "70px";
-                        p.style.textAlign = "center";
-                        document.getElementById("chat").appendChild(p);
-                        addToList(l.clientName, l.clientId, l.imageUrl);
-
-                    } else if (type === 2) {
-                        l = chatMessageDecoded.chatMessageItem[0];
-                        p = document.createElement("p");
-                        p.innerText = l.clientName + " has left this room";
-                        p.style.marginTop = "70px";
-                        p.style.textAlign = "center";
-                        document.getElementById("chat").appendChild(p);
-                        deleteFromList(l.clientId);
-
-                    }
-                });
-            };
-            //read binary data (BLob) as array buffer
-            fileReader.readAsArrayBuffer(d);
-
-
-        };
-        chatSocket.onclose = function (e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        //submit
-        document.querySelector('#chat-message-submit').onclick = function (e) {
-            var messageInputDom = document.querySelector('#chat-message-input');
-            var m = editor.getContent(true);
-            var id ={{ user.id }};
-            protobuf.load("{% static "chat_message.proto" %}", function (err, root) {
-                if (err)
-                    throw err;
-                var chatMessage = root.lookupType("chat.ChatMessageItem");
-                //Somehow the first character of protobuf class name is converted to lower case.
-                //default type is 0, no need to write.
-                var payload = {clientId: id, message: m};
-                var message = chatMessage.create(payload);
-                var buffer = chatMessage.encode(message).finish();
-                chatSocket.send(buffer);
-
-            });
-            document.getElementById("easyEditor").innerHTML = "";
-        };
-
-        function fireKeyEvent(el, evtType, keyCode) {
-            var doc = el.ownerDocument,
-                win = doc.defaultView || doc.parentWindow,
-                evtObj;
-            if (doc.createEvent) {
-                if (win.KeyEvent) {
-                    evtObj = doc.createEvent('KeyEvents');
-                    evtObj.initKeyEvent(evtType, true, true, win, false, false, false, false, keyCode, 0);
-                }
-                else {
-                    evtObj = doc.createEvent('UIEvents');
-                    Object.defineProperty(evtObj, 'keyCode', {
-                        get: function () {
-                            return this.keyCodeVal;
-                        }
-                    });
-                    Object.defineProperty(evtObj, 'which', {
-                        get: function () {
-                            return this.keyCodeVal;
-                        }
-                    });
-                    evtObj.initUIEvent(evtType, true, true, win, 1);
-                    evtObj.keyCodeVal = keyCode;
-                    if (evtObj.keyCode !== keyCode) {
-                        console.log("keyCode " + evtObj.keyCode + " 和 (" + evtObj.which + ") 不匹配");
-                    }
-                }
-                el.dispatchEvent(evtObj);
-            }
-            else if (doc.createEventObject) {
-                evtObj = doc.createEventObject();
-                evtObj.keyCode = keyCode;
-                el.fireEvent('on' + evtType, evtObj);
-            }
-        }
 
         function convertToHtml(m) {
-            return m.replace(/\|(\d+)\|/g, function (match, group1) {
-                if (parseInt(group1) < 28 && parseInt(group1) > 0)
-                    return '<img src="/static/emoji/' + group1 + '.gif">';
-                else return '|' + group1 + '|'
+            return m.replace(/\|\d_(\d+)\|/g, function (match, group1) {
+                var category = match[1];
+                if (category === '1')
+                    if (parseInt(group1) < 60 && parseInt(group1) >= 0)
+                        return '<img src="/static/emoji/' + match.slice(1, -1) + '.gif" style="width:30px">';
+                    else return match;
+                else if (category === '2')
+                    return '<img src="/static/emoji/' + match.slice(1, -1) + '.png" style="width:30px">';
+                else if (category === '3')
+                    return '<img src="/static/emoji/' + match.slice(1, -1) + '.png" style="width:30px">';
+                else if (category === '4')
+                    return '<img src="/static/emoji/' + match.slice(1, -1) + '.png" style="width:30px">';
+
             });
 
 
         }
 
-        function addToChat(author, author_id, imageUrl, text, time, isAuthor) {
+        function changeTab(i) {
+            for (var j = 1; j < 5; j++) {
+                document.getElementById('content' + j).style.display = 'none';
+                document.getElementById('s' + j).style.backgroundColor = 'lightgray';
+            }
+            document.getElementById('content' + i).style.display = 'block';
+            document.getElementById('s' + i).style.backgroundColor = 'white';
+
+        }
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = (d.getMonth() + 1),
+                day = d.getDate(),
+                hour = d.getHours(),
+                minute = '' + d.getMinutes(),
+                second = '' + d.getSeconds();
+            if (minute.length < 2) minute = '0' + minute;
+            if (second.length < 2) second = '0' + second;
+
+            return [month, day].join('-') + " " + [hour, minute, second].join(':')
+        }
+
+        function addToChat(author, author_id, imageUrl, text, time, file_size, file_name, file_url, isAuthor) {
 
             var a = document.createElement("a");
             a.href = "/forum/question/user/" + author_id + "/list/";
@@ -464,8 +609,12 @@
             img.src = imageUrl;
             a.appendChild(img);
             var div_outside = document.createElement("div");
-            div_outside.style.padding = "10px";
+            div_outside.className = "div_outside_bubble";
             var div_img = document.createElement("div");
+            var small = document.createElement("small");
+            small.innerHTML = time;
+            div_outside.appendChild(small);
+
             if (author_id !== 0)
                 div_img.appendChild(a);
             else
@@ -475,7 +624,20 @@
             div_box.className = "box";
 
             var span_text = document.createElement("span");
-            span_text.innerHTML = text;
+            if (file_size > 0) {
+                a = document.createElement("a");
+                a.href = "/" + file_url;
+                a.target = "_blank";
+                if (file_name.match(/.(jpg|jpeg|png|gif)$/i)) {//is image, show directly
+                    img = new Image();
+                    img.src = "/" + file_url;
+                    a.appendChild(img);
+                } else
+                    a.innerHTML = file_name + "(" + bytesToSize(file_size) + ")";
+                span_text.appendChild(a);
+
+            } else
+                span_text.innerHTML = text;
 
             var p = document.createElement("p");
             p.className = "floattext";
@@ -496,6 +658,7 @@
 
             }
             else {
+                small.style.cssFloat = "right";
                 var div_right = document.createElement("div");
                 div_right.className = "right";
                 var div_right_tri = document.createElement("div");
@@ -544,6 +707,15 @@
                 var div = document.getElementById("chat");
                 div.scrollTop = div.scrollHeight - div.clientHeight;
             }
+        }
+
+        function bytesToSize(bytes) {
+            if (bytes === 0) return '0 B';
+            var k = 1000, // or 1024
+                sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                i = Math.floor(Math.log(bytes) / Math.log(k));
+
+            return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
         }
     </script>
 

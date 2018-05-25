@@ -28456,3 +28456,2331 @@ ValueError: I/O operation on closed file.
 [2018-05-22 14:18:51,504] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
 [2018-05-22 14:18:51,505] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
 [2018-05-22 14:18:51,507] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 08:50:05,613] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 08:50:05,615] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 08:50:05,617] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 08:50:11,054] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 08:50:11,055] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 08:50:11,056] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 08:51:49,037] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 08:51:49,039] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 08:51:49,040] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 09:02:43,579] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 09:02:43,584] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 09:02:43,587] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 09:17:44,845] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 09:17:44,851] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 09:17:44,854] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 09:18:31,556] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 09:18:31,557] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 09:18:31,561] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 09:19:22,459] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 09:19:22,461] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 09:19:22,464] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 09:48:16,694] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-23 09:48:27,368] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7f319009b4a8 method=GET uri=/static/emoji/0.gif clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-23 13:49:27,654] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:49:27,655] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:49:27,656] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:49:40,573] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:49:40,573] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:49:40,574] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:49:45,496] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:49:45,496] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:49:45,497] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:50:47,684] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:50:47,684] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:50:47,685] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:51:02,710] [ERROR] server : Exception inside application: 1527054661.772935 has type <class 'float'>, but expected one of: (<class 'int'>,)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 80, in receive
+    chat_message.timeStamp = datetime.datetime.now().timestamp()
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/python_message.py", line 662, in field_setter
+    new_value = type_checker.CheckValue(new_value)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/type_checkers.py", line 133, in CheckValue
+    raise TypeError(message)
+  1527054661.772935 has type <class 'float'>, but expected one of: (<class 'int'>,)
+[2018-05-23 13:51:31,795] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:51:31,795] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:51:31,796] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:52:30,465] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:52:30,466] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:52:30,466] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:52:41,588] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:52:41,589] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:52:41,590] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 13:53:43,868] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 13:53:43,868] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 13:53:43,869] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 20:00:29,787] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 20:00:29,788] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 20:00:29,790] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 20:00:44,872] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:00:47,472] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:00:47,877] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:13,222] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:13,925] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:14,329] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:14,928] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:14,986] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:15,931] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:16,046] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:16,935] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:20,326] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:20,944] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:21,563] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:21,947] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:26,103] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:26,960] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:36,352] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:36,984] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:53,156] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:54,013] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:58,613] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:01:59,023] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:03,081] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:04,033] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:05,742] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:06,043] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:10,897] [ERROR] base_events : Task exception was never retrieved
+future: <Task finished coro=<RedisChannelLayer.receive_loop() done, defined at /home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py:195> exception=ConnectionRefusedError(111, "Connect call failed ('127.0.0.1', 6379)")>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 202, in receive_loop
+    real_channel, message = await self.receive_single(general_channel)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 218, in receive_single
+    async with self.connection(index) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 20:02:11,079] [ERROR] server : Exception inside application: [Errno 111] Connect call failed ('127.0.0.1', 6379)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 188, in connect
+    self.channel_name
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 277, in group_add
+    async with self.connection(self.consistent_hash(group)) as connection:
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels_redis/core.py", line 447, in __aenter__
+    self.conn = await aioredis.create_redis(**self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/commands/__init__.py", line 177, in create_redis
+    loop=loop)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/connection.py", line 107, in create_connection
+    timeout, loop=loop)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/home/xytao/.local/lib/python3.5/site-packages/aioredis/stream.py", line 19, in open_connection
+    lambda: protocol, host, port, **kwds)
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 695, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.5/asyncio/base_events.py", line 682, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 402, in sock_connect
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/asyncio/selector_events.py", line 432, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+  [Errno 111] Connect call failed ('127.0.0.1', 6379)
+[2018-05-23 23:42:13,725] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-23 23:42:13,726] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-23 23:42:13,727] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-23 23:42:17,224] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-23 23:42:27,822] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7fd5005beb00 method=GET uri=/favicon.ico clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-24 14:50:50,897] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:50:50,897] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:50:50,898] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:53:20,848] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:53:20,849] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:53:20,850] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:53:47,144] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:53:47,145] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:53:47,145] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:54:19,766] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:54:19,766] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:54:19,767] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:55:07,758] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:55:07,759] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:55:07,761] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:55:11,031] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:55:11,032] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:55:11,034] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 14:55:34,432] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 14:55:34,433] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 14:55:34,434] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:05:57,099] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:05:57,099] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:05:57,101] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:05:59,877] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '()' from 'myuser.chat_room.all()'
+[2018-05-24 15:05:59,877] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/engine.py", line 144, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/engine.py", line 126, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loaders/base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 160, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 198, in compile_nodelist
+    return parser.parse()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 290, in do_extends
+    nodelist = parser.parse()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 233, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 483, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 481, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 815, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 454, in parse
+    raise self.error(token, e)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 452, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 568, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 668, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '()' from 'myuser.chat_room.all()'
+[2018-05-24 15:09:27,413] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:09:27,413] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:09:27,415] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:09:58,038] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:09:58,038] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:09:58,040] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:14:50,039] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:14:50,039] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:14:50,041] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:16:27,131] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:16:27,132] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:16:27,133] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:17:12,431] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:17:12,431] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:17:12,432] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:17:15,491] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:15,493] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:15,494] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:15,495] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:15,497] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:15,503] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 15:17:16,896] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 15:17:16,896] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 15:17:16,897] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 15:23:19,484] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'ManyRelatedManager' object is not iterable
+[2018-05-24 15:23:19,484] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'ManyRelatedManager' object is not iterable
+[2018-05-24 15:23:23,034] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'ManyRelatedManager' object is not iterable
+[2018-05-24 15:23:23,034] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 158, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = response.render()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 155, in render
+    return compiled_parent._render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/loader_tags.py", line 67, in render
+    result = block.nodelist.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 943, in render
+    bit = node.render_annotated(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/base.py", line 910, in render_annotated
+    return self.render(context)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'ManyRelatedManager' object is not iterable
+[2018-05-24 16:03:09,220] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 16:03:09,220] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 16:03:09,222] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 16:03:16,245] [ERROR] server : Exception inside application: 'FriendConsumer' object has no attribute 'channel_layer'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 56, in connect
+    a.channel_layer.group_send(
+  'FriendConsumer' object has no attribute 'channel_layer'
+[2018-05-24 16:04:24,189] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 16:04:24,190] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 16:04:24,191] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 16:04:32,233] [ERROR] server : Exception inside application: __init__() missing 1 required positional argument: 'scope'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 55, in connect
+    AsyncWebsocketConsumer().channel_layer.group_send(
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 159, in __init__
+    super().__init__(*args, **kwargs)
+  __init__() missing 1 required positional argument: 'scope'
+[2018-05-24 16:08:59,888] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 16:08:59,889] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 16:08:59,890] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 18:40:33,033] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 18:40:33,034] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 18:40:33,035] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 18:55:56,483] [ERROR] server : Exception inside application: receive() got an unexpected keyword argument 'text_data'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  receive() got an unexpected keyword argument 'text_data'
+[2018-05-24 19:00:52,006] [ERROR] server : Exception inside application: receive() got an unexpected keyword argument 'text_data'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  receive() got an unexpected keyword argument 'text_data'
+[2018-05-24 19:02:07,748] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:02:07,748] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:02:07,749] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:02:17,795] [ERROR] server : Exception inside application: receive() got an unexpected keyword argument 'text_data'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 194, in websocket_receive
+    await self.receive(text_data=message["text"])
+  receive() got an unexpected keyword argument 'text_data'
+[2018-05-24 19:06:01,519] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:06:01,520] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:06:01,521] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:06:56,626] [ERROR] server : Exception inside application: Tag had invalid wire type.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 84, in receive
+    chat_message.ParseFromString(bytes_data)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/message.py", line 185, in ParseFromString
+    self.MergeFromString(serialized)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/python_message.py", line 1083, in MergeFromString
+    if self._InternalParse(serialized, 0, length) != length:
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/python_message.py", line 1109, in InternalParse
+    new_pos = local_SkipField(buffer, new_pos, end, tag_bytes)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/decoder.py", line 850, in SkipField
+    return WIRETYPE_TO_SKIPPER[wire_type](buffer, pos, end)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/decoder.py", line 820, in _RaiseInvalidWireType
+    raise _DecodeError('Tag had invalid wire type.')
+  Tag had invalid wire type.
+[2018-05-24 19:08:28,911] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:08:28,912] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:08:28,913] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:09:32,461] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:09:32,462] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:09:32,464] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:10:54,989] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:10:54,990] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:10:54,991] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:14:07,729] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:14:07,730] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:14:07,731] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:14:56,800] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:14:56,801] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:14:56,803] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:16:19,898] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:16:19,898] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:16:19,899] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:16:30,921] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/media/user/chat/1.png'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 97, in receive
+    test_file = open("/media/user/chat/1.png", "wb")
+  [Errno 2] No such file or directory: '/media/user/chat/1.png'
+[2018-05-24 19:17:03,565] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:17:03,565] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:17:03,567] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:21:03,221] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:21:03,221] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:21:03,223] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:25:03,825] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:25:03,826] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:25:03,827] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 19:26:54,071] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 19:26:54,072] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 19:26:54,073] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:08:00,809] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:08:00,810] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:08:00,812] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:20:43,365] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:20:43,366] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:20:43,368] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:23:29,713] [ERROR] server : Exception inside application: User matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/django/QA/chat/consumers.py", line 112, in chat_message
+    image = self.get_user_image_url(User.objects.get(id=author_id))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  User matching query does not exist.
+[2018-05-24 20:28:44,268] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:28:44,268] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:28:44,269] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:28:48,658] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:28:48,659] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:28:48,660] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:36:43,836] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:36:43,836] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:36:43,837] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:42:41,166] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:42:41,167] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:42:41,173] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:42:50,215] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'current_size'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 102, in receive
+    self.current_size += len(bytes_data)
+  'ChatConsumer' object has no attribute 'current_size'
+[2018-05-24 20:43:59,745] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:43:59,745] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:43:59,747] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:44:05,825] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'current_size'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 102, in receive
+    print(self.current_size)
+  'ChatConsumer' object has no attribute 'current_size'
+[2018-05-24 20:44:35,887] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:44:35,888] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:44:35,889] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:45:32,495] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:45:32,496] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:45:32,497] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:49:12,861] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:49:12,862] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:49:12,863] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:50:41,142] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:50:41,143] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:50:41,144] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:53:40,585] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: 'media/chat/user/12/1527166419/嵌入式.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 112, in receive
+    "/" + self.filename, "wb")
+  [Errno 2] No such file or directory: 'media/chat/user/12/1527166419/嵌入式.pptx'
+[2018-05-24 20:57:11,975] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:57:11,975] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:57:11,977] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:57:34,102] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: 'media/chat/user/12/1527166653/嵌入式.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 112, in receive
+    "/" + self.filename, "wb+")
+  [Errno 2] No such file or directory: 'media/chat/user/12/1527166653/嵌入式.pptx'
+[2018-05-24 20:57:51,713] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:57:51,713] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:57:51,715] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 20:59:04,788] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 20:59:04,788] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 20:59:04,790] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:00:15,250] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:00:15,251] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:00:15,253] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:06:00,071] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:06:00,071] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:06:00,072] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:06:18,372] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:06:18,373] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:06:18,375] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:06:26,492] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:06:26,492] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:06:26,493] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:07:21,803] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:07:21,804] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:07:21,806] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:07:29,094] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:07:29,095] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:07:29,097] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:08:47,389] [ERROR] server : Exception inside application: Can't convert 'int' object to str implicitly
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 107, in receive
+    self.current_size += len(bytes_data)
+  Can't convert 'int' object to str implicitly
+[2018-05-24 21:14:16,807] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:14:16,807] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:14:16,808] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:14:19,725] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:14:19,726] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:14:19,727] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:14:49,900] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: 'media/chat/user/12答辩ppt.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 113, in receive
+    test_file = open("media/chat/user/"+str(self.myuser.id)+self.filename, "wb")
+  [Errno 2] No such file or directory: 'media/chat/user/12答辩ppt.pptx'
+[2018-05-24 21:15:03,360] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:15:03,361] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:15:03,363] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:16:19,892] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 21:16:19,893] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 21:16:19,894] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 21:17:30,105] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/media/chat/user/答辩ppt.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 113, in receive
+    test_file = open("/media/chat/user/"+self.filename, "wb")
+  [Errno 2] No such file or directory: '/media/chat/user/答辩ppt.pptx'
+[2018-05-24 21:18:09,198] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/media/chat/user/嵌入式.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 113, in receive
+    test_file = open("/media/chat/user/"+self.filename, "wb")
+  [Errno 2] No such file or directory: '/media/chat/user/嵌入式.pptx'
+[2018-05-24 22:06:53,264] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/media/chat/user/嵌入式-final.pptx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 113, in receive
+    test_file = open("/media/chat/user/"+self.filename, "wb")
+  [Errno 2] No such file or directory: '/media/chat/user/嵌入式-final.pptx'
+[2018-05-24 22:08:17,286] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/media/chat/user/TCP.IP路由技术卷一中文版.pdf'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 113, in receive
+    test_file = open("/media/chat/user/"+self.filename, "wb")
+  [Errno 2] No such file or directory: '/media/chat/user/TCP.IP路由技术卷一中文版.pdf'
+[2018-05-24 22:14:04,473] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:14:04,474] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:14:04,476] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:14:15,534] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: 'media/chat/user/1527171254/aircrack.docx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 118, in receive
+    test_file = open(packet_file, "wb")
+  [Errno 2] No such file or directory: 'media/chat/user/1527171254/aircrack.docx'
+[2018-05-24 22:14:48,549] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:14:48,550] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:14:48,552] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:14:54,673] [ERROR] server : Exception inside application: [Errno 2] No such file or directory: '/home/xytao/django/QA/media/chat/user/1527171294/aircrack.docx'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 119, in receive
+    test_file = open(packet_file, "wb")
+  [Errno 2] No such file or directory: '/home/xytao/django/QA/media/chat/user/1527171294/aircrack.docx'
+[2018-05-24 22:19:34,505] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:19:34,506] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:19:34,507] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:27:33,164] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:27:33,165] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:27:33,166] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:27:45,352] [ERROR] server : Exception inside application: name '_' is not defined
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 196, in websocket_receive
+    await self.receive(bytes_data=message["bytes"])
+  File "/home/xytao/django/QA/chat/consumers.py", line 119, in receive
+    os.path.join(directory, self.filename + _ + str(int(datetime.datetime.now().timestamp()))), "wb")
+  name '_' is not defined
+[2018-05-24 22:27:54,142] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:27:54,142] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:27:54,144] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:31:07,685] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:31:07,685] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:31:07,687] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:32:44,110] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:32:44,111] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:32:44,112] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:32:52,480] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:32:52,481] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:32:52,482] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:35:15,518] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:35:15,519] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:35:15,520] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:39:57,091] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:39:57,091] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:39:57,093] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:43:35,701] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:43:35,701] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:43:35,703] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:48:39,379] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:48:39,379] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:48:39,381] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:50:06,804] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:50:06,805] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:50:06,806] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:54:42,877] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:54:42,878] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:54:42,879] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 22:55:07,330] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 22:55:07,331] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 22:55:07,333] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:00:47,133] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:00:47,134] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:00:47,135] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:01:10,193] [ERROR] server : Exception inside application: None has type <class 'NoneType'>, but expected one of: (<class 'bytes'>, <class 'str'>)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 40, in connect
+    s = await  self.get_history()
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 110, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/db.py", line 13, in thread_handler
+    return super().thread_handler(loop, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/asgiref/sync.py", line 125, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/home/xytao/django/QA/chat/consumers.py", line 215, in get_history
+    chat_message_item.message = i.history
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/python_message.py", line 662, in field_setter
+    new_value = type_checker.CheckValue(new_value)
+  File "/usr/local/lib/python3.5/dist-packages/protobuf-3.5.1-py3.5.egg/google/protobuf/internal/type_checkers.py", line 177, in CheckValue
+    raise TypeError(message)
+  None has type <class 'NoneType'>, but expected one of: (<class 'bytes'>, <class 'str'>)
+[2018-05-24 23:04:42,123] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:04:42,124] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:04:42,127] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:04:42,357] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:04:42,358] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:04:42,359] [CRITICAL] server : Listen failure: Couldn't listen on 0.0.0.0:8000: [Errno 98] Address already in use.
+[2018-05-24 23:08:32,523] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:08:32,523] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:08:32,525] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:09:17,166] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:09:17,167] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:09:17,169] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:10:21,442] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:10:21,443] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:10:21,444] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:10:35,476] [ERROR] server : Exception inside application: User matching query does not exist.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/django/QA/chat/consumers.py", line 140, in chat_message
+    image = self.get_user_image_url(User.objects.get(id=author_id))
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+  User matching query does not exist.
+[2018-05-24 23:13:12,272] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:13:12,272] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:13:12,273] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:25:59,962] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:25:59,963] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:25:59,965] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:31:37,299] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:31:37,299] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:31:37,301] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:32:36,698] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:32:36,698] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:32:36,699] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:33:07,823] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:33:07,823] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:33:07,824] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:34:06,256] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-24 23:34:06,257] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-24 23:34:06,258] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-24 23:47:31,496] [ERROR] http_protocol : Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+StopIteration: <Queue maxsize=0>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/daphne/http_protocol.py", line 166, in process
+    "body": self.content.read(),
+ValueError: I/O operation on closed file.
+
+[2018-05-24 23:47:41,697] [WARNING] server : Application instance <Task pending coro=<__call__() running at /home/xytao/.local/lib/python3.5/site-packages/channels/http.py:180> wait_for=<Future pending cb=[Task._wakeup()]>> for connection <WebRequest at 0x7f21a0044be0 method=GET uri=/static/emoji/2_4.png clientproto=HTTP/1.1> took too long to shut down and was killed.
+[2018-05-25 15:23:23,015] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 15:23:23,016] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 15:23:23,016] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 15:32:49,803] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 26, in get_context_data
+    context['friend_list'] = self.request.user.myuser.friend.all()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'myuser'
+[2018-05-25 15:32:49,803] [ERROR] exception : Internal Server Error: /chat/
+Traceback (most recent call last):
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/views/generic/base.py", line 150, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/xytao/django/QA/chat/views.py", line 26, in get_context_data
+    context['friend_list'] = self.request.user.myuser.friend.all()
+  File "/home/xytao/.local/lib/python3.5/site-packages/django/utils/functional.py", line 216, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'myuser'
+[2018-05-25 17:09:12,612] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 17:09:12,613] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 17:09:12,614] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 19:40:10,733] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 19:40:10,734] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 19:40:10,735] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 19:43:18,599] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 19:43:18,599] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 19:43:18,601] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 19:43:22,610] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'get_username'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 23, in connect
+    self.username = self.get_username()
+  'ChatConsumer' object has no attribute 'get_username'
+[2018-05-25 19:43:35,643] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'get_username'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 23, in connect
+    self.username = self.get_username()
+  'ChatConsumer' object has no attribute 'get_username'
+[2018-05-25 19:43:48,668] [ERROR] server : Exception inside application: 'ChatConsumer' object has no attribute 'get_username'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 54, in __call__
+    await await_many_dispatch([receive, self.channel_receive], self.dispatch)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/utils.py", line 50, in await_many_dispatch
+    await dispatch(result)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/consumer.py", line 67, in dispatch
+    await handler(message)
+  File "/home/xytao/.local/lib/python3.5/site-packages/channels/generic/websocket.py", line 173, in websocket_connect
+    await self.connect()
+  File "/home/xytao/django/QA/chat/consumers.py", line 23, in connect
+    self.username = self.get_username()
+  'ChatConsumer' object has no attribute 'get_username'
+[2018-05-25 19:44:25,460] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 19:44:25,461] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 19:44:25,462] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 19:45:18,614] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 19:45:18,614] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 19:45:18,616] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 20:33:48,894] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 20:33:48,894] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 20:33:48,895] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 20:35:39,433] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 20:35:39,433] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 20:35:39,435] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 20:41:39,137] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 20:41:39,138] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 20:41:39,140] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 20:54:38,604] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 20:54:38,605] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 20:54:38,607] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:00:40,567] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:00:40,567] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:00:40,568] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:02:42,659] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:02:42,660] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:02:42,662] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:11:26,735] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:11:26,735] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:11:26,736] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:32:35,719] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:32:35,719] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:32:35,721] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:42:47,424] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:42:47,425] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:42:47,426] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:43:44,049] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:43:44,050] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:43:44,051] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:46:30,674] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:46:30,675] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:46:30,676] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:48:10,771] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:48:10,771] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:48:10,772] [INFO] server : Listening on TCP address 0.0.0.0:8000
+[2018-05-25 21:48:42,143] [INFO] server : HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2018-05-25 21:48:42,143] [INFO] server : Configuring endpoint tcp:port=8000:interface=0.0.0.0
+[2018-05-25 21:48:42,144] [INFO] server : Listening on TCP address 0.0.0.0:8000

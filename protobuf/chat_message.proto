@@ -8,6 +8,11 @@ message ChatMessageItem {
     string clientName = 2;
     string message = 3;
     string imageUrl = 4;
+    int32 timeStamp = 5;
+    string fileUrl = 6;
+    int32 fileSize = 7;
+    string fileName = 8;
+
 
 }
 
@@ -19,5 +24,5 @@ message ChatMessage {
     }
     Type type = 1;
     repeated ChatMessageItem chat_message_item = 2;
-    repeated ChatMessageItem current_client=3;
+    repeated ChatMessageItem current_client = 3;
 }
