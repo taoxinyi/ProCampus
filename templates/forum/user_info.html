@@ -1,0 +1,79 @@
+{% extends 'website/frontend/frontend_base_nosearch.html' %}
+{% load staticfiles %}
+{% block title %}
+
+{% endblock %}
+
+{% block external_header %}
+
+{% endblock %}
+
+{% block left %}
+
+
+    {% include 'utils/add_friend_script.html' %}
+    {% include 'utils/assess_person.html' %}
+
+    <div>
+        <div class="cell_tabs">
+            <a href="{% url 'user-info' theuser.user.id %}" class="cell_tab_current">获得的评价</a>
+            <a href="{% url 'personal-question' theuser.user.id %}" class="cell_tab">发表的主题</a>
+            <a href="{% url 'personal-answer' theuser.user.id %}" class="cell_tab">回复的主题</a>
+        </div>
+        <div id="comment_list">
+            {% for item in object_list %}
+                <div class="block-container"
+                     style="padding:10px 20px;display:flex;align-items:center; justify-content: space-between">
+                    <div style="display:flex;flex-direction:column">
+                        <span style="display:flex;align-items:baseline">{{ item.text |safe }}</span>
+                        <span style="display:flex;align-items: center">
+                            {% if item.author_id == 0 %}
+                                <span class="span_block_username">{{ item.author }}</span>
+                            {% else %}
+                                <a href="{% url 'user-info' item.author_id %}">
+                                <span class="span_block_username">{{ item.author }}</span>
+                                </a>
+                            {% endif %}
+                            <span class="span_block_username">{{ item.time }}</span>
+                            {% if item.is_author %}
+                                <i class="fas fa-user-check" style="color:#778087;margin-left:5px" title="这条评价来自于你"></i>
+                            {% endif %}
+                            {% if item.is_private %}
+                                <i class="fas fa-lock" style="color:#778087;margin-left: 5px" title="这是一条私密评价，只有评价双方可以看到"></i>
+                            {% endif %}
+
+                    </span>
+                    </div>
+                    <div style="display:flex" data-comment-id={{ item.pk }}>
+                        <div style="display:flex;margin-right:10px">
+                            {% if item.is_like %}
+                                <i class="fas fa-thumbs-up" style="color:black;"
+                                   data-count={{ item.like_user_count }} data-clicked={{ item.is_like }}></i>
+                            {% else %}
+                                <i class="fas fa-thumbs-up"
+                                   data-count={{ item.like_user_count }} data-clicked={{ item.is_like }}></i>
+                            {% endif %}
+                            <span>{{ item.like_user_count }}</span>
+                        </div>
+                        <div style="display:flex">
+                            {% if item.is_dislike %}
+                                <i class="fas fa-thumbs-down" style="color:black;"
+                                   data-count={{ item.dislike_user_count }} data-clicked={{ item.is_dislike }}></i>
+                            {% else %}
+                                <i class="fas fa-thumbs-down"
+                                   data-count={{ item.dislike_user_count }} data-clicked={{ item.is_dislike }}></i>
+                            {% endif %}
+                            <span>{{ item.dislike_user_count }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'utils/pagination.html' %}
+{% endblock %}
+{% block right %}
+    {% include "website/frontend/sidebar.html" %}
+
+{% endblock %}

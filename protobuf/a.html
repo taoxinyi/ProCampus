@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="protobuf.js" type="text/javascript"></script>
+<title>Protobuf for JavaScript</title>
+</head>
+<body>
+<script type="text/javascript">
+    var login = new proto.ChatMessage();
+
+    var uint8Array = new Uint8Array([18,141,1,8,3,18,4,84,97,111,66,34,55,47,109,101,100,105,97,47,117,115,101,114,47,112,104,111,116,111,47,50,48,49,54,47,49,49,47,50,52,47,81,81,229,155,190,231,137,135,50,48,49,54,49,49,50,51,50,48,50,56,53,56,46,112,110,103,40,171,201,163,216,5,50,42,109,101,100,105,97,47,117,115,101,114,47,51,47,229,181,140,229,133,165,229,188,143,95,50,48,49,56,48,53,50,54,49,50,51,56,48,51,46,112,112,116,120,56,168,192,226,2,66,14,229,181,140,229,133,165,229,188,143,46,112,112,116,120,37,122,156,43,217]);
+    login=proto.ChatMessage.deserializeBinary(uint8Array);
+
+    console.log(login);
+</script>
+</body>
+</html>

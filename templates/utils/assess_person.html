@@ -1,0 +1,488 @@
+{% load staticfiles %}
+<script src="{% static "js/easyEditor.min.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/pretty-checkbox.min.css" %}"/>
+<div class="tag-add-dialog">
+    <div class="tag-dialog-close">×</div>
+    <div class="tag-dialog-title">印象标签</div>
+    <div class="tag-dialog-label">TA的印象：</div>
+    <div style="display: flex" id="all-tags-for-the-person">
+        {% for item in all_tag_dict %}
+            <span class="tag-all-item">
+                    <span>{{ item.tag }}</span>
+                    <i class="fas fa-fire fa-tag-fire"></i>
+                    <span>{{ item.count }}</span> </span>
+
+        {% endfor %}
+    </div>
+    <div class="tag-dialog-label">我对TA的印象：</div>
+    <div style="display: flex" id="my-tags-for-the-person">
+        {% for item in selected_tag_list %}
+            <span class="tag-item"><span>{{ item.tag }}</span>
+                    <span class="tag-delete">x</span></span>
+        {% endfor %}</div>
+    <div style="display: flex;align-items: center;padding: 10px 0">
+            <span id="dialog-diy" class="tag-add" style="margin-bottom: 0;margin-right: 10px"><span
+                    style="color: #f70">+</span><span>标签</span></span>
+        <div id="tag-dialog-input-div" style="display: none">
+            <input type="text" class="tag-dialog-input" placeholder="输入标签（最多6个字）" maxlength="6">
+            <span class="tag-dialog-text-button" id="tag-diy-submit">提交</span>
+            <span class="tag-dialog-split">|</span>
+            <span class="tag-dialog-text-button" id="tag-diy-cancel">取消</span>
+        </div>
+    </div>
+    <div class="tag-dialog-save">保存标签</div>
+</div>
+<div class="comment-add-dialog">
+    <div class="comment-dialog-close">×</div>
+    <div class="comment-dialog-title">添加评价</div>
+    <div style="margin: 10px auto;">
+        <div style="display: flex;align-items: center;justify-content: space-between">
+            <div id="emoji">
+                <ul id="emoji_list" style="z-index: 999">
+                    <div style="display:flex;background: lightgray;">
+                        <span id="s1" onclick="changeTab('1')"
+                              style="cursor: pointer;padding: 10px;background-color: white">QQ</span>
+                        <span id="s2" onclick="changeTab('2')" style="cursor: pointer;padding: 10px">微博</span>
+                        <span id="s3" onclick="changeTab('3')" style="cursor: pointer;padding: 10px">微信</span>
+                        <span id="s4" onclick="changeTab('4')" style="cursor: pointer;padding: 10px">酷安</span>
+                        <span id="s5" onclick="changeTab('5')" style="cursor: pointer;padding: 10px">B站</span>
+
+                    </div>
+                    <div style="margin-top: 5px">
+                        <div id="content1" style="display: block;height:150px;overflow-y: auto">
+                        </div>
+                        <div id="content2" style="display: none;height:150px;overflow-y: auto">
+                        </div>
+                        <div id="content3" style="display: none;height:150px;overflow-y: auto">
+                        </div>
+                        <div id="content4" style="display: none;height:150px;overflow-y: auto">
+                        </div>
+                        <div id="content5" style="display: none;height:150px;overflow-y: auto">
+                        </div>
+
+                    </div>
+                </ul>
+                <img id="emoji_btn" class="emoji_btn" src="{% static "emoji/1_1.gif" %}" title="插入表情"/>
+            </div>
+            <div>
+                <div class="pretty p-svg p-curve"><input type="checkbox" id="checkbox-is-public" checked="checked">
+                    <div class="state p-success"><!-- svg path -->
+                        <svg class="svg svg-icon" viewBox="0 0 20 20">
+                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                                  style="stroke: white;fill:white;"></path>
+                        </svg>
+                        <label>公开</label></div>
+                </div>
+                <div class="pretty p-svg p-curve"><input type="checkbox" id="checkbox-is-anonymous">
+                    <div class="state p-success"><!-- svg path -->
+                        <svg class="svg svg-icon" viewBox="0 0 20 20">
+                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                                  style="stroke: white;fill:white;"></path>
+                        </svg>
+                        <label>匿名</label></div>
+                </div>
+            </div>
+        </div>
+        <div id="easyEditor"></div>
+    </div>
+    <div class="comment-dialog-save">保存</div>
+
+
+</div>
+<div class="col-md-12 article" style="margin-top: 20px;padding: 20px 10px">
+    <div class="col-md-12">
+        <div style="display: flex">
+            {% if theuser.photo %}
+                <img src="{% url 'media' theuser.photo %}" class="img-circle" width="110" height="110">
+            {% else %}
+                {% if theuser.identity == 'T' %}
+                    <img src="{% static 'image/default.png' %}" class="img-circle" width="110" height="110">
+                {% else %}
+                    <img src="{% static 'image/default1.png' %}" class="img-circle" width="110" height="110">
+                {% endif %}
+            {% endif %}
+            <div style="display: flex;flex-direction: column;margin:5px 10px">
+                <div style="display: flex;justify-content:flex-start;align-items: center;margin:0 0 10px 0">
+                     <span style="display: inline-block;margin-right: 5px;font-weight: 700;line-height: 18px;
+                     font-size: 18px;vertical-align: middle;">{{ theuser.nickname }}</span>
+                    {% if theuser.identity == 'T' %}
+                        <span class="label label-danger">教师</span>
+                    {% else %}
+                        <span class="label label-info"> 学生</span>
+                    {% endif %}
+                    {% if not isSelf %}
+                        {% if not isFriend %}
+                            <i class="fas fa-user-plus" onclick="intend_add()"></i>
+                            <i class="fas fa-user-friends" onclick="intend_delete()" style="display: none"></i>
+                        {% else %}
+                            <i class="fas fa-user-plus" onclick="intend_add()" style="display:none;"></i>
+                            <i class="fas fa-user-friends" onclick="intend_delete()"></i>
+                        {% endif %}
+                    {% endif %}
+                    <i class="fas fa-comment-dots" id="button_comment" title="添加对TA的评价"></i>
+
+
+                </div>
+                <span class="user-email"><i class="far fa-envelope"></i>
+                {{ theuser.user.email }} 活跃于{{ last_time }}</span>
+
+                <div style="display: flex;flex-wrap:wrap"><span>TA的标签：</span> {% for item in all_tag_dict %}
+                    <span class="tag-item">{{ item.tag }}</span>
+                {% endfor %}
+                    <span id="dialog_popup" class="tag-add" title="添加对TA的印象标签">
+                        <span style="color: #f70">+</span><span
+                            style="font-size: 13px;padding: 1px 2px">标签</span></span>
+                </div>
+
+                <div style="display: flex;flex-wrap:wrap">
+                    {% if theuser_category_list|length > 0 %}
+                        <span>TA活跃在：</span>
+                    {% else %}
+                        <span>TA还不怎么活跃</span>
+                    {% endif %}
+                    {% for item in  theuser_category_list %}
+                        <span class="tag-category-item">{{ item.name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+    var editor = easyEditor('easyEditor');
+    //表情
+    var emojiBtn = document.getElementById('emoji_btn');
+    var emojiBox = document.getElementById('emoji_list');
+    //辦定事件添加表情
+    for (i = 0; i < 59; i++) {
+        var content1 = document.getElementById("content1");
+        content1.innerHTML += "<li><img src=\"/static/emoji/1_" + i + ".gif\" ></li>"
+    }
+    for (i = 0; i < 80; i++) {
+        var content1 = document.getElementById("content2");
+        content1.innerHTML += "<li><img src=\"/static/emoji/2_" + i + ".png\" ></li>"
+    }
+    for (i = 0; i < 6; i++) {
+        var content1 = document.getElementById("content3");
+        content1.innerHTML += "<li><img src=\"/static/emoji/3_" + i + ".png\" ></li>"
+    }
+    for (i = 0; i < 108; i++) {
+        var content1 = document.getElementById("content4");
+        content1.innerHTML += "<li><img src=\"/static/emoji/4_" + i + ".png\" ></li>"
+    }
+    for (i = 0; i < 30; i++) {
+        var content1 = document.getElementById("content5");
+        content1.innerHTML += "<li><img src=\"/static/emoji/5_" + i + ".png\" ></li>"
+    }
+    for (var j = 1; j < 6; j++) {
+        var content = document.getElementById('content' + j);
+        var emojiList = content.getElementsByTagName('img');
+        for (var i = 0; i < emojiList.length; i++) {
+            emojiList[i].alt = j + "_" + i;
+            addEvent(emojiList[i], 'click', function () {
+                var src = this.getAttribute('src');
+                var alt = this.getAttribute('alt');
+                editor.insertEmoji({
+                    src: src,
+                    remark: alt
+                }); //添加表情
+            });
+
+        }
+    }
+
+
+    editor.editbox.onblur = function () {
+        editor.restoreSaveRange();
+    };
+
+    //表情面板顯示
+    addEvent(emojiBtn, 'click', function () {
+        emojiBox.style.display = 'block';
+    });
+    //表情面板消失
+    maskClick(emojiBox, function () {
+        emojiBox.style.display = 'none';
+    });
+
+
+    function maskClick(el, func) {
+        var str = str == undefined ? 'maskClick' : str;
+        addEvent(document, 'mouseup', function (event) {
+            var event = event || window.event;
+            var target = event.target;
+            if (!isParent(target, el)) {
+                func && func();
+            }
+        });
+    }
+
+    function isParent(obj, parentObj) {
+        while (obj != undefined && obj != null && obj.tagName != 'HTML' && obj.tagName.toUpperCase() != 'BODY') {
+            if (obj == parentObj) {
+                return true;
+            }
+            obj = obj.parentNode;
+        }
+        return false;
+    }
+
+    //事件辦定
+    function addEvent(element, type, callback) {
+        if (element.addEventListener) {
+            element.addEventListener(type, callback, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + type, callback)
+        }
+    }
+
+
+    function changeTab(i) {
+        for (var j = 1; j < 6; j++) {
+            document.getElementById('content' + j).style.display = 'none';
+            document.getElementById('s' + j).style.backgroundColor = 'lightgray';
+        }
+        document.getElementById('content' + i).style.display = 'block';
+        document.getElementById('s' + i).style.backgroundColor = 'white';
+
+    }
+
+</script>
+<script>
+    load_protobuf();
+
+    function load_protobuf() {
+        protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notificationItem = root.lookupType("chat.NotificationItem");
+
+                var selected_array = Array();
+                var add_array = Array();
+                $(document).mouseup(function (e) {
+                    var container = $(".tag-hidden-popularity");
+
+                    // if the target of the click isn't the container nor a descendant of the container
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        container.hide();
+                    }
+                });
+                $("#my-tags-for-the-person").children(".tag-item").each(function () {
+                    selected_array.push($(this).children(":first").html());
+                });
+                $("#dialog_popup").click(function () {
+                    $(".tag-add-dialog").show();
+                });
+                $(".tag-dialog-close").click(function () {
+                    $(".tag-add-dialog").hide();
+                });
+                $("#dialog-diy").click(function () {
+                    $("#tag-dialog-input-div").show();
+                });
+                $("#tag-diy-cancel").click(function () {
+                    $("#tag-dialog-input-div").hide();
+                });
+                $("#tag-diy-submit").click(function () {
+                    var input_tag = $(".tag-dialog-input").val();
+                    if (selected_array.includes(input_tag)) alert("该标签已经存在！");
+                    else {
+                        selected_array.push(input_tag);
+                        add_array.push(input_tag);
+                        $("#my-tags-for-the-person").append("<span class=\"tag-item\"><span>" +
+                            input_tag + "</span><span class=\"tag-delete\">x</span></span>"
+                        );
+                        $("#my-tags-for-the-person").children(":last").children(":last").click(function () {
+                            var deleted_tag = $(this).parent().children(":first").html();
+                            var index = selected_array.indexOf(deleted_tag);
+                            if (index !== -1) {
+                                selected_array.splice(index, 1);
+                            }
+                            index = add_array.indexOf(deleted_tag);
+                            if (index !== -1)
+                                add_array.splice(index, 1);
+                            else
+                                add_array.push(deleted_tag);
+
+                            $(this).parent().remove();
+                        });
+                        $(".tag-dialog-input").val("");
+                    }
+                });
+                $(".tag-dialog-save").click(function () {
+                    var payload = {
+                        type: 4,
+                        fromClientId:{{ currentuser.id }},
+                        toClientId:{{ theuser.id }},
+                        tag: add_array
+                    };
+                    var item = notificationItem.create(payload);
+                    var buffer = notificationItem.encode(item).finish();
+                    FriendSocket.send(buffer);
+                    location.reload();
+                });
+                $(".tag-delete").click(function () {
+                    var deleted_tag = $(this).parent().children(":first").html();
+                    var index = selected_array.indexOf(deleted_tag);
+                    if (index !== -1) {
+                        selected_array.splice(index, 1);
+                    }
+                    index = add_array.indexOf(deleted_tag);
+                    if (index !== -1)
+                        add_array.splice(index, 1);
+                    else
+                        add_array.push(deleted_tag);
+
+                    $(this).parent().remove();
+
+                });
+                $(".tag-overall-item").click(function () {
+                    $(this).children(":last").show();
+                });
+                $(".tag-all-item").click(function () {
+                    $("#tag-dialog-input-div").show();
+                    $(".tag-dialog-input").val($(this).children(":first").html());
+                });
+
+
+                $("#button_comment").click(function () {
+                    $(".comment-add-dialog").show();
+                });
+                $(".comment-dialog-close").click(function () {
+                    $(".comment-add-dialog").hide();
+                });
+
+                $(".comment-dialog-save").click(function () {
+                    var m = editor.getContent({
+                        emojiSign: '|', //表情分隔符
+                        blockSign: '%' //行块分隔符
+                    });
+                    if (m === "") return;
+
+                    var payload = {
+                        type: 5,
+                        fromClientId:{{ currentuser.id }},
+                        toClientId:{{ theuser.id }},
+                        text: delete_br(m),
+                        isPublic: $('#checkbox-is-public').is(":checked"),
+                        isAnonymous: $('#checkbox-is-anonymous').is(":checked")
+                    };
+                    var item = notificationItem.create(payload);
+                    var buffer = notificationItem.encode(item).finish();
+                    FriendSocket.send(buffer);
+                    location.reload();
+                });
+                $(".fa-thumbs-up").click(function () {
+                    var thumb_up = $(this);
+                    var thumb_div = thumb_up.parent().parent();
+                    var id = thumb_div.data("comment-id");
+                    var thumb_down = thumb_div.children(":last").children(":first");
+                    var is_like_clicked = thumb_up.data("clicked");
+                    var like_count = thumb_up.data("count");
+                    var is_dislike_clicked = thumb_down.data("clicked");
+                    var dislike_count = thumb_down.data("count");
+                    if (is_like_clicked === 'True') {
+                        //like already clicked, cancel like
+                        is_like_clicked = 'False';
+                        like_count--;
+                        thumb_up.css('color', 'gray');
+                        var payload = {
+                            type: 7,
+                            fromClientId: {{currentuser.id }},
+                            commentId: id
+                        };
+                    }
+                    else {
+                        //like not clicked yet, like
+                        is_like_clicked = 'True';
+                        like_count++;
+                        thumb_up.css('color', 'black');
+                        if (is_dislike_clicked === 'True') {
+                            //dislike clicked, dismiss it
+                            dislike_count--;
+                            thumb_down.css('color', 'gray');
+                        }
+                        is_dislike_clicked = 'False';
+                        payload = {
+                            type: 6,
+                            fromClientId: {{currentuser.id }},
+                            commentId: id
+                        };
+                    }
+                    thumb_up.data("clicked", is_like_clicked);
+                    thumb_down.data("clicked", is_dislike_clicked);
+                    thumb_up.data("count", like_count);
+                    thumb_down.data("count", dislike_count);
+                    thumb_up.parent().children(":last").html(like_count);
+                    thumb_down.parent().children(":last").html(dislike_count);
+                    var item = notificationItem.create(payload);
+                    var buffer = notificationItem.encode(item).finish();
+                    FriendSocket.send(buffer);
+
+                });
+                $(".fa-thumbs-down").click(function () {
+                    var thumb_down = $(this);
+                    var thumb_div = thumb_down.parent().parent();
+                    var id = thumb_div.data("comment-id");
+                    var thumb_up = thumb_div.children(":first").children(":first");
+                    var is_like_clicked = thumb_up.data("clicked");
+                    var like_count = thumb_up.data("count");
+                    var is_dislike_clicked = thumb_down.data("clicked");
+                    var dislike_count = thumb_down.data("count");
+                    if (is_dislike_clicked === 'True') {
+                        //dislike already clicked, cancel dislike
+                        is_dislike_clicked = 'False';
+                        dislike_count--;
+                        thumb_down.css('color', 'gray');
+                        var payload = {
+                            type: 9,
+                            fromClientId: {{currentuser.id }},
+                            commentId: id
+                        };
+                    }
+                    else {
+                        //dislike not clicked yet, dislike
+                        dislike_count++;
+                        is_dislike_clicked = 'True';
+                        thumb_down.css('color', 'black');
+                        if (is_like_clicked === 'True') {
+                            //like clicked, dismiss it
+                            like_count--;
+                            thumb_up.css('color', 'gray');
+                        }
+                        is_like_clicked = 'False';
+                        payload = {
+                            type: 8,
+                            fromClientId: {{currentuser.id }},
+                            commentId: id
+                        };
+                    }
+                    thumb_up.data("clicked", is_like_clicked);
+                    thumb_down.data("clicked", is_dislike_clicked);
+                    thumb_up.data("count", like_count);
+                    thumb_down.data("count", dislike_count);
+                    thumb_up.parent().children(":last").html(like_count);
+                    thumb_down.parent().children(":last").html(dislike_count);
+                    var item = notificationItem.create(payload);
+                    var buffer = notificationItem.encode(item).finish();
+                    FriendSocket.send(buffer);
+
+                });
+            }
+        )
+        ;
+
+    }
+
+    function delete_br(m) {
+        while (m.endsWith("<br>"))
+            m = m.substring(0, m.length - 4);
+        return m;
+    }
+
+</script>
+

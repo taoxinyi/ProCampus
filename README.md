@@ -19,7 +19,7 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
 - Using Django Channels in order to apply WebSocket for realtime chat and notifications, Redis as backend
     - Using Protobuf (Protocol buffers) as data structure between client and server, making the packet size significantly smaller compared to JSON.
     - Featuring emoji and file sharing in the chatroom.
-- To be continued
+- Custom tags and comments in user info, featuring like and dislike
 ## 1.2. How to Install
 ### 1.2.1. Prerequisite
 - Ubuntu has python3

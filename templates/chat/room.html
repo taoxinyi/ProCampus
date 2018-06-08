@@ -4,208 +4,15 @@
 {% block external_header %}
 {% endblock %}
 {% block left %}
-    <style type="text/css">
-        .parent {
-            display: flex;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .l-child {
-            flex: 0 0 40px;
-        }
-
-        .r-child {
-            padding-left: 10px;
-            margin: auto 10px;
+    <body>
+    <style>
+        span {
+            max-width: 160px;
+            display: block;
+            text-align: left;
+            word-wrap: break-word;
         }
     </style>
-    <head>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            ul li {
-                list-style: none;
-            }
-
-            button {
-                cursor: pointer;
-            }
-
-            #easyEditor {
-
-                height: 100px;
-                box-shadow: 0px 0px 20px 4px #aaa;
-                border-radius: 10px;
-                padding: 4px;
-                margin: 0 auto;
-                margin-top: 5px;
-                margin-bottom: 5px;
-                ime-mode: active;
-            }
-
-            #nav {
-                width: 500px;
-                margin: 0 auto;
-                margin-top: 10px;
-            }
-
-            #nav > div {
-                float: left;
-            }
-
-            #emoji, #file_upload {
-                width: 30px;
-                height: 30px;
-                position: relative;
-            }
-
-            #emoji .emoji_btn, #file_btn {
-                width: 100%;
-                cursor: pointer;
-            }
-
-            .clearfloat {
-                zoom: 1;
-            }
-
-            .clearfloat:after {
-                content: "";
-                display: block;
-                height: 0;
-                visibility: hidden;
-                clear: both;
-            }
-
-            #emoji_list, #file_box {
-                width: 350px;
-                height: 200px;
-                position: absolute;
-                top: -700%;
-                left: 0;
-                display: none;
-                background-color: #fff;
-                box-shadow: 0px 0px 2px 2px #aaa;
-
-            }
-
-            #emoji_list li {
-                width: 36px;
-                height: 30px;
-                text-align: center;
-                float: left;
-                cursor: pointer;
-                overflow: hidden;
-            }
-
-            #at,
-            #getHtml,
-            #getText {
-                height: 30px;
-                line-height: 30px;
-                margin-left: 15px;
-            }
-
-            #show {
-                width: 500px;
-                margin: 0 auto;
-                word-break: break-all;
-            }
-
-            .div_outside_bubble {
-                overflow: hidden;
-                margin: 0 10px;
-            }
-
-            /* bubble style */
-            .left {
-                clear: both;
-                overflow: hidden;
-
-            }
-
-            .left div:nth-of-type(1) {
-                float: left;
-            }
-
-            .left div:nth-of-type(2) {
-                background-color: aquamarine;
-                float: left;
-                margin: 20px 20px 5px 15px;
-                padding: 10px;
-                border-radius: 7px;
-            }
-
-            .right div:first-child img,
-            .left div:first-child img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .right {
-                clear: both;
-                overflow: hidden;
-
-            }
-
-            .right div:nth-child(1) {
-                float: right;
-            }
-
-            .right div:nth-of-type(2) {
-                float: right;
-                background-color: gold;
-                margin: 20px 10px 5px 20px;
-                padding: 10px;
-                border-radius: 7px;
-            }
-
-            .left_triangle {
-                height: 0px;
-                width: 0px;
-                border-width: 8px;
-                border-style: solid;
-                border-color: transparent aquamarine transparent transparent;
-                position: absolute;
-                left: -15px;
-                top: 8px;
-            }
-
-            .box {
-                position: relative;
-            }
-
-            .right_triangle {
-                height: 0px;
-                width: 0px;
-                border-width: 8px;
-                border-style: solid;
-                border-color: transparent transparent transparent gold;
-                position: absolute;
-                right: -15px;
-                top: 8px;
-            }
-
-            .floattext {
-                position: absolute;
-                top: -20px;
-                white-space: nowrap;
-            }
-
-            span {
-                max-width: 160px;
-                display: block;
-                text-align: left;
-                word-wrap: break-word;
-            }
-        </style>
-    </head>
-    <body>
-
     <div style="height: 100%;">
         <div id="chat"
              style="border: 1px solid black;width: 90% ; height: 450px; overflow-y: scroll;margin: 10px auto;"></div>
@@ -343,8 +150,12 @@
 
             //submit
             document.querySelector('#chat-message-submit').onclick = function (e) {
-                var m = editor.getContent(true);
+                var m = editor.getContent({
+                    emojiSign: '|', //表情分隔符
+                    blockSign: '%' //行块分隔符
+                });
                 if (m === "") return;
+                m = delete_br(m);
                 var id ={{ user.id }};
                 //Somehow the first character of protobuf class name is converted to lower case.
                 //default type is 0, no need to write.
@@ -489,17 +300,29 @@
 
             }
         }
-        var lostFocus = function () {
-            setTimeout(function () {
-                var value = $('#easyEditor').val();
-                $('#easyEditor').val('').focus().val(value);
-            }, 0);
+        $("#easyEditor").keydown(function (event) {
+            if (event.ctrlKey && event.which === 13) {
+                editor.changeLine();
+            }
+        });
+        addEvent(editor.editbox, 'keypress', function (event) {
+            event = event || window.event;
+            if (event.keyCode === 13) {
+                if (event.preventDefault) {
+                    event.preventDefault();
+                    document.querySelector('#chat-message-submit').onclick();
+
+                } else {
+                    event.returnValue = false;
+                }
+            }
+
+
+        });
+
+        editor.editbox.onblur = function () {
+            editor.restoreSaveRange();
         };
-
-        $('#easyEditor').blur(lostFocus);
-
-
-        //At人
 
         //表情面板顯示
         addEvent(emojiBtn, 'click', function () {
@@ -511,7 +334,7 @@
         });
 
         var file_Btn = document.getElementById("file_btn");
-        var file_Box = document.getElementById("file_box")
+        var file_Box = document.getElementById("file_box");
         addEvent(file_Btn, 'click', function () {
             file_Box.style.display = 'block';
         });
@@ -549,14 +372,6 @@
                 element.attachEvent('on' + type, callback)
             }
         }
-
-        $("#easyEditor").keydown(function (event) {
-
-            if (event.ctrlKey && event.which === 13) {
-                document.querySelector('#chat-message-submit').onclick();
-
-            }
-        });
 
 
         function convertToHtml(m) {
@@ -604,7 +419,7 @@
         function addToChat(author, author_id, imageUrl, text, time, file_size, file_name, file_url, isAuthor) {
 
             var a = document.createElement("a");
-            a.href = "/forum/question/user/" + author_id + "/list/";
+            a.href = "/forum/user/" + author_id ;
             var img = new Image();
             img.src = imageUrl;
             a.appendChild(img);
@@ -711,11 +526,31 @@
 
         function bytesToSize(bytes) {
             if (bytes === 0) return '0 B';
-            var k = 1000, // or 1024
+            var k = 1024, // or 1024
                 sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
                 i = Math.floor(Math.log(bytes) / Math.log(k));
 
             return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        }
+
+        //正则转换
+        function htmlEncode(strHTML) {
+            var strTem = "";
+            if (strHTML.length == 0) return "";
+            strTem = strHTML.replace(/&/g, "&gt;");
+            strTem = strTem.replace(/</g, "&lt;");
+            strTem = strTem.replace(/>/g, "&gt;");
+            strTem = strTem.replace(/ /g, "&nbsp;");
+            strTem = strTem.replace(/\'/g, "&#39;");
+            strTem = strTem.replace(/\"/g, "&quot;");
+            strTem = strTem.replace(/\n/g, "");
+            return strTem;
+        }
+
+        function delete_br(m) {
+            while (m.endsWith("<br>"))
+                m = m.substring(0, m.length - 4);
+            return m;
         }
     </script>
 

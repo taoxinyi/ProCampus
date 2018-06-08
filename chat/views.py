@@ -12,12 +12,6 @@ from website.mixin import FrontMixin
 import json
 
 
-def room(request, room_name):
-    return render(request, 'chat/room.html', {
-        'room_name_json': mark_safe(json.dumps(room_name))
-    })
-
-
 class ChatIndexView(LoginRequiredMixin, FrontMixin, TemplateView):
     template_name = 'chat/index.html'
     login_url = reverse_lazy('user-login')

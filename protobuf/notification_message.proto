@@ -7,12 +7,24 @@ message NotificationItem {
         AGREE_ADD_FRIEND = 1;
         DISAGREE_ADD_FRIEND = 2;
         REQUEST_DELETE_FRIEND = 3;
+        ADD_TAG = 4;
+        ADD_COMMENT = 5;
+        LIKE_COMMENT = 6;
+        CANCEL_LIKE_COMMENT = 7;
+        DISLIKE_COMMENT = 8;
+        CANCEL_DISLIKE_COMMENT = 9;
     }
     Type type = 1;
     int32 fromClientId = 2;
     int32 toClientId = 3;
     string fromClientName = 4;
     string toClientName = 5;
+    string imageUrl = 6;
+    repeated string tag = 7;
+    string text = 8;
+    int32 commentId = 9;
+    bool isAnonymous = 10;
+    bool isPublic = 11;
 
 }
 

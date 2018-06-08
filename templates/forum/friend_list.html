@@ -17,7 +17,7 @@
         {% for myuser in friend_list %}
             <div class="col-md-12 col-xs-12">
                 <h3><a
-                        href="{% url 'personal-question' myuser.user.id %}">{{ myuser.nickname }}</a>
+                        href="{% url 'user-info' myuser.user.id %}">{{ myuser.nickname }}</a>
                 </h3>
             </div>
 

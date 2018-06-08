@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-12 text-center">
                             <h3 class="text-info">
-                                <a href="{% url 'personal-question' answer.author.id %}">{{ answer.author.myuser.nickname }}</a>
+                                <a href="{% url 'user-info' answer.author.id %}">{{ answer.author.myuser.nickname }}</a>
                             </h3>
                             <p>
                                 {% if answer.author.myuser.identity == 'T' %}

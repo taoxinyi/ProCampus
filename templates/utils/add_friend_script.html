@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<script>
+    document.addEventListener("agree_add_event", function (e) {
+        if (e.reply_person_id ==={{ theuser.id }}) {
+            $(".fa-user-friends").show();
+            $(".fa-user-plus").hide();
+        }
+    });
+    document.addEventListener("delete_event", function (e) {
+        if (e.request_person_id ==={{ theuser.id }}) {
+
+        }
+    });
+
+    function intend_add() {
+        var se = confirm("whether add this person as your friend!");
+        if (se === true) {
+            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notificationItem = root.lookupType("chat.NotificationItem");
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {type: 0, fromClientId:{{ currentuser.id }}, toClientId:{{ theuser.id }}};
+                var message = notificationItem.create(payload);
+                var buffer = notificationItem.encode(message).finish();
+                FriendSocket.send(buffer);
+
+            });
+
+
+        }
+
+
+    }
+
+    function intend_delete() {
+        var se = confirm("whether delete this person as your friend!");
+        if (se === true) {
+            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+                if (err)
+                    throw err;
+                var notificationItem = root.lookupType("chat.NotificationItem");
+                //Somehow the first character of protobuf class name is converted to lower case.
+                //default type is 0, no need to write.
+                var payload = {type: 3, fromClientId:{{ currentuser.id }}, toClientId:{{ theuser.id }}};
+                var message = notificationItem.create(payload);
+                var buffer = notificationItem.encode(message).finish();
+                FriendSocket.send(buffer);
+                var event = new CustomEvent("delete_event");
+                event.request_person_id = {{ theuser.id }}
+
+                    // Dispatch/Trigger/Fire the event
+                    document.dispatchEvent(event);
+            });
+
+        }
+
+    }
+</script>

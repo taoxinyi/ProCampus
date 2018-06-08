@@ -12,7 +12,7 @@ import protobuf.chat_message_pb2 as ChatMessage
 import protobuf.notification_message_pb2 as Notification
 import json
 
-from forum.models import RequestReplyFriend
+from forum.models import RequestReplyFriend, Tag, Comment
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -148,7 +148,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         chat_message.type = 0
         chat_message.chat_message_item.extend([chat_message_item])
         b = chat_message.SerializeToString()
-        chat_message.ParseFromString(b)
         # Send message to WebSocket
         await self.send(bytes_data=b)
 
@@ -228,7 +227,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         return chat_message.SerializeToString()
 
 
-class FriendConsumer(AsyncWebsocketConsumer):
+class NotificationConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         self.user = self.scope["user"]
@@ -247,6 +246,8 @@ class FriendConsumer(AsyncWebsocketConsumer):
             notification_item.type = Notification.NotificationItem.REQUEST_ADD_FRIEND
             notification_item.fromClientId = o.request_user.id
             notification_item.fromClientName = o.request_user.nickname
+            from_client = await self.get_myuser(notification_item.fromClientId)
+            notification_item.imageUrl = self.get_user_image_url(from_client)
             list_notification_item.append(notification_item)
         notification.notification_item.extend(list_notification_item)
         s = notification.SerializeToString()
@@ -264,6 +265,7 @@ class FriendConsumer(AsyncWebsocketConsumer):
     async def receive(self, bytes_data):
         notification_item = Notification.NotificationItem()
         notification_item.ParseFromString(bytes_data)
+        print(notification_item)
         # if the user confirms becoming friends, make them friend in the database
         request_person_id = notification_item.fromClientId
         reply_person_id = notification_item.toClientId
@@ -287,7 +289,38 @@ class FriendConsumer(AsyncWebsocketConsumer):
             await  self.delete_friends(request_person_id, reply_person_id)
             notification_type = "request_delete_friend"
             group_id = str(reply_person_id)
-        # group send to the reply person group
+
+        elif notification_item.type == Notification.NotificationItem.ADD_TAG:
+            await  self.add_tag_to_db(request_person_id, reply_person_id, notification_item.tag)
+            notification_type = "add_tag"
+            group_id = str(reply_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.ADD_COMMENT:
+            is_public = notification_item.isPublic
+            is_anonymous = notification_item.isAnonymous
+            await  self.add_comment_to_db(request_person_id, reply_person_id, notification_item.text, is_public,
+                                          is_anonymous)
+            notification_type = "add_comment"
+            group_id = str(reply_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.LIKE_COMMENT:
+            await self.save_comment(notification_item.commentId, request_person_id, True)
+            notification_type = "like_comment"
+            group_id = str(reply_person_id)
+        elif notification_item.type == Notification.NotificationItem.DISLIKE_COMMENT:
+            await self.save_comment(notification_item.commentId, request_person_id, False)
+            notification_type = "dislike_comment"
+            group_id = str(reply_person_id)
+
+        elif notification_item.type == Notification.NotificationItem.CANCEL_LIKE_COMMENT:
+            await self.cancel_comment(notification_item.commentId, request_person_id, True)
+            notification_type = "cancel_dislike_comment"
+            group_id = str(reply_person_id)
+        elif notification_item.type == Notification.NotificationItem.CANCEL_DISLIKE_COMMENT:
+            await self.cancel_comment(notification_item.commentId, request_person_id, False)
+            notification_type = "cancel_dislike_comment"
+            group_id = str(reply_person_id)
+            # group send to the reply person group
         await self.channel_layer.group_send(
             group_id,
             {
@@ -295,16 +328,20 @@ class FriendConsumer(AsyncWebsocketConsumer):
                 'protobuf': bytes_data
             })
 
-    # Receive request_add_friend message from group
-    # Send it to the frontend of this user for confirmation
+        # Receive request_add_friend message from group
+        # Send it to the frontend of this user for confirmation
+
     async def request_add_friend(self, event):
         bytes_data = event['protobuf']
         notification_item = Notification.NotificationItem()
         notification_item.ParseFromString(bytes_data)
         request_person = await self.get_myuser(notification_item.fromClientId)
         notification_item.fromClientName = request_person.nickname
+        notification_item.fromClientId = request_person.user.id
+        notification_item.imageUrl = self.get_user_image_url(request_person)
         notification = Notification.Notification()
         notification.notification_item.extend([notification_item])
+        print(notification)
         s = notification.SerializeToString()
         await self.send(bytes_data=s)
 
@@ -316,8 +353,13 @@ class FriendConsumer(AsyncWebsocketConsumer):
         notification_item.ParseFromString(bytes_data)
         reply_person = await self.get_myuser(notification_item.toClientId)
         notification_item.toClientName = reply_person.nickname
+        notification_item.toClientId = reply_person.user.id
+
+        notification_item.imageUrl = self.get_user_image_url(reply_person)
         notification = Notification.Notification()
         notification.notification_item.extend([notification_item])
+        print(notification)
+
         s = notification.SerializeToString()
         await self.send(bytes_data=s)
 
@@ -329,8 +371,12 @@ class FriendConsumer(AsyncWebsocketConsumer):
         notification_item.ParseFromString(bytes_data)
         reply_person = await self.get_myuser(notification_item.toClientId)
         notification_item.toClientName = reply_person.nickname
+        notification_item.toClientId = reply_person.user.id
+        notification_item.imageUrl = self.get_user_image_url(reply_person)
         notification = Notification.Notification()
         notification.notification_item.extend([notification_item])
+        print(notification)
+
         s = notification.SerializeToString()
         await self.send(bytes_data=s)
 
@@ -342,14 +388,50 @@ class FriendConsumer(AsyncWebsocketConsumer):
         notification_item.ParseFromString(bytes_data)
         request_person = await self.get_myuser(notification_item.fromClientId)
         notification_item.fromClientName = request_person.nickname
+        notification_item.fromClientId = request_person.user.id
+        notification_item.imageUrl = self.get_user_image_url(request_person)
         notification = Notification.Notification()
         notification.notification_item.extend([notification_item])
+        print(notification)
+
         s = notification.SerializeToString()
         await self.send(bytes_data=s)
+
+    def get_user_image_url(self, myuser):
+
+        if myuser.photo:
+            image = '/media/' + str(myuser.photo)
+        elif myuser.identity == "T":
+            image = '/static/image/default.png'
+        else:
+            image = '/static/image/default1.png'
+        return image
 
     @database_sync_to_async
     def get_myuser(self, id):
         return MyUser.objects.get(id=id) if self.user.is_authenticated else None
+
+    @database_sync_to_async
+    def save_comment(self, comment_id, myuser_id, is_like):
+        comment = Comment.objects.get(id=comment_id)
+        myuser = MyUser.objects.get(id=myuser_id)
+        if is_like:
+            comment.like_user.add(myuser)
+            comment.dislike_user.remove(myuser)
+        else:
+            comment.dislike_user.add(myuser)
+            comment.like_user.remove(myuser)
+        comment.save()
+
+    @database_sync_to_async
+    def cancel_comment(self, comment_id, myuser_id, is_original_like):
+        comment = Comment.objects.get(id=comment_id)
+        myuser = MyUser.objects.get(id=myuser_id)
+        if is_original_like:
+            comment.like_user.remove(myuser)
+        else:
+            comment.dislike_user.remove(myuser)
+        comment.save()
 
     @database_sync_to_async
     def make_friends(self, request_person_id, reply_person_id):
@@ -370,3 +452,18 @@ class FriendConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
     def delete_request_from_db(self, request_person_id, reply_person_id):
         RequestReplyFriend.objects.filter(request_user_id=request_person_id, reply_user_id=reply_person_id).delete()
+
+    @database_sync_to_async
+    def add_tag_to_db(self, request_person_id, reply_person_id, tag_list):
+        for tag in tag_list:
+            query_result = Tag.objects.all().filter(from_user_id=request_person_id, to_user_id=reply_person_id,
+                                                    tag=tag)
+            if len(query_result) == 0:
+                Tag(from_user_id=request_person_id, to_user_id=reply_person_id, tag=tag).save()
+            else:
+                query_result.delete()
+
+    @database_sync_to_async
+    def add_comment_to_db(self, request_person_id, reply_person_id, comment, is_public, is_anonymous):
+        Comment(from_user_id=request_person_id, to_user_id=reply_person_id, text=comment, is_public=is_public,
+                is_anonymous=is_anonymous).save()

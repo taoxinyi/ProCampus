@@ -70,7 +70,7 @@
         type: 'error',
         // if the user doesn´t close the notification then we remove it
         // after the following time
-        ttl: 6000,
+        ttl: 60000,
         // callbacks
         onClose: function () {
             return false;
@@ -91,6 +91,7 @@
         var parent = document.createElement('div');
         parent.className = "l-parent";
         var lchild = document.createElement('a');
+        lchild.style.paddingRight = "10px";
         lchild.href = "/forum/question/user/" + this.options.request_user_id + "/list/";
         var img = new Image();
         img.src = this.options.request_user_imageUrl;

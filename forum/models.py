@@ -41,6 +41,27 @@ class Answer(models.Model):
         return self.author.__str__() + '\'s answer'
 
 
+class Comment(models.Model):
+    from_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="comment_from_user")
+    to_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="comment_to_user")
+    like_user = models.ManyToManyField(MyUser, related_name="comment_like_user")
+    dislike_user = models.ManyToManyField(MyUser, related_name="comment_dislike_user")
+    text = models.CharField(max_length=300)
+    time = models.DateTimeField(auto_now_add=True)
+    is_public = models.BooleanField(default=True)
+    is_anonymous = models.BooleanField(default=True)
+
+
+class Tag(models.Model):
+    from_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tag_from_user")
+    to_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tag_to_user")
+    tag = models.CharField(max_length=30)
+    time = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.tag
+
+
 class RequestReplyFriend(models.Model):
     request_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="request_user")
     reply_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="reply_user")

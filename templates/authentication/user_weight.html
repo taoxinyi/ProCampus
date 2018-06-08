@@ -20,9 +20,8 @@
     </div>
     <div class="col-md-12 text-center">
         <h3 class="text-info">
-            <a href="{% url 'personal-question' myuser.user.id %}">{{ myuser.nickname }}</a>
+            <a href="{% url 'user-info' myuser.user.id %}">{{ myuser.nickname }}</a>
         </h3>
-        <p>{{ myuser.user.username }}</p>
         <p>
             {% if myuser.identity == 'T' %}
                 <span class="label label-danger">

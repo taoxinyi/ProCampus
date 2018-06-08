@@ -5,13 +5,10 @@
     添加问题
 {% endblock %}
 
-{% block external_header %}
-    <script type="text/javascript" src="{% static 'ueditor/ueditor.config.js' %}"></script>
-    <script type="text/javascript" src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
-{% endblock %}
 
 {% block left %}
-
+    <script type="text/javascript" src="{% static 'ueditor/ueditor.config.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
     <div class="col-md-12 col-xs 12 article">
         <form class="form-horizontal" id="data-form" method="post">
             {% csrf_token %}

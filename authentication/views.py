@@ -1,9 +1,10 @@
 # coding=utf-8
 from django.contrib.auth import logout, login
+from django.core import serializers
 from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import CreateView, RedirectView, FormView, ListView, UpdateView
+from django.views.generic import CreateView, RedirectView, FormView, ListView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 
 from announcement.models import Announcement
@@ -106,3 +107,5 @@ class UserPhotoChangeView(LoginRequiredMixin, FrontMixin, UpdateView):
 
     def response_error_page(self, msg):
         return render(self.request, 'utils/error_page.html', {'message': msg, 'myuser': self.request.user.myuser})
+
+

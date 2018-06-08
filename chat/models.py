@@ -21,3 +21,4 @@ class ChatHistory(models.Model):
 
     def __str__(self):
         return self.room_group.name
+

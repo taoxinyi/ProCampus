@@ -1,4 +1,15 @@
+import datetime
+import json
+import re
+
+import arrow as arrow
+from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
+from django.db.models import Count, Q
 from django.urls import reverse_lazy, reverse
+from django.views.generic import TemplateView
+
+from forum.mixin import UserInfoMixin
 from forum.models import Category, Question, Answer
 from utils.mixin import AjaxableResponseMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -197,7 +208,8 @@ class QuestionDeleteView(UserPassesTestMixin, AjaxableResponseMixin, DeleteView)
         return JsonResponse({'state': 'success'})
 
 
-class PersonalQuestionListView(FrontMixin, ListView):
+class PersonalQuestionListView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):
+    login_url = reverse_lazy('user-login')
     paginate_by = 10
     template_name = 'forum/question_weight2.html'
     context_object_name = 'question_list'
@@ -213,15 +225,27 @@ class PersonalQuestionListView(FrontMixin, ListView):
         context['currentuser'] = current_user
         context['isSelf'] = False
         context['isFriend'] = False
+        # all of the user's tag and count
+        # sample output
+        # <QuerySet [{'count': 3, 'tag': 'good'}, {'count': 1, 'tag': 'bad'}]>
+        context['all_tag_dict'] = list(the_user.tag_to_user.all(). \
+                                       values('tag').annotate(count=Count('tag')).order_by('-count'))
+        # all of  current user's tag about this user
+        # sample output
+        # < QuerySet[{'tag': 'good'}, {'tag': 'smart'}] >
+        context['selected_tag_list'] = list(
+            current_user.tag_from_user.all().filter(to_user_id=the_user.id).values('tag'))
+        context['theuser_category_list'] = self.get_most_category(the_user)
         if the_user.id == current_user.id:
             context['isSelf'] = True
         elif the_user in current_user.friend.all():
             context['isFriend'] = True
-        print('self', context['isSelf'], 'friend', context['isFriend'])
+        context['question_list'] = Question.objects.filter(author_id=self.kwargs['pk'])
+        context['last_time'] = arrow.get(the_user.user.last_login).humanize(locale="zh")
         return context
 
 
-class PersonalAnswerListView(FrontMixin, ListView):
+class PersonalAnswerListView(FrontMixin, ListView, UserInfoMixin):
     paginate_by = 10
     template_name = 'forum/answer_weight.html'
     context_object_name = 'question_asked_list'
@@ -234,7 +258,29 @@ class PersonalAnswerListView(FrontMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(PersonalAnswerListView, self).get_context_data(**kwargs)
-        context['theuser'] = MyUser.objects.get(user_id=self.kwargs['pk'])
+        self.the_user = the_user = MyUser.objects.get(user_id=self.kwargs['pk'])
+        current_user = MyUser.objects.get(user_id=self.request.user.id)
+        context['theuser'] = the_user
+        context['currentuser'] = current_user
+        context['isSelf'] = False
+        context['isFriend'] = False
+        # all of the user's tag and count
+        # sample output
+        # <QuerySet [{'count': 3, 'tag': 'good'}, {'count': 1, 'tag': 'bad'}]>
+        context['all_tag_dict'] = list(the_user.tag_to_user.all(). \
+                                       values('tag').annotate(count=Count('tag')).order_by('-count'))
+        # all of  current user's tag about this user
+        # sample output
+        # < QuerySet[{'tag': 'good'}, {'tag': 'smart'}] >
+        context['selected_tag_list'] = list(
+            current_user.tag_from_user.all().filter(to_user_id=the_user.id).values('tag'))
+        context['theuser_category_list'] = self.get_most_category(the_user)
+        if the_user.id == current_user.id:
+            context['isSelf'] = True
+        elif the_user in current_user.friend.all():
+            context['isFriend'] = True
+        context['question_list'] = Question.objects.filter(author_id=self.kwargs['pk'])
+        context['last_time'] = arrow.get(the_user.user.last_login).humanize(locale="zh")
         return context
 
 
@@ -273,3 +319,64 @@ class FriendListView(LoginRequiredMixin, FrontMixin, ListView):
 
     def get_queryset(self):
         return MyUser.objects.get(user_id=self.request.user.id).friend.all().order_by()
+
+
+class UserInfoView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):
+    login_url = reverse_lazy('user-login')
+    template_name = 'forum/user_info.html'
+    paginate_by = 10
+    context_object_name = 'object_list'
+
+    def get_queryset(self):
+        self.theuser = MyUser.objects.get(user_id=self.kwargs['pk'])
+        the_user = MyUser.objects.get(user_id=self.kwargs['pk'])
+        current_user = MyUser.objects.get(user_id=self.request.user.id)
+        return_list = []
+        comment_list = the_user.comment_to_user.all().order_by('-time').filter(
+            Q(is_public=True) | (Q(is_public=False) & Q(
+                from_user_id=current_user.id))) if the_user.id != current_user.id else the_user.comment_to_user.all().order_by(
+            '-time')
+        for comment in comment_list:
+            return_list.append({"pk": comment.id, "text": self.convert_to_html(comment.text),
+                                "author": "匿名" if comment.is_anonymous
+                                else MyUser.objects.get(id=comment.from_user_id).nickname,
+                                "author_id": 0 if comment.is_anonymous else MyUser.objects.get(
+                                    id=comment.from_user_id).user_id,
+                                "time": arrow.get(comment.time).humanize(locale="zh"),
+                                "like_user_count": comment.like_user.count(),
+                                "dislike_user_count": comment.dislike_user.count(),
+                                "is_like": current_user in comment.like_user.all(),
+                                "is_dislike": current_user in comment.dislike_user.all(),
+                                "is_author": comment.from_user_id == current_user.id,
+                                "is_private": not comment.is_public}
+
+                               )
+
+        return return_list
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserInfoView, self).get_context_data(**kwargs)
+        the_user = MyUser.objects.get(user_id=self.kwargs['pk'])
+        current_user = MyUser.objects.get(user_id=self.request.user.id)
+        context['theuser'] = the_user
+        context['currentuser'] = current_user
+        context['isSelf'] = False
+        context['isFriend'] = False
+        # all of the user's tag and count
+        # sample output
+        # <QuerySet [{'count': 3, 'tag': 'good'}, {'count': 1, 'tag': 'bad'}]>
+        context['all_tag_dict'] = list(the_user.tag_to_user.all(). \
+                                       values('tag').annotate(count=Count('tag')).order_by('-count'))
+        # all of  current user's tag about this user
+        # sample output
+        # < QuerySet[{'tag': 'good'}, {'tag': 'smart'}] >
+        context['selected_tag_list'] = list(
+            current_user.tag_from_user.all().filter(to_user_id=the_user.id).values('tag'))
+        context['theuser_category_list'] = self.get_most_category(the_user)
+        if the_user.id == current_user.id:
+            context['isSelf'] = True
+        elif the_user in current_user.friend.all():
+            context['isFriend'] = True
+        context['question_list'] = Question.objects.filter(author_id=self.kwargs['pk'])
+        context['last_time'] = arrow.get(the_user.user.last_login).humanize(locale="zh")
+        return context

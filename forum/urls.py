@@ -20,6 +20,8 @@ urlpatterns = [
     url('^question/inviting/(?P<pk>[0-9]+)/list/$', views.PersonalInvitingListView.as_view(), name='personal-inviting'),
     url('^question/reply/(?P<pk>[0-9]+)/list/$', views.PersonalReplyListView.as_view(), name='personal-reply'),
 
+    url('^user/(?P<pk>[0-9]+)/$', views.UserInfoView.as_view(), name='user-info'),
+
     url('^friend/$', views.FriendListView.as_view(), name='friend-list'),
 
 ]

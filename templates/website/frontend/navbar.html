@@ -7,59 +7,53 @@
         '/ws/friend/' + {{ myuser.id }} +'/');
     FriendSocket.binaryType = "arraybuffer";
 
-    FriendSocket.onmessage = function (e) {
-        var arrayBuffer = e.data;
-        //when load as array buffer succeed
-        //turn this buffer as uint8 array buffer
-        var uint8Array = new Uint8Array(arrayBuffer);
-        //load protobuf.js to decode
-        protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
-            if (err)
-                throw err;
-            var notification = root.lookupType("chat.Notification");
+    protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
+        if (err)
+            throw err;
+        var notification = root.lookupType("chat.Notification");
+        var notificationItem = root.lookupType("chat.NotificationItem");
+
+        FriendSocket.onmessage = function (e) {
+            var arrayBuffer = e.data;
+            //when load as array buffer succeed
+            //turn this buffer as uint8 array buffer
+            var uint8Array = new Uint8Array(arrayBuffer);
+            //load protobuf.js to decode
             //decode it to object
             var notificationDecoded = notification.decode(uint8Array);
             var l = notificationDecoded.notificationItem;
             for (var i = 0; i < l.length; i++) {
                 if (l[i].type === 0) {//request add friend
-                    receive_request_add(l[i].fromClientName, l[i].fromClientId);
+                    receive_request_add(l[i].fromClientName, l[i].fromClientId, l[i].imageUrl);
                 }
                 else if (l[i].type === 1) {//agree add friend
-                    receive_agree_add(l[i].toClientName, l[i].toClientId);
+                    receive_agree_add(l[i].toClientName, l[i].toClientId, l[i].imageUrl);
                 }
                 else if (l[i].type === 2) {//agree add friend
-                    receive_disagree_add(l[i].toClientName, l[i].toClientId);
+                    receive_disagree_add(l[i].toClientName, l[i].toClientId, l[i].imageUrl);
                 }
                 else if (l[i].type === 3) {//request delete friend
-                    receive_request_delete(l[i].fromClientName, l[i].fromClientId);
+                    receive_request_delete(l[i].fromClientName, l[i].fromClientId, l[i].imageUrl);
                 }
             }
-        });
-    };
 
+        };
 
-    //read binary data (BLob) as array buffer
+        function receive_request_add(request_person, request_person_id, image_url) {
+            var notification = new NotificationFx({
+                request_username: request_person,
+                request_user_id: request_person_id,
+                request_user_imageUrl: image_url,
+                message: ' is trying to be your friend',
+                layout: 'attached',
+                effect: 'bouncyflip',
+                type: 'notice',// notice, warning or error
+                message_type: "request_add_friend"
+            });
 
-
-    function receive_request_add(request_person, request_person_id) {
-        var notification = new NotificationFx({
-            request_username: request_person,
-            request_user_id: request_person_id,
-            request_user_imageUrl: '',
-            message: ' is trying to be your friend',
-            layout: 'attached',
-            effect: 'bouncyflip',
-            type: 'notice',// notice, warning or error
-            message_type: "request_add_friend"
-        });
-
-        // show the notification
-        notification.show();
-        document.addEventListener("confirm_add_event", function (e) {
-            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
-                if (err)
-                    throw err;
-                var notificationItem = root.lookupType("chat.NotificationItem");
+            // show the notification
+            notification.show();
+            document.addEventListener("confirm_add_event", function (e) {
                 //Somehow the first character of protobuf class name is converted to lower case.
                 //default type is 0, no need to write.
                 var payload = {type: 1, fromClientId: request_person_id, toClientId: {{ myuser.id }}};
@@ -68,12 +62,7 @@
                 FriendSocket.send(buffer);
 
             });
-        });
-        document.addEventListener("dismiss_add_event", function (e) {
-            protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
-                if (err)
-                    throw err;
-                var notificationItem = root.lookupType("chat.NotificationItem");
+            document.addEventListener("dismiss_add_event", function (e) {
                 //Somehow the first character of protobuf class name is converted to lower case.
                 //default type is 0, no need to write.
                 var payload = {type: 2, fromClientId: request_person_id, toClientId: {{ myuser.id }}};
@@ -82,15 +71,15 @@
                 FriendSocket.send(buffer);
 
             });
-        });
+        }
+    });
 
-    }
 
-    function receive_agree_add(reply_person, reply_person_id) {
+    function receive_agree_add(reply_person, reply_person_id, image_url) {
         var notification = new NotificationFx({
             request_username: reply_person,
             request_user_id: reply_person_id,
-            request_user_imageUrl: '',
+            request_user_imageUrl: image_url,
             message: ' agrees to add you as friend"',
             layout: 'attached',
             effect: 'bouncyflip',
@@ -107,11 +96,11 @@
 
     }
 
-    function receive_disagree_add(reply_person, reply_person_id) {
+    function receive_disagree_add(reply_person, reply_person_id, image_url) {
         var notification = new NotificationFx({
             request_username: reply_person,
             request_user_id: reply_person_id,
-            request_user_imageUrl: '',
+            request_user_imageUrl: image_url,
             message: ' disagrees to add you as friend"',
             layout: 'attached',
             effect: 'bouncyflip',
@@ -123,11 +112,11 @@
 
     }
 
-    function receive_request_delete(request_person, request_person_id) {
+    function receive_request_delete(request_person, request_person_id, image_url) {
         var notification = new NotificationFx({
             request_username: request_person,
             request_user_id: request_person_id,
-            request_user_imageUrl: '',
+            request_user_imageUrl: image_url,
             message: ' deletes you as friend"',
             layout: 'attached',
             effect: 'bouncyflip',
@@ -151,41 +140,46 @@
 
 
             <div class="navbar-header">
-                <img src="{% static 'image/logo.png' %} " width="168px" height="44px">
+                <div style="display: flex;justify-content: space-between">
+                    <a href="{% url 'homepage' %}">
+                        <img src="{% static 'image/logo.png' %} " width="168px" height="44px">
+                    </a>
+                    <ul class="nav navbar-nav" style="display:flex;justify-content: space-between">
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-weight" aria-expanded="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                        <li id="home-page"><a href="/chat/">聊天室</a></li>
+                        <li id="home-page"><a href="{% url 'question-add' %}">发表主题</a></li>
+                        <li id="home-page"><a href="{% url 'friend-list' %}">好友列表</a></li>
+
+                    </ul>
+                    <button id="toggle_button" type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar-weight" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
 
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-weight">
 
-                <ul class="nav navbar-nav">
-
-                    <li id="home-page"><a href="{% url 'homepage' %}">首页</a></li>
-                    <li id="home-page"><a href="{% url 'question-add' %}">发布问题</a></li>
-                    <li id="home-page"><a href="{% url 'friend-list' %}">好友列表</a></li>
-                    <li id="home-page"><a href="/chat/">chat</a></li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
+
                     {% if myuser.user.is_authenticated %}
-                        <li style="padding: 10px">{{ myuser.nickname }}</li>
-                        <li>{% if user.myuser.photo %}
-                            <a href="{% url 'personal-question' user.id %}"><img
+                        <li><a href="{% url 'user-info' user.id %}">{% if user.myuser.photo %}
+                            <img
                                     src="{% url 'media' myuser.photo %}" class="img-circle" width="30"
-                                    height="30"></a>
+                                    height="30">
                         {% else %}
                             {% if user.myuser.identity == 'T' %}
-                                <img src="{% static 'image/default.png' %}" class="img-circle" width="30" height="30">
+                                <img src="{% static 'image/default.png' %}" class="img-circle" width="30"
+                                     height="30">
                             {% else %}
                                 <img src="{% static 'image/default1.png' %}" class="img-circle" width="30"
                                      height="30">
                             {% endif %}
-                        {% endif %}</li>
+                        {% endif %}</a></li>
                         <li><a href="{% url 'user-logout' %}">注销</a></li>
                         {% if user.is_staff %}
                             <li><a href="{% url 'dashboard' %}">后台</a></li>
@@ -197,7 +191,6 @@
                 </ul>
             </div>
         </div>
-    </div>
     </div>
 
 </nav>

@@ -1,9 +1,9 @@
 # coding=utf-8
 from __future__ import unicode_literals
 
+import arrow
 from django.db import models
 from django.contrib.auth.models import User
-
 
 
 class MyUser(models.Model):
@@ -18,6 +18,9 @@ class MyUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     friend = models.ManyToManyField('self')
     chat_room = models.ManyToManyField('chat.ChatRoomGroup')
+
+    def get_last_login_string(self):
+        return arrow.get(self.user.last_login).humanize(locale="zh")
 
     def __str__(self):
         return self.nickname
