@@ -14,7 +14,7 @@
     });
 
     function intend_add() {
-        var se = confirm("whether add this person as your friend!");
+        var se = confirm("是否要添加其为好友");
         if (se === true) {
             protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
                 if (err)
@@ -36,7 +36,7 @@
     }
 
     function intend_delete() {
-        var se = confirm("whether delete this person as your friend!");
+        var se = confirm("是否要解除于其的好友关系");
         if (se === true) {
             protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
                 if (err)

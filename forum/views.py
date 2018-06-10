@@ -311,14 +311,14 @@ class PersonalReplyListView(FrontMixin, ListView):
         return Answer.objects.filter(reply_author=MyUser.objects.get(pk=self.kwargs['pk'])).order_by('-publish_time')
 
 
-class FriendListView(LoginRequiredMixin, FrontMixin, ListView):
+class FriendView(LoginRequiredMixin, FrontMixin, TemplateView):
     login_url = reverse_lazy('user-login')
-    paginate_by = 10
     template_name = 'forum/friend_list.html'
-    context_object_name = 'friend_list'
 
-    def get_queryset(self):
-        return MyUser.objects.get(user_id=self.request.user.id).friend.all().order_by()
+    def get_context_data(self, *args, **kwargs):
+        context = super(FriendView, self).get_context_data(**kwargs)
+        context['friend_list'] = MyUser.objects.get(user_id=self.request.user.id).friend.all().order_by()
+        return context
 
 
 class UserInfoView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):

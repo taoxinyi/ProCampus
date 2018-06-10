@@ -44,7 +44,7 @@
                 request_username: request_person,
                 request_user_id: request_person_id,
                 request_user_imageUrl: image_url,
-                message: ' is trying to be your friend',
+                message: ' 想成为你的好友',
                 layout: 'attached',
                 effect: 'bouncyflip',
                 type: 'notice',// notice, warning or error
@@ -80,7 +80,7 @@
             request_username: reply_person,
             request_user_id: reply_person_id,
             request_user_imageUrl: image_url,
-            message: ' agrees to add you as friend"',
+            message: ' 同意添加你为好友',
             layout: 'attached',
             effect: 'bouncyflip',
             type: 'notice'// notice, warning or error
@@ -101,7 +101,7 @@
             request_username: reply_person,
             request_user_id: reply_person_id,
             request_user_imageUrl: image_url,
-            message: ' disagrees to add you as friend"',
+            message: ' 拒绝添加你为好友',
             layout: 'attached',
             effect: 'bouncyflip',
             type: 'notice'// notice, warning or error
@@ -117,7 +117,7 @@
             request_username: request_person,
             request_user_id: request_person_id,
             request_user_imageUrl: image_url,
-            message: ' deletes you as friend"',
+            message: ' 删除了你们间的好友关系',
             layout: 'attached',
             effect: 'bouncyflip',
             type: 'notice'// notice, warning or error
@@ -133,18 +133,20 @@
 
     }
 </script>
-<nav class="nav navbar-default">
+<nav class="nav navbar-default navbar-div">
 
-    <div class="container-fluid">
-        <div class="col-md-offset-1 col-md-10 col-sm-12">
+    <div class="container-fluid navbar-div">
+        <div class="col-md-offset-1 col-md-10 col-sm-12 navbar-div">
 
 
             <div class="navbar-header">
                 <div style="display: flex;justify-content: space-between">
                     <a href="{% url 'homepage' %}">
-                        <img src="{% static 'image/logo.png' %} " width="168px" height="44px">
+                        <img src="{% static 'image/logo.png' %} " class="desktop_logo">
+                        <img src="{% static 'image/mobile_logo.png' %} " class="mobile_logo">
+
                     </a>
-                    <ul class="nav navbar-nav" style="display:flex;justify-content: space-between">
+                    <ul class="nav navbar-nav" style="display:flex;justify-content: space-between;width: 100%">
 
                         <li id="home-page"><a href="/chat/">聊天室</a></li>
                         <li id="home-page"><a href="{% url 'question-add' %}">发表主题</a></li>
@@ -167,7 +169,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     {% if myuser.user.is_authenticated %}
-                        <li><a href="{% url 'user-info' user.id %}">{% if user.myuser.photo %}
+                        <li><a href="{% url 'user-info' user.id %}" style="padding: 10px 0">{% if user.myuser.photo %}
                             <img
                                     src="{% url 'media' myuser.photo %}" class="img-circle" width="30"
                                     height="30">

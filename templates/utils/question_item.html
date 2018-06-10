@@ -1,8 +1,8 @@
 {% load staticfiles %}
 
-<div class="col-md-12 article">
+<div class="col-md-12 article mobile-item" >
     <div style="display:flex">
-        <div style="margin-right:20px;width:150px;">
+        <div style="margin-right:20px;width:150px;" class="desktop-user-info">
             <div style="display:flex;flex-direction:column;align-items:center">
                 {% if question.author.myuser.photo %}
                     <img src="{% url 'media' question.author.myuser.photo %}" class="img-circle" width="70"
@@ -30,7 +30,10 @@
             </div>
             <div>
                      <span class="user-email"><i class="far fa-envelope"></i>
-                         {{ question.author.myuser.user.email }}</span>
+                         {% if  question.author.myuser.user.email %}
+                             {{ question.author.myuser.user.email }}
+                         {% else %}暂无
+                         {% endif %}</span>
                 <p>加入时间:{{ question.author.myuser.user.date_joined|date:"Y-m-d" }}</p>
                 <p>最后登录:{{ question.author.myuser.get_last_login_string }}</p>
             </div>
@@ -40,23 +43,35 @@
                     <span class="label label-default"><span class="text-left"><span class="glyphicon glyphicon-tags"
                                                                                     aria-hidden="true"></span>&#9;{{ question.category.name }}</span></span>
                 <h3><a href="#">{{ question.title }}</a></h3>
-                <p>
+                <div style="display: flex;align-items: center">
+                    {% if question.author.myuser.photo %}
+                        <img src="{% url 'media' question.author.myuser.photo %}" class="img-circle mobile-user-info"
+                             width="30"
+                             height="30">
+                    {% else %}
+                        {% if question.author.myuser.identity == 'T' %}
+                            <img src="{% static 'image/default.png' %}" class="img-circle mobile-user-info" width="30"
+                                 height="30">
+                        {% else %}
+                            <img src="{% static 'image/default1.png' %}" class="img-circle mobile-user-info" width="30"
+                                 height="30">
+                        {% endif %}
+                    {% endif %}
+                    <a href="{% url 'user-info' question.author.myuser.user.id %}"
+                       style="word-break:break-all;margin: 0 10px 0 5px" class="mobile-user-info">
+                        {{ question.author.myuser.nickname }}</a>
                     <small><span class="glyphicon glyphicon-calendar"
                                  aria-hidden="true"></span>{{ question.publish_time|date:"Y-m-d" }}&emsp;{{ question.publish_time|time:"H:i:s" }}
                     </small>
-                </p>
+                </div>
             </div>
             <div>
                 <p>{{ question.content|safe }}</p>
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <hr>
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4 text-center">
-            <a role="button" class="btn btn-primary btn" href="{% url 'answer-add' question.id %}">回复</a>
-        </div>
+    <div style="text-align: right">
+        <a role="button" class="button-reply" href="{% url 'answer-add' question.id %}"><i
+                class="fas fa-reply" style="margin-right: 5px"></i>回复</a>
     </div>
 </div>

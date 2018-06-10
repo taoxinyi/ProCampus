@@ -1,7 +1,7 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
 {% block title %}
-
+    个人信息
 {% endblock %}
 
 {% block external_header %}
@@ -25,7 +25,7 @@
                 <div class="block-container"
                      style="padding:10px 20px;display:flex;align-items:center; justify-content: space-between">
                     <div style="display:flex;flex-direction:column">
-                        <span style="display:flex;align-items:baseline">{{ item.text |safe }}</span>
+                        <p >{{ item.text |safe }}</p>
                         <span style="display:flex;align-items: center">
                             {% if item.author_id == 0 %}
                                 <span class="span_block_username">{{ item.author }}</span>
@@ -39,7 +39,8 @@
                                 <i class="fas fa-user-check" style="color:#778087;margin-left:5px" title="这条评价来自于你"></i>
                             {% endif %}
                             {% if item.is_private %}
-                                <i class="fas fa-lock" style="color:#778087;margin-left: 5px" title="这是一条私密评价，只有评价双方可以看到"></i>
+                                <i class="fas fa-lock" style="color:#778087;margin-left: 5px"
+                                   title="这是一条私密评价，只有评价双方可以看到"></i>
                             {% endif %}
 
                     </span>
@@ -70,7 +71,6 @@
             {% endfor %}
         </div>
     </div>
-
     {% include 'utils/pagination.html' %}
 {% endblock %}
 {% block right %}

@@ -22,6 +22,6 @@ urlpatterns = [
 
     url('^user/(?P<pk>[0-9]+)/$', views.UserInfoView.as_view(), name='user-info'),
 
-    url('^friend/$', views.FriendListView.as_view(), name='friend-list'),
+    url('^friend/$', views.FriendView.as_view(), name='friend-list'),
 
 ]

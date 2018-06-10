@@ -8,7 +8,8 @@
 {% block left %}
     {% include 'utils/question_item.html' %}
     {% for answer in answer_list %}
-        {% include 'utils/answer_item.html' %}
+        {% include 'utils/answer_item.html' with answer_num=forloop.counter0 %}
+
 
 
     {% endfor %}

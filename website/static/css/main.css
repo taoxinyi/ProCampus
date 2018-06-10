@@ -130,12 +130,11 @@ body {
     border: none;
     outline: 0;
     height: 22px;
-    width: 186px;
-    padding: 4px 18px;
+    width: 150px;
     background: #f3f3f3;
     border-radius: 15px;
     color: #999;
-    margin-right: 24px;
+    padding: 0 5px;
 }
 
 .tag-dialog-title, .comment-dialog-title {
@@ -204,11 +203,11 @@ body {
     margin: 10px;
 }
 
-.l-child {
+.l-child-list {
     flex: 0 0 40px;
 }
 
-.r-child {
+.r-child-list {
     padding-left: 10px;
     margin: auto 10px;
 }
@@ -465,6 +464,14 @@ button {
     text-align: center;
 }
 
+.fa-edit {
+    color: #ff630e;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+
+}
+
 .fa-comment-dots {
     color: #ff630e;
     cursor: pointer;
@@ -511,5 +518,125 @@ button {
     text-decoration: none;
     word-break: break-all;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+
+}
+
+.chat_submit_button {
+
+    --color: #8fc866;
+    --hover: #66c887;
+    background: none;
+    color: var(--color);
+    transition: 0.25s;
+}
+
+.form-submit-button {
+
+    background: #8fc866;
+    color: whitesmoke;
+    float: right;
+    top: -45px;
+    position: relative;
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.form-submit-button:hover {
+
+    background: #66c887;
+
+}
+
+.chatroom-submit-button {
+    background: #8fc866;
+    color: whitesmoke;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.chatroom-submit-button:hover {
+    background: #66c887;
+}
+
+.search-submit-button {
+    background: #38f;
+    color: whitesmoke;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.search-submit-button:hover {
+    background: cornflowerblue;
+}
+
+.desktop_logo {
+    width: 168px;
+    height: 100%
+}
+
+.mobile_logo {
+    width: 40px;
+    height: 40px;
+    margin: 7px 0 0 15px;
+
+    display: none;
+}
+
+.mobile-user-info {
+    display: none;
+}
+
+.button-reply, .a-button-reply {
+    background: none;
+    color: gray;
+    text-decoration: none
+}
+
+.button-reply:hover, .a-button-reply {
+    color: black;
+    text-decoration: none
+
+}
+
+
+@media only screen and (max-width: 500px) {
+    .mobile_logo, .mobile-user-info {
+        display: block;
+    }
+
+    .desktop_logo, .right-content, .desktop-user-info {
+        display: none
+    }
+
+    .navbar-div {
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav > li > a {
+        margin: 7px 5px;
+        padding: 0;
+    }
+
+    .navbar-right {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end
+    }
+
+    .mobile-item {
+        padding: 10px;
+    }
 
 }

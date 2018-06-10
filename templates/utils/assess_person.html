@@ -6,7 +6,7 @@
     <div class="tag-dialog-close">×</div>
     <div class="tag-dialog-title">印象标签</div>
     <div class="tag-dialog-label">TA的印象：</div>
-    <div style="display: flex" id="all-tags-for-the-person">
+    <div style="display: flex;flex-wrap: wrap" id="all-tags-for-the-person">
         {% for item in all_tag_dict %}
             <span class="tag-all-item">
                     <span>{{ item.tag }}</span>
@@ -16,14 +16,14 @@
         {% endfor %}
     </div>
     <div class="tag-dialog-label">我对TA的印象：</div>
-    <div style="display: flex" id="my-tags-for-the-person">
+    <div style="display: flex;flex-wrap: wrap" id="my-tags-for-the-person">
         {% for item in selected_tag_list %}
             <span class="tag-item"><span>{{ item.tag }}</span>
                     <span class="tag-delete">x</span></span>
         {% endfor %}</div>
     <div style="display: flex;align-items: center;padding: 10px 0">
             <span id="dialog-diy" class="tag-add" style="margin-bottom: 0;margin-right: 10px"><span
-                    style="color: #f70">+</span><span>标签</span></span>
+                    style="color: #f70">+</span><span style="word-break: keep-all">标签</span></span>
         <div id="tag-dialog-input-div" style="display: none">
             <input type="text" class="tag-dialog-input" placeholder="输入标签（最多6个字）" maxlength="6">
             <span class="tag-dialog-text-button" id="tag-diy-submit">提交</span>
@@ -94,12 +94,12 @@
     <div class="col-md-12">
         <div style="display: flex">
             {% if theuser.photo %}
-                <img src="{% url 'media' theuser.photo %}" class="img-circle" width="110" height="110">
+                <img src="{% url 'media' theuser.photo %}" class="img-circle" width="60" height="60">
             {% else %}
                 {% if theuser.identity == 'T' %}
-                    <img src="{% static 'image/default.png' %}" class="img-circle" width="110" height="110">
+                    <img src="{% static 'image/default.png' %}" class="img-circle" width="60" height="60">
                 {% else %}
-                    <img src="{% static 'image/default1.png' %}" class="img-circle" width="110" height="110">
+                    <img src="{% static 'image/default1.png' %}" class="img-circle" width="60" height="60">
                 {% endif %}
             {% endif %}
             <div style="display: flex;flex-direction: column;margin:5px 10px">
@@ -120,35 +120,36 @@
                             <i class="fas fa-user-friends" onclick="intend_delete()"></i>
                         {% endif %}
                     {% endif %}
-                    <i class="fas fa-comment-dots" id="button_comment" title="添加对TA的评价"></i>
+                    <i class="fas fa-edit" id="button_comment" title="添加对TA的评价"></i>
 
 
                 </div>
                 <span class="user-email"><i class="far fa-envelope"></i>
-                {{ theuser.user.email }} 活跃于{{ last_time }}</span>
-
-                <div style="display: flex;flex-wrap:wrap"><span>TA的标签：</span> {% for item in all_tag_dict %}
-                    <span class="tag-item">{{ item.tag }}</span>
-                {% endfor %}
-                    <span id="dialog_popup" class="tag-add" title="添加对TA的印象标签">
-                        <span style="color: #f70">+</span><span
-                            style="font-size: 13px;padding: 1px 2px">标签</span></span>
-                </div>
-
-                <div style="display: flex;flex-wrap:wrap">
-                    {% if theuser_category_list|length > 0 %}
-                        <span>TA活跃在：</span>
-                    {% else %}
-                        <span>TA还不怎么活跃</span>
-                    {% endif %}
-                    {% for item in  theuser_category_list %}
-                        <span class="tag-category-item">{{ item.name }}</span>
-                    {% endfor %}
-                </div>
+                    {% if  theuser.user.email %}
+                        {{ theuser.user.email }}
+                    {% else %}暂无
+                    {% endif %}活跃于{{ last_time }}</span>
             </div>
 
         </div>
+        <div style="display: flex;flex-wrap:wrap"><span>TA的标签：</span> {% for item in all_tag_dict %}
+            <span class="tag-item">{{ item.tag }}</span>
+        {% endfor %}
+            <span id="dialog_popup" class="tag-add" title="添加对TA的印象标签">
+                        <span style="color: #f70">+</span><span
+                    style="font-size: 13px;padding: 1px 2px">标签</span></span>
+        </div>
 
+        <div style="display: flex;flex-wrap:wrap">
+            {% if theuser_category_list|length > 0 %}
+                <span>TA活跃在：</span>
+            {% else %}
+                <span>TA还不怎么活跃</span>
+            {% endif %}
+            {% for item in  theuser_category_list %}
+                <span class="tag-category-item">{{ item.name }}</span>
+            {% endfor %}
+        </div>
     </div>
 
 </div>

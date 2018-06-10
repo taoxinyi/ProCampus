@@ -1,6 +1,6 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
-
+{% block title %}聊天室__{{ room_name_json |slice:"1:-1"}}{% endblock %}
 {% block external_header %}
 {% endblock %}
 {% block left %}
@@ -56,9 +56,9 @@
                 </div>
             </div>
             <div id="easyEditor"></div>
-            <input id="chat-message-submit" type="button" value="Send"
-                   style="float: right;top: -40px;position: relative;margin: 5px;"/>
-            <br/>
+            <button id="chat-message-submit"  class="form-submit-button"><i class="fas fa-paper-plane"></i>
+
+发送</button>
         </div>
     </div>
 
@@ -419,7 +419,7 @@
         function addToChat(author, author_id, imageUrl, text, time, file_size, file_name, file_url, isAuthor) {
 
             var a = document.createElement("a");
-            a.href = "/forum/user/" + author_id ;
+            a.href = "/forum/user/" + author_id;
             var img = new Image();
             img.src = imageUrl;
             a.appendChild(img);
@@ -511,11 +511,11 @@
                 var img = new Image();
                 img.style.width = "40px";
                 img.src = imageUrl;
-                a.className = "l-child";
+                a.className = "l-child-list";
                 a.appendChild(img);
                 var nickname = document.createElement("div");
                 nickname.innerHTML = name;
-                nickname.className = "r-child";
+                nickname.className = "r-child-list";
                 div_list_item.appendChild(a);
                 div_list_item.appendChild(nickname);
                 div_list.appendChild(div_list_item);

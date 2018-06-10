@@ -19,13 +19,13 @@ class UserInfoMixin(object):
         match_string = match.group()
         category = int(match_string[1])
         img_index = match.group(1)
-        return '<img src="/static/emoji/%s.%s" style="width:%s0px">' % (
+        return '<img src="/static/emoji/%s.%s" style="width:%s0px;vertical-align:baseline">' % (
             match_string[1:-1], "gif" if category == 1 else "png", '5' if category == 5 else '3')
 
     def convert_to_html(self, raw_comment):
         return re.sub(r'\|\d_(\d+)\|', self.my_replace, raw_comment)
 
-    def get_most_category(self,the_user):
+    def get_most_category(self, the_user):
 
         question_category_count = the_user.user.question_set.all().order_by().values(
             'category').annotate(

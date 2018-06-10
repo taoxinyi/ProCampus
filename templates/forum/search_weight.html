@@ -1,13 +1,17 @@
-<div class="col-md-12 article" style=" margin-top: 20px;">
+<div style=" margin: 20px 0;padding: 0">
 
     <form action="{% url 'question-search' %}" method="get">
 
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" style="padding: 0">
 
             <div style="display: flex">
-                <input class="form-control" type="search" placeholder="搜索标题" name="keyword">
+                <input class="form-control" type="search" placeholder="搜索标题"
+                       style="width: auto;height: auto;flex:1 1 auto;" name="keyword">
 
-                <button type="submit" class="btn btn-default">搜索</button>
+                <button type="submit" class="search-submit-button"><i class="fas fa-search"></i>
+
+                    搜索
+                </button>
 
             </div>
 

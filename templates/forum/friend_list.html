@@ -1,7 +1,7 @@
-{% extends 'website/frontend/frontend_base.html' %}
+{% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
 {% block title %}
-
+好友列表
 {% endblock %}
 
 {% block external_header %}
@@ -10,24 +10,41 @@
 
 {% block left %}
 
-    <div class="col-md-12 col-xs-12 article">
+    <div class="col-md-12 col-xs-12 article" style="margin-top: 20px">
         <h3>好友列表</h3>
-    </div>
-    {% if friend_list %}
-        {% for myuser in friend_list %}
-            <div class="col-md-12 col-xs-12">
-                <h3><a
-                        href="{% url 'user-info' myuser.user.id %}">{{ myuser.nickname }}</a>
-                </h3>
+        {% if friend_list %}
+            {% for friend in friend_list %}
+                <div class="parent">
+                        <span class="l-child-list">
+                        {% if friend.photo %}
+                            <img src="{% url 'media' friend.photo %}" class="img-circle" width="40"
+                                 height="40">
+                        {% else %}
+                            {% if friend.identity == 'T' %}
+                                <img src="{% static 'image/default.png' %}" class="img-circle" width="40" height="40">
+                            {% else %}
+                                <img src="{% static 'image/default1.png' %}" class="img-circle" width="40" height="40">
+                            {% endif %}
+                        {% endif %}
+                        </span>
+                    <a href="{% url 'user-info' friend.user.id %}" class="r-child-list">
+                        {{ friend.nickname }}
+                    </a>
+                </div>
+
+
+            {% endfor %}
             </div>
 
-        {% endfor %}
-    {% else %}
-        <div class="col-md-12 col-xs-12 article">
-            <h3>暂无</h3>
-        </div>
-    {% endif %}
+        {% else %}
+            <div class="col-md-12 col-xs-12 article">
+                <h3>暂无</h3>
+            </div>
+        {% endif %}
 
 
-    {% include 'utils/pagination.html' %}
+{% endblock %}
+{% block right %}
+    {% include "website/frontend/sidebar.html" %}
+
 {% endblock %}

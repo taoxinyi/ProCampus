@@ -1,24 +1,51 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
-{% block title %}{{ question.title }}{% endblock %}
+{% block title %}进入聊天室{% endblock %}
 {% block external_header %}
 {% endblock %}
 {% block left %}
 
-    <div class="article">
+    <div class="article" style="margin-top: 20px">
 
-        What chat room would you like to enter?<br/>
-        <div><input id="room-name-input" type="text"/><br/>
-            <input id="room-name-submit" type="button" value="Enter"/></div>
-        <div>Explore where your friends are
+        <h2 class="category-header">进入聊天室</h2>
+        <div style="display: flex"><input id="room-name-input" type="text" class="form-control"
+                                          style="width: auto;height: auto;flex:1 1 auto;" placeholder="输入你想进入的聊天室"/>
+            <button id="room-name-submit" class="chatroom-submit-button"><i class="fas fa-paper-plane"></i><span
+                    style="margin-left: 5px">进入</span></button>
+        </div>
+        <div><h4 class="category-header">你的好友正在如下聊天室</h4>
             {% for friend in friend_list %}
-                {% for chat_room in friend.chat_room.all %}
-                    <div>{{ friend.nickname }}</div>
-                    <div>{{ chat_room.name }}</div>
 
-                {% endfor %}
+                {% if friend.chat_room.all %}
+                    <div style="display: flex;justify-content: space-between">
+                        <div class="parent">
+                        <span class="l-child-list">
+                        {% if friend.photo %}
+                            <img src="{% url 'media' friend.photo %}" class="img-circle" width="40"
+                                 height="40">
+                        {% else %}
+                            {% if friend.identity == 'T' %}
+                                <img src="{% static 'image/default.png' %}" class="img-circle" width="40" height="40">
+                            {% else %}
+                                <img src="{% static 'image/default1.png' %}" class="img-circle" width="40" height="40">
+                            {% endif %}
+                        {% endif %}
+                        </span>
+                            <a href="{% url 'user-info' friend.user.id %}" class="r-child-list">
+                                {{ friend.nickname }}
+                            </a>
+                        </div>
+                        <div style="display: flex;flex-direction: column;justify-content: center">
 
-            {% endfor %}</div>
+                            {% for chat_room in friend.chat_room.all %}
+                                <a href="{% url 'room'  chat_room.name|slice:"5:" %}">{{ chat_room.name|slice:"5:" }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+        </div>
 
     </div>
     <script>
@@ -38,4 +65,8 @@
 {% endblock %}
 
 {% block front_js %}
+{% endblock %}
+{% block right %}
+    {% include "website/frontend/sidebar.html" %}
+
 {% endblock %}
