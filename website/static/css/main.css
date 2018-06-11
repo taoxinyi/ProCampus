@@ -607,13 +607,12 @@ button {
 
 }
 
-
 @media only screen and (max-width: 500px) {
     .mobile_logo, .mobile-user-info {
         display: block;
     }
 
-    .desktop_logo, .right-content, .desktop-user-info {
+    .desktop_logo, .right-content, .desktop-user-info, .destop-time-info {
         display: none
     }
 
@@ -639,4 +638,11 @@ button {
         padding: 10px;
     }
 
+    .cell_tabs {
+        padding: 0;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
 }

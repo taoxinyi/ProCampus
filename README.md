@@ -28,8 +28,11 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
     - Featuring emoji and file sharing in the chatroom.
 - Custom tags and comments in user info, featuring like and dislike
 ## 1.2. How to Install
+
 ### 1.2.1. Prerequisite
 - Ubuntu has python3
+
+
 ### 1.2.2. install requirements
 - Install python3 requirements
 

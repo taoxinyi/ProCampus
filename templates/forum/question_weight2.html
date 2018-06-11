@@ -1,7 +1,7 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
 {% block title %}
-发表的主题
+    发表的主题
 {% endblock %}
 
 {% block external_header %}
@@ -37,8 +37,12 @@
                         <span style="margin-right: 15px"><span
                                 aria-hidden="true"></span>{{ question.publish_time|date:"Y-m-d" }}&nbsp;{{ question.publish_time|time:"H:i" }}
                         </span>
-                        <span style="margin-right: 15px">回帖数：{{ question.answer_set.count }}</span>
-                        <span style="margin-right: 15px">浏览次数：{{ question.show_times }}</span>
+                        <span class="destop-time-info" style=" margin-right: 15px">
+                            回帖数：{{ question.answer_set.count }}
+                        </span>
+                        <span class="destop-time-info" style=" margin-right: 15px">
+                            浏览次数：{{ question.show_times }}
+                        </span>
 
 
                     </div>

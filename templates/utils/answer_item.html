@@ -2,8 +2,8 @@
 
 <div class="col-md-12 article mobile-item">
     <div style="display:flex">
-        <div style="margin-right:20px;width:150px;" class="desktop-user-info">
-            <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="margin-right:20px;" class="desktop-user-info">
+            <div style="display:flex;flex-direction:column;align-items:center;width:150px">
                 {% if answer.author.myuser.photo %}
                     <img src="{% url 'media' answer.author.myuser.photo %}" class="img-circle" width="70"
                          height="70">

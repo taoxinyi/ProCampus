@@ -13,5 +13,11 @@ class MyUserAdmin(UserAdmin):
     inlines = (MyUserInline,)
 
 
+class MyUserDetailAdmin(admin.ModelAdmin):
+    fields = ['nickname','friend','chat_room']
+    filter_horizontal = ('friend', 'chat_room',)
+
+
 admin.site.unregister(User)
 admin.site.register(User, MyUserAdmin)
+admin.site.register(MyUser, MyUserDetailAdmin)

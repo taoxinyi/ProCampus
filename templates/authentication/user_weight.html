@@ -35,7 +35,11 @@
         </p>
     </div>
     <div class="col-md-12">
-        <p>电子邮件:<br>{{ myuser.user.email }}</p>
+        <p> <span class="user-email"><i class="far fa-envelope"></i>
+            {% if  myuser.user.email %}
+                {{ myuser.user.email }}
+            {% else %}暂无
+            {% endif %}</span></p>
         <p>加入时间:<br>{{ myuser.user.date_joined|date:"Y-m-d" }}</p>
         <p>最后登录:<br>{{ myuser.user.last_login|date:"Y-m-d" }}&nbsp;{{ myuser.user.last_login|time:"H:i:s" }}</p>
         <p>
