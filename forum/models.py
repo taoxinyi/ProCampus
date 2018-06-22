@@ -51,6 +51,9 @@ class Comment(models.Model):
     is_public = models.BooleanField(default=True)
     is_anonymous = models.BooleanField(default=True)
 
+    def __str__(self):
+        return "From:%s,like:%s,dislike:%s" % (self.from_user, self.like_user.count(), self.dislike_user.count())
+
 
 class Tag(models.Model):
     from_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="tag_from_user")
@@ -60,6 +63,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag
+
+
+class Star(models.Model):
+    from_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="star_from_user")
+    to_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name="star_to_user")
+    value = models.IntegerField(null=True)
+
+    def __str__(self):
+        return "From:%s,To:%s,Value:%s" % (self.from_user, self.to_user, self.value)
 
 
 class RequestReplyFriend(models.Model):

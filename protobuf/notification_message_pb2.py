@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='notification_message.proto',
   package='chat',
   syntax='proto3',
-  serialized_pb=_b('\n\x1anotification_message.proto\x12\x04\x63hat\"\xe1\x03\n\x10NotificationItem\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.chat.NotificationItem.Type\x12\x14\n\x0c\x66romClientId\x18\x02 \x01(\x05\x12\x12\n\ntoClientId\x18\x03 \x01(\x05\x12\x16\n\x0e\x66romClientName\x18\x04 \x01(\t\x12\x14\n\x0ctoClientName\x18\x05 \x01(\t\x12\x10\n\x08imageUrl\x18\x06 \x01(\t\x12\x0b\n\x03tag\x18\x07 \x03(\t\x12\x0c\n\x04text\x18\x08 \x01(\t\x12\x11\n\tcommentId\x18\t \x01(\x05\x12\x13\n\x0bisAnonymous\x18\n \x01(\x08\x12\x10\n\x08isPublic\x18\x0b \x01(\x08\"\xe2\x01\n\x04Type\x12\x16\n\x12REQUEST_ADD_FRIEND\x10\x00\x12\x14\n\x10\x41GREE_ADD_FRIEND\x10\x01\x12\x17\n\x13\x44ISAGREE_ADD_FRIEND\x10\x02\x12\x19\n\x15REQUEST_DELETE_FRIEND\x10\x03\x12\x0b\n\x07\x41\x44\x44_TAG\x10\x04\x12\x0f\n\x0b\x41\x44\x44_COMMENT\x10\x05\x12\x10\n\x0cLIKE_COMMENT\x10\x06\x12\x17\n\x13\x43\x41NCEL_LIKE_COMMENT\x10\x07\x12\x13\n\x0f\x44ISLIKE_COMMENT\x10\x08\x12\x1a\n\x16\x43\x41NCEL_DISLIKE_COMMENT\x10\t\"A\n\x0cNotification\x12\x31\n\x11notification_item\x18\x01 \x03(\x0b\x32\x16.chat.NotificationItemb\x06proto3')
+  serialized_pb=_b('\n\x1anotification_message.proto\x12\x04\x63hat\"\x80\x04\n\x10NotificationItem\x12)\n\x04type\x18\x01 \x01(\x0e\x32\x1b.chat.NotificationItem.Type\x12\x14\n\x0c\x66romClientId\x18\x02 \x01(\x05\x12\x12\n\ntoClientId\x18\x03 \x01(\x05\x12\x16\n\x0e\x66romClientName\x18\x04 \x01(\t\x12\x14\n\x0ctoClientName\x18\x05 \x01(\t\x12\x10\n\x08imageUrl\x18\x06 \x01(\t\x12\x0b\n\x03tag\x18\x07 \x03(\t\x12\x0c\n\x04text\x18\x08 \x01(\t\x12\x11\n\tcommentId\x18\t \x01(\x05\x12\x13\n\x0bisAnonymous\x18\n \x01(\x08\x12\x10\n\x08isPublic\x18\x0b \x01(\x08\x12\x0c\n\x04star\x18\x0c \x01(\x05\"\xf3\x01\n\x04Type\x12\x16\n\x12REQUEST_ADD_FRIEND\x10\x00\x12\x14\n\x10\x41GREE_ADD_FRIEND\x10\x01\x12\x17\n\x13\x44ISAGREE_ADD_FRIEND\x10\x02\x12\x19\n\x15REQUEST_DELETE_FRIEND\x10\x03\x12\x0b\n\x07\x41\x44\x44_TAG\x10\x04\x12\x0f\n\x0b\x41\x44\x44_COMMENT\x10\x05\x12\x10\n\x0cLIKE_COMMENT\x10\x06\x12\x17\n\x13\x43\x41NCEL_LIKE_COMMENT\x10\x07\x12\x13\n\x0f\x44ISLIKE_COMMENT\x10\x08\x12\x1a\n\x16\x43\x41NCEL_DISLIKE_COMMENT\x10\t\x12\x0f\n\x0b\x43HANGE_STAR\x10\n\"A\n\x0cNotification\x12\x31\n\x11notification_item\x18\x01 \x03(\x0b\x32\x16.chat.NotificationItemb\x06proto3')
 )
 
 
@@ -70,11 +70,15 @@ _NOTIFICATIONITEM_TYPE = _descriptor.EnumDescriptor(
       name='CANCEL_DISLIKE_COMMENT', index=9, number=9,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_STAR', index=10, number=10,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=292,
-  serialized_end=518,
+  serialized_start=306,
+  serialized_end=549,
 )
 _sym_db.RegisterEnumDescriptor(_NOTIFICATIONITEM_TYPE)
 
@@ -163,6 +167,13 @@ _NOTIFICATIONITEM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='star', full_name='chat.NotificationItem.star', index=11,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -177,7 +188,7 @@ _NOTIFICATIONITEM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=37,
-  serialized_end=518,
+  serialized_end=549,
 )
 
 
@@ -207,8 +218,8 @@ _NOTIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=520,
-  serialized_end=585,
+  serialized_start=551,
+  serialized_end=616,
 )
 
 _NOTIFICATIONITEM.fields_by_name['type'].enum_type = _NOTIFICATIONITEM_TYPE

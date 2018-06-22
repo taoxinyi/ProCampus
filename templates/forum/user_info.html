@@ -20,12 +20,39 @@
             <a href="{% url 'personal-question' theuser.user.id %}" class="cell_tab">发表的主题</a>
             <a href="{% url 'personal-answer' theuser.user.id %}" class="cell_tab">回复的主题</a>
         </div>
-        <div id="comment_list">
+        {% if pagination_type == 'count' %}
+            <div class="selector-div" data-isopen="false">
+                <span class="selector-span">按热度排序</span>
+                <i class="fas fa-angle-down"></i>
+            </div>
+            <ul class="dropdown">
+                <li>
+                    <a href="{% url 'user-info' theuser.user.id %}?type=time" class="dropdown-item">
+                        <span>按时间排序</span>
+                        <i class="fas fa-clock"></i>
+                    </a>
+                </li>
+            </ul>
+        {% else %}
+            <div class="selector-div" data-isopen="false">
+                <span class="selector-span">按时间排序</span>
+                <i class="fas fa-angle-down"></i>
+            </div>
+            <ul class="dropdown">
+                <li>
+                    <a href="{% url 'user-info' theuser.user.id %}?type=count" class="dropdown-item">
+                        <span>按热度排序</span>
+                        <i class="fab fa-hotjar"></i>
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+        <div id="comment_list" style="margin-top: 10px">
             {% for item in object_list %}
                 <div class="block-container"
                      style="padding:10px 20px;display:flex;align-items:center; justify-content: space-between">
                     <div style="display:flex;flex-direction:column">
-                        <p >{{ item.text |safe }}</p>
+                        <p>{{ item.text |safe }}</p>
                         <span style="display:flex;align-items: center">
                             {% if item.author_id == 0 %}
                                 <span class="span_block_username">{{ item.author }}</span>
@@ -71,7 +98,39 @@
             {% endfor %}
         </div>
     </div>
-    {% include 'utils/pagination.html' %}
+    {% include 'utils/pagination.html' with type=pagination_type %}
+    <script>
+        $(".selector-div").click(function (e) {
+            var is_open = $(this).data("isopen");
+            var arrow = $(this).children().last();
+            if (is_open) {
+                arrow.attr('class', 'fas fa-angle-down');
+                $(this).removeClass('selector-div-focus');
+                $(this).next().hide();
+            }
+            else {//show the selection
+                arrow.attr('class', 'fas fa-angle-up');
+                $(this).addClass('selector-div-focus');
+                $(this).next().show();
+
+
+            }
+            $(this).data("isopen", !is_open);
+
+        });
+        $(document).mouseup(function (e) {
+            var container = $(".dropdown");
+            var selector = $(".selector-div");
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && !selector.is(e.target) && container.has(e.target).length === 0) {
+                container.hide();
+                selector.data("isopen", false);
+                selector.children().last().attr('class', 'fas fa-angle-down');
+                selector.removeClass('selector-div-focus');
+            }
+        });
+
+    </script>
 {% endblock %}
 {% block right %}
     {% include "website/frontend/sidebar.html" %}

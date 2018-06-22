@@ -10,7 +10,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView
 
 from forum.mixin import UserInfoMixin
-from forum.models import Category, Question, Answer
+from forum.models import Category, Question, Answer, Star
 from utils.mixin import AjaxableResponseMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -351,7 +351,12 @@ class UserInfoView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):
                                 "is_private": not comment.is_public}
 
                                )
-
+        if self.request.GET.get('type', 'count') == 'count':
+            """
+            if sorted by total like & dislike count then change the return_list
+            """
+            return_list = sorted(return_list, key=lambda k: k['like_user_count'] + k['dislike_user_count'],
+                                 reverse=True)
         return return_list
 
     def get_context_data(self, *args, **kwargs):
@@ -362,6 +367,14 @@ class UserInfoView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):
         context['currentuser'] = current_user
         context['isSelf'] = False
         context['isFriend'] = False
+        # Get the all star evaluation of this user
+        context['average_star'], context['star_count_list'] = self.get_star_average_and_count_list(the_user.id)
+        try:
+            context['previous_star'] = Star.objects. \
+                filter(from_user_id=current_user.id, to_user_id=the_user.id)[0].value
+        except:
+            context['previous_star'] = 0
+        print(context['average_star'], context['star_count_list'])
         # all of the user's tag and count
         # sample output
         # <QuerySet [{'count': 3, 'tag': 'good'}, {'count': 1, 'tag': 'bad'}]>
@@ -379,4 +392,30 @@ class UserInfoView(LoginRequiredMixin, FrontMixin, ListView, UserInfoMixin):
             context['isFriend'] = True
         context['question_list'] = Question.objects.filter(author_id=self.kwargs['pk'])
         context['last_time'] = arrow.get(the_user.user.last_login).humanize(locale="zh")
+        context['pagination_type'] = self.request.GET.get('type', 'count')
+
+        print(context['pagination_type'])
         return context
+
+    def get_star_average_and_count_list(self, to_user_id):
+        """
+
+        :param to_user_id: the user who receives the star
+        :return: average score of star, 0 if total count is 0
+                 list of star count of length 5
+                 e.g. [1,2,5,6,2] means the value of 1,2,3,4,5 is 1,2,5,6,2 respectfully
+        """
+        all_star_list = list(
+            Star.objects.filter(to_user_id=to_user_id).values('value').annotate(
+                count=Count('value')).order_by('value')
+        )
+        star_count_list = [0, 0, 0, 0, 0]
+        total_sum = 0
+        total_count = 0
+        for d in all_star_list:
+            value = d['value']
+            count = d['count']
+            star_count_list[value - 1] = count
+            total_sum += value * count
+            total_count += count
+        return total_sum / total_count if total_count != 0 else 0, star_count_list

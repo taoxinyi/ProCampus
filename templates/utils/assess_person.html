@@ -1,6 +1,11 @@
 {% load staticfiles %}
 <script src="{% static "js/easyEditor.min.js" %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
+<script src="{% static "js/jquery.raty.js" %}"></script>
+<script src="{% static "js/chart.min.js" %}"></script>
+<script src="{% static "js/chart.pieceLabel.min.js" %}"></script>
+
+<link rel=" stylesheet" type="text/css" href="{% static "css/jquery.raty.css" %}"/>
+<link rel=" stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
 <link rel="stylesheet" type="text/css" href="{% static "css/pretty-checkbox.min.css" %}"/>
 <div class="tag-add-dialog">
     <div class="tag-dialog-close">×</div>
@@ -90,8 +95,27 @@
 
 
 </div>
+<div class="star-change-dialog">
+    <div class="star-dialog-close">×</div>
+    <div class="star-dialog-title">星级评分</div>
+    <div style="display: flex;align-items: flex-end">
+        <div class="star-dialog-label">TA的评分：</div>
+        <div class="star-div star-dialog-div"></div>
+        <span class="star-dialog-value star-dialog-label">{{ average_star }}</span>
+    </div>
+    <canvas id="myChart"></canvas>
+    <div style="display: flex;align-items: flex-end">
+        <div class="star-dialog-label">你对TA的评分：</div>
+        <div class="star-div star-dialog-div star-clickable"></div>
+        <span id="current-star" class="star-dialog-value star-dialog-label">{{ previous_star }}</span>
+    </div>
+    <div class="star-dialog-save">提交评分</div>
+
+</div>
+
 <div class="col-md-12 article" style="margin-top: 20px;padding: 20px 10px">
     <div class="col-md-12">
+        <div id="display-star-div" class="star-div"></div>
         <div style="display: flex">
             {% if theuser.photo %}
                 <img src="{% url 'media' theuser.photo %}" class="img-circle" width="60" height="60">
@@ -121,8 +145,6 @@
                         {% endif %}
                     {% endif %}
                     <i class="fas fa-edit" id="button_comment" title="添加对TA的评价"></i>
-
-
                 </div>
                 <span class="user-email"><i class="far fa-envelope"></i>
                     {% if  theuser.user.email %}
@@ -150,10 +172,21 @@
                 <span class="tag-category-item">{{ item.name }}</span>
             {% endfor %}
         </div>
+
     </div>
 
 </div>
 <script>
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
 
     var editor = easyEditor('easyEditor');
     //表情
@@ -265,6 +298,83 @@
 
                 var selected_array = Array();
                 var add_array = Array();
+                //star
+                $(".star-div").raty({
+                    starType: 'i',
+                    precision: true,
+                    readOnly: true,
+                    hints: ['骄傲', '无比骄傲', '骄傲突破天际', '骄傲冲出地球', '龙傲天'],
+                    score: {{ average_star|safe }}
+
+                });
+                $("#display-star-div").click(function () {
+                    if (!$(".star-change-dialog").is(":visible")) {
+                        $(".star-change-dialog").show();
+                        var ctx = document.getElementById('myChart').getContext('2d');
+
+                        var chart = new Chart(ctx, {
+                            // The type of chart we want to create
+                            type: 'pie',
+
+                            // The data for our dataset
+                            data: {
+                                labels: ["1", "2", "3", "4", "5"],
+                                datasets: [{
+                                    backgroundColor: [
+                                        getRandomColor(),
+                                        getRandomColor(),
+                                        getRandomColor(),
+                                        getRandomColor(),
+                                        getRandomColor()
+                                    ],
+                                    data: {{ star_count_list|safe }}
+                                }]
+                            },
+
+                            // Configuration options go here
+                            options: {
+                                responsive: true,
+                                pieceLabel: {
+                                    render: 'percentage',
+                                    fontColor: 'white',
+                                    precision: 2
+                                }
+                            }
+                        });
+                    }
+
+                });
+                $(".star-clickable").raty({
+                    starType: 'i',
+                    score: {{ previous_star|safe }},
+                    hints: ['骄傲', '无比骄傲', '骄傲突破天际', '骄傲冲出地球', '龙傲天'],
+                    click: function (score) {
+                        $("#current-star").html(score);
+
+                    }
+                });
+                $(".star-dialog-save").click(function (e) {
+                        var current_star = $(".star-clickable").raty('score');
+                        var previous_star ={{ previous_star|safe }};
+                        if (current_star == previous_star)
+                            alert("你并没有修改你的评分，请重试");
+                        else {
+                            var payload = {
+                                type: 10,
+                                fromClientId:{{ currentuser.id }},
+                                toClientId:{{ theuser.id }},
+                                star: current_star
+                            };
+                            var item = notificationItem.create(payload);
+                            var buffer = notificationItem.encode(item).finish();
+                            FriendSocket.send(buffer);
+                            location.reload();
+                        }
+                    }
+                );
+                $(".star-dialog-close").click(function () {
+                    $(".star-change-dialog").hide();
+                });
                 $(document).mouseup(function (e) {
                     var container = $(".tag-hidden-popularity");
 

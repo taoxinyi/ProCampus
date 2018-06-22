@@ -12,7 +12,7 @@ import protobuf.chat_message_pb2 as ChatMessage
 import protobuf.notification_message_pb2 as Notification
 import json
 
-from forum.models import RequestReplyFriend, Tag, Comment
+from forum.models import RequestReplyFriend, Tag, Comment, Star
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -320,6 +320,12 @@ class NotificationConsumer(AsyncWebsocketConsumer):
             await self.cancel_comment(notification_item.commentId, request_person_id, False)
             notification_type = "cancel_dislike_comment"
             group_id = str(reply_person_id)
+        elif notification_item.type == Notification.NotificationItem.CHANGE_STAR:
+            print("aaaa", notification_item)
+            await  self.change_star_to_db(request_person_id, reply_person_id, notification_item.star)
+
+            notification_type = "change_star"
+            group_id = str(reply_person_id)
             # group send to the reply person group
         await self.channel_layer.group_send(
             group_id,
@@ -467,3 +473,13 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     def add_comment_to_db(self, request_person_id, reply_person_id, comment, is_public, is_anonymous):
         Comment(from_user_id=request_person_id, to_user_id=reply_person_id, text=comment, is_public=is_public,
                 is_anonymous=is_anonymous).save()
+
+    @database_sync_to_async
+    def change_star_to_db(self, request_person_id, reply_person_id, star_value):
+        query_result = Star.objects.all().filter(from_user_id=request_person_id, to_user_id=reply_person_id)
+        if len(query_result) == 0:
+            Star(from_user_id=request_person_id, to_user_id=reply_person_id, value=star_value).save()
+        else:
+            query_result[0].value = star_value
+            query_result[0].save()
+        print(Star.objects.all())

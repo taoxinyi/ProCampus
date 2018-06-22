@@ -13,6 +13,7 @@ message NotificationItem {
         CANCEL_LIKE_COMMENT = 7;
         DISLIKE_COMMENT = 8;
         CANCEL_DISLIKE_COMMENT = 9;
+        CHANGE_STAR = 10;
     }
     Type type = 1;
     int32 fromClientId = 2;
@@ -25,6 +26,7 @@ message NotificationItem {
     int32 commentId = 9;
     bool isAnonymous = 10;
     bool isPublic = 11;
+    int32 star = 12;
 
 }
 
