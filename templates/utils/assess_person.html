@@ -100,8 +100,8 @@
     <div class="star-dialog-title">星级评分</div>
     <div style="display: flex;align-items: flex-end">
         <div class="star-dialog-label">TA的评分：</div>
-        <div class="star-div star-dialog-div"></div>
-        <span class="star-dialog-value star-dialog-label">{{ average_star }}</span>
+        <div class="star-div star-dialog-div star-readonly"></div>
+        <span class="star-dialog-value star-dialog-label star-readonly-label">{{ average_star|floatformat:1 }}</span>
     </div>
     <canvas id="myChart"></canvas>
     <div style="display: flex;align-items: flex-end">
@@ -177,15 +177,6 @@
 
 </div>
 <script>
-
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
 
 
     var editor = easyEditor('easyEditor');
@@ -289,6 +280,64 @@
 </script>
 <script>
     load_protobuf();
+    var current_star_array ={{ star_count_list|safe }};
+    var previous_star = {{ previous_star|safe }};
+    var average_star = {{ average_star|safe }};
+    var chart;
+
+
+    function create_chart(data_list) {
+        var ctx = document.getElementById('myChart').getContext('2d');
+        chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: ["1", "2", "3", "4", "5"],
+                datasets: [{
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(255, 159, 64, 0.8)'
+                    ],
+                    data: data_list
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                pieceLabel: {
+                    render: 'percentage',
+                    fontColor: 'white',
+                    precision: 2
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem, data) {
+                            var count = data.datasets[0].data[tooltipItem.index];
+                            var value=tooltipItem.index+1
+                            return count+"人为他打了"+value+"星";
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function return_previous_status() {
+        var star_readonly = $(".star-readonly");
+        star_readonly.raty('readOnly', false);
+        star_readonly.raty('score', average_star);
+        star_readonly.raty('readOnly', true);
+        $(".star-readonly-label").html(average_star);
+        $(".star-clickable").raty('score', previous_star);
+        $("#current-star").html(previous_star);
+
+    }
 
     function load_protobuf() {
         protobuf.load("{% static "notification_message.proto" %}", function (err, root) {
@@ -304,59 +353,53 @@
                     precision: true,
                     readOnly: true,
                     hints: ['骄傲', '无比骄傲', '骄傲突破天际', '骄傲冲出地球', '龙傲天'],
-                    score: {{ average_star|safe }}
+                    score: average_star
 
                 });
+
                 $("#display-star-div").click(function () {
                     if (!$(".star-change-dialog").is(":visible")) {
                         $(".star-change-dialog").show();
-                        var ctx = document.getElementById('myChart').getContext('2d');
+                        create_chart(current_star_array);
 
-                        var chart = new Chart(ctx, {
-                            // The type of chart we want to create
-                            type: 'pie',
-
-                            // The data for our dataset
-                            data: {
-                                labels: ["1", "2", "3", "4", "5"],
-                                datasets: [{
-                                    backgroundColor: [
-                                        getRandomColor(),
-                                        getRandomColor(),
-                                        getRandomColor(),
-                                        getRandomColor(),
-                                        getRandomColor()
-                                    ],
-                                    data: {{ star_count_list|safe }}
-                                }]
-                            },
-
-                            // Configuration options go here
-                            options: {
-                                responsive: true,
-                                pieceLabel: {
-                                    render: 'percentage',
-                                    fontColor: 'white',
-                                    precision: 2
-                                }
-                            }
-                        });
                     }
 
                 });
                 $(".star-clickable").raty({
-                    starType: 'i',
-                    score: {{ previous_star|safe }},
-                    hints: ['骄傲', '无比骄傲', '骄傲突破天际', '骄傲冲出地球', '龙傲天'],
-                    click: function (score) {
-                        $("#current-star").html(score);
+                        starType: 'i',
+                        score: previous_star,
+                        hints: ['骄傲', '无比骄傲', '骄傲突破天际', '骄傲冲出地球', '龙傲天'],
+                        click: function (score) {
+                            $("#current-star").html(score);
+                            var changed_array = current_star_array.slice();
+                            if (previous_star !== 0) //have voted must change
+                                changed_array[previous_star - 1] -= 1;
+                            changed_array[score - 1] += 1;
+                            chart.destroy();
+                            create_chart(changed_array);
+                            var new_score = 0;
+                            var sum = 0;
+                            var count = 0;
+                            for (var i = 0; i < changed_array.length; i++) {
+                                sum += (i + 1) * changed_array[i];
+                                count += changed_array[i];
+                            }
 
+                            if (count !== 0) new_score = (sum / count).toFixed(1);
+                            var star_readonly = $(".star-readonly");
+                            star_readonly.raty('readOnly', false);
+                            star_readonly.raty('score', new_score);
+                            star_readonly.raty('readOnly', true);
+                            $(".star-readonly-label").html(new_score);
+
+
+                        }
                     }
-                });
+                )
+                ;
                 $(".star-dialog-save").click(function (e) {
                         var current_star = $(".star-clickable").raty('score');
-                        var previous_star ={{ previous_star|safe }};
-                        if (current_star == previous_star)
+                        if (current_star === previous_star)
                             alert("你并没有修改你的评分，请重试");
                         else {
                             var payload = {
@@ -374,6 +417,7 @@
                 );
                 $(".star-dialog-close").click(function () {
                     $(".star-change-dialog").hide();
+                    return_previous_status();
                 });
                 $(document).mouseup(function (e) {
                     var container = $(".tag-hidden-popularity");
