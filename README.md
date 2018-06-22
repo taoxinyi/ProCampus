@@ -22,7 +22,7 @@ A forum featuring realtime chat, comments and rating in combination of Django, W
 
 ![Demo3](/screenshots/demo3.png "Demo3")
 
-<img src="/screenshots/mobile_demo.jpg" alt="mobile demo" width="20%">
+<img src="/screenshots/mobile_demo.jpg" alt="mobile demo" width="35%">
 
 
 ## 1.1. Feature
