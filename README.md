@@ -1,19 +1,19 @@
 <!-- TOC -->
 
-- [1. ProCampus](#1-procampus)
+- [ProCampus](#procampus)
     - [1.1. Feature](#11-feature)
     - [1.2. How to Install](#12-how-to-install)
         - [1.2.1. Prerequisite](#121-prerequisite)
         - [1.2.2. install requirements](#122-install-requirements)
     - [1.3. Run](#13-run)
-    - [Deployment](#deployment)
-    - [1.4. Weird Thing](#14-weird-thing)
-        - [Using protobuf.js](#using-protobufjs)
+    - [1.4. Deployment](#14-deployment)
+    - [1.5. Weird Thing](#15-weird-thing)
+        - [1.5.1. Using protobuf.js](#151-using-protobufjs)
         - [Binary data corrupted during the transmission](#binary-data-corrupted-during-the-transmission)
     - [Acknowledgement](#acknowledgement)
 
 <!-- /TOC -->
-# 1. ProCampus
+# ProCampus
 A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Protobuf and more.
 
 ![Demo1](/screenshots/demo1.png "Demo1")
@@ -69,8 +69,8 @@ A forum featuring realtime chat, in combination of Django, WebSocket, Redis, Pro
 
     For instance, using `192.168.3.135:8000` in your host machine and` 127.0.0.1:8000` in virtual machine to test chat function.
 
-## Deployment
-Because of the usage of `channels`, `daphne` should be used instead of `uwsgi` on server side when it comes to deployment.
+## 1.4. Deployment
+Because of the usage of Websocket (`channels`), `daphne` should be used instead of `uwsgi` on server side when it comes to deployment.
 
 - Install `nginx`
 
@@ -96,8 +96,8 @@ Because of the usage of `channels`, `daphne` should be used instead of `uwsgi` o
 
     `docker run -p 6379:6379 -d redis:2.8`
 
-## 1.4. Weird Thing
-### Using protobuf.js
+## 1.5. Weird Thing
+### 1.5.1. Using protobuf.js
 When using [protobuf.min.js(protobuf.js)](https://github.com/dcodeIO/ProtoBuf.js), it is really weird that this library may convert underscore case into lower camel case refering to the `.proto` file.
 
  For instance, `chat_message_item` as key in `.proto` file may decoded as `chatMessageItem` in Javascript.
