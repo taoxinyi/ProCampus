@@ -382,6 +382,7 @@ button {
 
 .box {
     position: relative;
+    max-width: 60%;
 }
 
 .right_triangle {

@@ -106,11 +106,11 @@ body {
 
 }
 
-.tag-add-dialog, .comment-add-dialog {
+.tag-add-dialog, .comment-add-dialog, .star-change-dialog {
     float: left;
     position: fixed;
     left: 50%;
-    top: 30%;
+    top: 20%;
     transform: translateX(-50%);
     width: 600px;
     max-width: 90%;
@@ -137,14 +137,14 @@ body {
     padding: 0 5px;
 }
 
-.tag-dialog-title, .comment-dialog-title {
+.tag-dialog-title, .comment-dialog-title, .star-dialog-title {
     margin: 23px;
     line-height: 18px;
     font-size: 18px;
     text-align: center;
 }
 
-.tag-dialog-close, .comment-dialog-close {
+.tag-dialog-close, .comment-dialog-close, .star-dialog-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -167,7 +167,7 @@ body {
     width: 1px;
 }
 
-.tag-dialog-label, .comment-dialog-label {
+.tag-dialog-label, .comment-dialog-label, .star-dialog-label {
     margin-top: 22px;
     margin-bottom: 10px;
     height: 16px;
@@ -177,7 +177,12 @@ body {
     font-weight: 600;
 }
 
-.tag-dialog-save, .comment-dialog-save {
+.star-dialog-value {
+    border-left: 4px !important;
+
+}
+
+.tag-dialog-save, .comment-dialog-save, .star-dialog-save {
     margin: 24px auto 24px;
     width: 142px;
     height: 36px;
@@ -195,6 +200,16 @@ body {
     text-align: right;
     cursor: pointer;
     margin-left: 8px;
+}
+
+.star-div {
+    color: rgb(204, 204, 0);
+    cursor: pointer;
+}
+
+.star-dialog-div {
+    cursor: default;
+    margin: 0 10px;
 }
 
 .parent {
@@ -367,6 +382,7 @@ button {
 
 .box {
     position: relative;
+    max-width: 60%;
 }
 
 .right_triangle {
@@ -607,13 +623,75 @@ button {
 
 }
 
+.selector-div {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dddee1;
+    transition: all .2s ease-in-out;
+    height: 32px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 7px;
+    cursor: pointer;
+    margin: 10px 0 0 0;
+}
+
+.selector-div-focus {
+    border-color: #57a3f3;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(45, 140, 240, .2);
+}
+
+.dropdown {
+    max-height: 200px;
+    width: 130px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+    position: absolute;
+    z-index: 900;
+    display: none;
+
+}
+
+.dropdown-item {
+    line-height: 150%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7px;
+    align-items: center;
+    cursor: pointer;
+    color: black !important;
+
+}
+
+.dropdown-item:hover {
+    background: #f3f3f3;
+}
+
+.selector-span {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 8px;
+    padding-right: 24px;
+}
 
 @media only screen and (max-width: 500px) {
     .mobile_logo, .mobile-user-info {
         display: block;
     }
 
-    .desktop_logo, .right-content, .desktop-user-info {
+    .desktop_logo, .right-content, .desktop-user-info, .destop-time-info {
         display: none
     }
 
@@ -639,4 +717,11 @@ button {
         padding: 10px;
     }
 
+    .cell_tabs {
+        padding: 0;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
 }

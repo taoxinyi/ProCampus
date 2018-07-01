@@ -1,6 +1,5 @@
 syntax = "proto3";
 package chat;
-
 message NotificationItem {
     enum Type {
         REQUEST_ADD_FRIEND = 0;
@@ -27,9 +26,7 @@ message NotificationItem {
     bool isAnonymous = 10;
     bool isPublic = 11;
     int32 star = 12;
-
 }
-
 message Notification {
     repeated NotificationItem notification_item = 1;
 }

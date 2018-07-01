@@ -12,8 +12,6 @@ message ChatMessageItem {
     string fileUrl = 6;
     int32 fileSize = 7;
     string fileName = 8;
-
-
 }
 
 message ChatMessage {

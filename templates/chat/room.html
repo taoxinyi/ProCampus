@@ -1,21 +1,23 @@
 {% extends 'website/frontend/frontend_base_nosearch.html' %}
 {% load staticfiles %}
-{% block title %}聊天室__{{ room_name_json |slice:"1:-1"}}{% endblock %}
+
+<style>
+    span {
+        max-width: 160px;
+        display: block;
+        text-align: left;
+        word-wrap: break-word;
+    }
+</style>
+{% block title %}聊天室__{{ room_name_json |slice:"1:-1" }}{% endblock %}
 {% block external_header %}
 {% endblock %}
 {% block left %}
+
     <body>
-    <style>
-        span {
-            max-width: 160px;
-            display: block;
-            text-align: left;
-            word-wrap: break-word;
-        }
-    </style>
     <div style="height: 100%;">
         <div id="chat"
-             style="border: 1px solid black;width: 90% ; height: 450px; overflow-y: scroll;margin: 10px auto;"></div>
+             style="box-shadow: 0 0 2px 2px #aaa;width: 90% ; height: 450px; overflow-y: scroll;margin: 10px auto;"></div>
         <div style="width: 90% ;margin: 10px auto;">
             <div style="display: flex">
                 <div id="emoji">
@@ -56,9 +58,10 @@
                 </div>
             </div>
             <div id="easyEditor"></div>
-            <button id="chat-message-submit"  class="form-submit-button"><i class="fas fa-paper-plane"></i>
+            <button id="chat-message-submit" class="form-submit-button"><i class="fas fa-paper-plane"></i>
 
-发送</button>
+                发送
+            </button>
         </div>
     </div>
 
@@ -66,7 +69,10 @@
 {% endblock %}
 
 {% block right %}
+    <div><h3>{{ room_name_json |slice:"1:-1" }}</h3></div>
+
     <div id="online_list"><h3>当前在线用户</h3></div>
+
 {% endblock %}
 {% block front_js %}
     <link rel="stylesheet" type="text/css" href="{% static "css/easyEditor.css" %}"/>
@@ -126,7 +132,7 @@
                 } else if (type === 1) {
                     l = chatMessageDecoded.chatMessageItem[0];
                     var p = document.createElement("p");
-                    p.innerText = l.clientName + " enters this room";
+                    p.innerText = l.clientName + " 进入了该聊天室";
                     p.style.textAlign = "center";
                     document.getElementById("chat").appendChild(p);
                     addToList(l.clientName, l.clientId, l.imageUrl);
@@ -134,8 +140,7 @@
                 } else if (type === 2) {
                     l = chatMessageDecoded.chatMessageItem[0];
                     p = document.createElement("p");
-                    p.innerText = l.clientName + " has left this room";
-                    p.style.marginTop = "70px";
+                    p.innerText = l.clientName + " 离开了该聊天室";
                     p.style.textAlign = "center";
                     document.getElementById("chat").appendChild(p);
                     deleteFromList(l.clientId);
@@ -422,6 +427,7 @@
             a.href = "/forum/user/" + author_id;
             var img = new Image();
             img.src = imageUrl;
+            img.className = "img-circle";
             a.appendChild(img);
             var div_outside = document.createElement("div");
             div_outside.className = "div_outside_bubble";
@@ -510,6 +516,7 @@
                 a.href = "/forum/question/user/" + id + "/list/";
                 var img = new Image();
                 img.style.width = "40px";
+                img.className = "img-circle";
                 img.src = imageUrl;
                 a.className = "l-child-list";
                 a.appendChild(img);
