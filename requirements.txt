@@ -24,7 +24,7 @@ constantly==15.1.0
 
 daphne==2.1.1
 
-Django==2.0.5
+Django==2.2.10
 
 django-extensions==2.0.7
 
