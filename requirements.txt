@@ -64,7 +64,7 @@ txaio==2.10.0
 
 ufw==0.35
 
-urllib3==1.13.1
+urllib3==1.26.5
 
 uWSGI==2.0.17
 
